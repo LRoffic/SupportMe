@@ -1,0 +1,25 @@
+{include file="default/menu.html"}
+<div class="container">
+	{if isset($erreur)}
+		{if $erreur eq 'noticket'}
+			<div class="alert alert-danger"><b>Erreur :</b> Vous n'avez aucun ticket ouvert !</div>
+			<a href="./resolved.php" class="btn btn-success btn-block">Voir mes tickets résolue</a>
+		{elseif $erreur eq 'noticketresolved'}
+			<div class="alert alert-danger"><b>Erreur :</b> Vous n'avez aucun ticket résolue !</div>
+			<a href="./view.php" class="btn btn-success btn-block">Voir mes tickets en cours</a>
+		{elseif $erreur eq 'emptyid'}
+			<div class="alert alert-danger"><b>Erreur :</b> Il manque l'id !</div>
+		{elseif $erreur eq 'idnotnumeric'}
+			<div class="alert alert-danger"><b>Erreur :</b> L'id du ticket n'est pas un chiffre !</div>
+		{elseif $erreur eq 'ticketnotfound'}
+			<div class="alert alert-danger"><b>Erreur :</b> Le ticket n'existe pas !</div>
+		{elseif $erreur eq 'notautor'}
+			<div class="alert alert-danger"><b>Erreur :</b> Vous ne pouvez pas voir ce ticket !</div>
+		{elseif $erreur eq 'notfaq'}
+			<div class="alert alert-danger"><b>Erreur :</b> Il n'y a aucun ticket dans les FAQ's !</div>
+		{/if}
+	{else}
+		<div class="alert alert-danger"><b>Erreur :</b> Une erreure de type inconnue à été détécté !</div>
+	{/if}
+</div>
+{include file="default/footer.html"}

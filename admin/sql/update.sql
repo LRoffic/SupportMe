@@ -1,0 +1,1 @@
+update config set version = "2.2"

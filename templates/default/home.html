@@ -1,0 +1,39 @@
+<div class="container">
+			<div class="row">
+				{if $perm.sendticket eq '1'}
+				<div class="col-md-6">
+					<div class="well">
+						<h1><u>Envoyer un ticket</u></h1>
+						<div style="display: block;text-align: -webkit-center;">
+							<img src="./templates/default/img/new.jpg" />
+						</div><br />
+						<a href="./new.php" class="btn btn-lg btn-block btn-primary" width="100" height="100">Contacté le support</a>
+					</div>
+				</div>
+				{/if}
+				{if $perm.viewticket eq '1'}
+				<div class="col-md-6">
+					<div class="well">
+						<h1><u>Voir un ticket</u></h1>
+						<div style="display: block;text-align: -webkit-center;">
+							<img src="./templates/default/img/ticket.jpg"  width="100" height="100"/>
+						</div>
+						<a href="./view.php" class="btn btn-lg btn-block btn-info">Voir un ticket</a>
+					</div>
+				</div>
+				{/if}
+			</div>
+		</div>
+		{if $siteconfig.faq eq 'e'  && $perm.viewfaq eq '1'}
+			{if $nbfaq > '0'}
+				<div class="container">
+					<div class="well">
+						<h1><u>Voir la FAQ</u></h1>
+						<div style="display: block;text-align: center;">
+							<img src="./templates/default/img/faq.jpg"  width="100" height="100"/>
+						</div><br />
+						<a href="./faq.php" class="btn btn-lg btn-block btn-warning">Consulter la Foire Aux Questions</a>
+					</div>
+				</div>
+			{/if}
+		{/if}

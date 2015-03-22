@@ -1,0 +1,58 @@
+{include file="menu.html"}
+	<div class="col-md-10">
+		{include file="alert.html"}
+		{if isset($alert)}
+			{if $alert eq "token"}
+				<div class="alert alert-danger">Token invalide ou innexistant !</div>
+			{elseif $alert eq "notperm"}
+				<div class="alert alert-danger">Vous n'avez pas la permission de supprimé un utilisateur !</div>
+			{elseif $alert eq "userNotFound"}
+				<div class="alert alert-danger">L'utilisateur est introuvable !</div>
+			{elseif $alert eq "accountProtected"}
+				<div class="alert alert-danger">Ce compte est protégé, vous ne pouvez pas le supprimer !</div>
+			{elseif $alert eq "delok"}
+				<div class="alert alert-success">Vous avez supprimer le compte de <b>{$usernamedel}</b> !</div>
+			{/if}
+		{/if}
+		<div class="panel panel-default">
+			<div class="panel-heading">Listes des utilisateurs inscrit</div>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Pseudo</th>
+						<th>Email</th>
+						<th>Date d'inscription</th>
+						<th>Dernière connexion</th>
+						<th>Rang</th>
+						<th>IP</th>
+						<th>Option</th>
+					</tr>
+				</thead>
+				<tbody>
+					{foreach from=$ulist item=u}
+						<tr>
+							<td>{$u.id}</td>
+							<td>{$u.pseudo}</td>
+							<td>{$u.email}</td>
+							<td>{$u.dateinsc}</td>
+							<td>{$u.lastview}</td>
+							<td>{$u.rang}</td>
+							<td>{$u.ip}</td>
+							<td>
+								<div class="btn-group">
+									{if $perm.modifUsers eq '1'}
+										<a href="./users.php?uid={$u.id}" class="btn btn-info">Modifier</a>
+									{/if}
+									{if $perm.deleteUsers eq '1'}
+										<a href="./users.php?action=delete&uid={$u.id}&token={$token}" class="btn btn-danger">Supprimer</a>
+									{/if}
+								</div>
+							</td>
+						</tr>
+					{/foreach}
+				</tbody>
+			</table>
+		</div>
+	</div>
+{include file="footer.html"}

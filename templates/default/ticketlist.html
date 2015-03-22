@@ -1,0 +1,58 @@
+{include file="default/menu.html"}
+<div class="container">
+	<div class="panel panel-default">
+		<div class="panel-heading">Liste de vos tickets</div>
+		<div class="panel-body">
+			<table class="table table-striped">
+				<thead>
+					<th>Sujet</th>
+					<th>Date</th>
+					<th>&Eacute;tat</th>
+					<th>Assignation</th>
+					<th>Options</th>
+				</thead>
+
+				<tbody>
+					{foreach from=$listTick item=list}
+						<tr id="ticket{$list.id}">
+							<td>{$list.sujet}</td>
+							<td>{$list.date}</td>
+							<td>
+								{if $list.etat eq '0'}
+									<span class="label label-danger">En cours...</span>
+								{elseif $list.etat eq '1'}
+									<span class="label label-warning">En attente...</span>
+								{elseif $list.etat eq '2'}
+									<span class="label label-success">Résolue</span>
+								{/if}
+							</td>
+							<td>
+								{if $list.assigned eq '0'}
+									Ce ticket n'est pas encore assigné
+								{else}
+									{$list.assignto|escape:'htmlall'}
+								{/if}
+							</td>
+							<td>
+								{if $siteconfig.htaccess eq 'e'}
+									<a href="./ticket-{$list.id}.php" class="btn btn-default btn-sm">Voir le ticket</a>
+								{else}
+									<a href="./ticket.php?id={$list.id}" class="btn btn-default btn-sm">Voir le ticket</a>
+								{/if} 
+								{if $perm.resolve eq '1'}
+									<a href="#" class="btn btn-success btn-sm" onclick="resolve('{$list.id}', '0')">Ticket résolue</a>
+								{/if}
+							</td>
+						</tr>
+					{/foreach}
+				</tbody>
+			</table>
+		</div>
+	</div>
+	{if $perm.lastresolved eq '1'}
+		<div class="well" style="text-align: center">
+			<a href="./resolved.php" class="btn btn-success">Voir les tickets déjà résolues</a>
+		</div>
+	{/if}
+</div>
+{include file="default/footer.html"}

@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<title>Administration - {$config.sitename}</title>
+
+		<link rel="icon" href="../templates/default/img/Supportme.png" />
+
+		<!--CSS-->
+		<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="./css/bootstrap-theme.min.css">
+
+		<!--JavaScript-->
+		<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+		<script type="text/javascript" src="./js/bootstrap.min.js"></script>
+		<script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
+		<script type="text/javascript" src="./js/javascript.js"></script>
+	</head>
+	<body>
+		<header>
+			<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+				<div class="container-fluid">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="./connexion.php">{$config.sitename}</a>
+					</div>
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-right">
+							{if !empty($link)}
+							<li class="dropdown">
+				              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Autres liens <b class="caret"></b></a>
+				              <ul class="dropdown-menu" role="menu">
+				                {$link}
+				              </ul>
+				            </li>
+				            {/if}
+							<li><a href="../index.php">Retour au support</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</header>
+		
+		<div class="col-md-2" style="text-align: center;">
+			<div class="bs-docs-sidebar hidden-print affix">
+				<ul class="nav bs-docs-sidenav">
+					<li><b><u>Navigation :</u></b></li>
+					<li><a href="./index.php">Accueil</a></li>
+					{if $perm.Categories eq '1'}
+						<li><a href="./categorie.php">Gérer les catégories</a></li>
+					{/if}
+					{if $perm.viewticket eq '1'}
+						{if $perm.lastresolved eq '1'}
+							<li><a href="./resolved.php">Gérer les tickets fermé</a></li>
+						{/if}
+					{/if}
+					<hr />
+					{if $perm.config eq "1" || $perm.modiftheme eq '1'}
+						<li><b><u>Configuration :</u></b></li>
+							{if $perm.config eq "1"}
+								<li><a href="./config.php">Configuration Générale</a></li>
+							{/if}
+							{if $perm.modiftheme eq '1'}
+								<li><a href="./theme.php">Thèmes</a></li>
+							{/if}
+						<hr />
+					{/if}
+					{if $perm.viewuser eq "1" || $perm.modifPerms eq '1'}
+						<li><b><u>Utilisateurs :</u></b></li>
+						{if $perm.viewuser eq '1'}
+							<li><a href="./users.php">Gérer les utilisateurs</a></li>
+						{/if}
+						{if $perm.modifPerms eq '1'}
+							<li><a href="./permissions.php">Gérer les Permissions</a></li>
+						{/if}
+					{/if}
+				</ul>
+			</div>
+		</div>

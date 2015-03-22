@@ -1,0 +1,57 @@
+{include file="default/menu.html"}
+<div class="container">
+	<div style="text-align: right;">
+		{if $perm.resolve eq '1' && $info.etat neq '2' && $info.isfaq neq '1'}
+		<a href="#" onclick="resolve('{$info.id}', '1')" class="btn btn-success" id="resolve">Résoudre le ticket</a>
+		{elseif $perm.reopen eq '1' && $info.etat eq '2' && $info.isfaq neq '1'}
+		<a href="#" onclick="reopen('{$info.id}', '1')" class="btn btn-danger" id="reopen">Réouvrir le ticket</a>
+		{/if}
+	</div>
+	<div class="well">
+		<h2><b><u>{$sujet|escape:'htmlall'}</u></b></h2><br />
+		<em><u>date : {$date}</u></em><br />
+		Assigné à : 
+		{if $info.assigned eq '0'}
+			Ce ticket n'est pas encore assigné
+		{else}
+			{$info.assignto|escape:'htmlall'}
+		{/if}<br />
+		&Eacute;tat : <span id="etat"></span><br /><br />
+		<div class="well">
+			{$contenu}
+		</div>
+	</div>
+	<div id="resultcom"></div>
+	{if $perm.comment eq '1' && $info.etat neq '2' && $info.isfaq neq '1'}
+	<div class="well" id="formcom">
+		<form method="post" id="commentaire">
+			<textarea name="commentaire" class="form-control tiny"></textarea>
+			<input type="submit" class="btn btn-lg btn-block btn-primary" value="Envoyer" />
+		</form>
+	</div>
+	{/if}
+	<div id="com"></div>
+
+	<script>
+		function etat()
+			{
+				$( "#etat" ).load("./templates/default/requete.php?action=etat&id={$info.id}");
+			}
+		setInterval(etat, 1000);
+		function com()
+			{
+				$( "#com" ).load("./templates/default/requete.php?action=commentaire&id={$info.id}");
+			}
+		setInterval(com, 1000);
+		$("#commentaire").submit(function () {
+            tinyMCE.triggerSave();
+            $.post("./templates/default/requete.php?action=commenter&id={$info.id}",$("#commentaire").serialize(),function(texte){
+                $("div#resultcom").append(texte).slideDown("slow");
+                $("div#resultcom").delay(4000).slideUp("slow");
+                $(".alrt").delay(5000).hide("slow");
+            });
+            return false; // ne change pas de page
+    	});
+	</script>
+</div>
+{include file="default/footer.html"}

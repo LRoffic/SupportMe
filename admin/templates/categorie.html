@@ -1,0 +1,74 @@
+{include file="menu.html"}
+	<div class="col-md-10">
+		{include file="alert.html"}
+		{if isset($retour)}
+			{if $retour eq 'token'}
+				<div class="alert alert-danger">Token invalide ou innexistant !</div>
+			{elseif $retou eq 'okadd'}
+				<div class="alert alert-success">Catégorie ajouté avec succès !</div>
+			{elseif $retou eq 'okdel'}
+				<div class="alert alert-success">Catégorie supprimé avec succès !</div>
+			{elseif $retour eq 'emptyname'}
+				<div class="alert alert-danger">Le nom de la catégorie est manquant ! La catégorie n'a pas été ajouté !</div>
+			{elseif $retour eq 'emptyid'}
+				<div class="alert alert-danger">L'id' de la catégorie est manquant ! La catégorie n'a pas été supprimé !</div>
+			{elseif $retour eq 'categ1'}
+				<div class="alert alert-danger">
+					Cette catégorie ne peux pas être supprimé, si vous la supprimé certaines erreurs peuvent apparaîtres !
+				</div>
+			{/if}
+		{/if}
+		<div class="panel-group" id="accordion">
+			<div class="panel panel-default">
+				<div class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#AddCateg">
+					Ajoutez une catégorie
+				</div>
+				<div id="AddCateg" class="panel-collapse collapse {if isset($empty)} in {/if}">
+					<div class="panel-body">
+						<form metod="post" action="./categorie.php?action=new&token={$token}">
+							<div class="form-group">
+								<label>Nom de la catégorie</label>
+								<input type="text" name="name" required="true" class="form-control"/>
+							</div>
+							<input type="submit" class="btn btn-primary btn-lg btn-block" value="envoyer" />
+							</form>
+						</form>
+					</div>
+				</div>
+			</div>
+			{if isset($empty)}
+				<div class="alert alert-danger">Il n'y a aucune catégorie !</div>
+			{else}
+				<div class="panel panel-default">
+					<div class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#listCateg">
+						Liste des catégories
+					</div>
+					<div id="listCateg" class="panel-collapse collapse in">
+						<table class="table table-stripped table-bordered">
+							<thead>
+								<tr>
+									<th>Nom</th>
+									<th>Option</th>
+								</tr>
+							</thead>
+							<tbody>
+								{foreach from=$categs item=c}
+									<tr>
+										<td>{$c.nom|escape: html}</td>
+										<td>
+											{if $c.id neq '1'}
+												<a href="./categorie.php?action=delete&id={$c.id}&token={$token}" class="btn btn-danger">Supprimer</a>
+											{elseif $c.id eq '1'}
+												<a class="btn btn-danger disabled">Supprimer</a>
+											{/if}
+										</td>
+									</tr>
+								{/foreach}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			{/if}
+		</div>
+	</div>
+{include file="footer.html"}
