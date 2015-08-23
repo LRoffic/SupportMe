@@ -71,7 +71,7 @@ along with Support Me. If not, see <http://www.gnu.org/licenses/>.
 										$us->execute(array('ps'=>$_POST['pseudo'], 'pass'=>$pass, 'email'=>$_POST['email'], 'dateinsc'=>time(), 'last'=>time(), 'perm'=>'4', 'ip'=>$_SERVER['REMOTE_ADDR'], 'protected'=> '1'));
 										?>
 											<h1>Support Me - Installation finis !</h1>
-											<p>Ça y est l'installation de Support Me est terminé ! Merci pour cette installation !</p>
+											<p>Ça y est l'installation de Support Me est terminé ! Merci à toi pour cette installation !</p>
 											<?php
 												if(isset($autogener) && isset($password))
 													echo '<p style="text-align: center;">Ton mot de passe a été généré aléatoirement, car tu as laissé vide le champ ou les deux mots de passe ne correspondent pas. Tu pourras changer ton mot de passe en te connectant sur ton support.<br /> Voici ton mot de passe :<br /><b>'.$password.'</b><br /> Pense à bien le noter !</p>';

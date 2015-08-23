@@ -44,6 +44,40 @@ along with Support Me. If not, see <http://www.gnu.org/licenses/>.
 	$stconfig = $bdd->query("SELECT * FROM config WHERE id = 1");
 	$siteconfig = $stconfig->fetch();
 
+	if(!empty($_COOKIE['lang'])){
+		if(file_exists('./lang/'.$_COOKIE['lang'].'.json')){
+			$folderlang = './lang/';
+			$sitelang = $_COOKIE['lang'];
+		} elseif(file_exists('./lang/'.$siteconfig['lang'].'.json')){
+			$folderlang = './lang/';
+			$sitelang = $sitelang['lang'];
+		} else {
+			$folderlang = 'http://supportme.dzv.me/lang/';
+			if(file_exists($folderlang.$siteconfig['lang'].'.json')){
+				$sitelang = $siteconfig['lang'];
+			} else {
+				$sitelang = 'fr_FR';
+			}
+		}
+	} else {
+		if(file_exists('./lang/'.$siteconfig['lang'].'.json')){
+			$folderlang = './lang/';
+			$sitelang = $siteconfig['lang'];
+		} else {
+			$folderlang = 'http://supportme.dzv.me/lang/';
+			if(file_exists($folderlang.$siteconfig['lang'].'.json')){
+				$sitelang = $siteconfig['lang'];
+			} else {
+				$sitelang = 'fr_FR';
+			}
+		}
+	}
+
+	$getlang = file_get_contents($folderlang.$sitelang.".json");
+	$lan = json_decode($getlang ,true);
+	$lang = replace_lang($lan);
+	$tpl->assign('lang', $lang);
+
 	if(!empty($siteconfig['template']))
 		$template = $siteconfig['template'];
 	else

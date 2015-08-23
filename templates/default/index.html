@@ -5,35 +5,35 @@
 		{if isset($isconnect) && $isconnect eq 'false' || empty($isconnect)}
 			<div class="container">
 				<div class="well well-lg">
-					<p>Bienvenu sur le support de {$sitename},<br /> pour pouvoir contacter le support veuillez vous connectez ou vous inscrire !</p>
+					<p>{$lang.welcometext}</p>
 				</div>
 				<div class="col-md-6">
 					<div class="well"  id="groupinsc">
-						<h2><u>Inscription : </u></h2>
+						<h2><u>{$lang.signup} : </u></h2>
 						<form method="post" id="inscription">
 							<div class="form-group">
-								<label for="email">Adresse Mail :</label>
+								<label for="email">{$lang.emailAdress} :</label>
 								<span style="color: red;" class="glyphicon glyphicon-asterisk"></span>
 								<input type="email" class="form-control" name="email" required="true" />
 							</div>
 							<div class="form-group">
-								<label for="pseudo">Nom ou Pseudo :</label>
+								<label for="pseudo">{$lang.nameOrPseudo} :</label>
 								<span style="color: red;" class="glyphicon glyphicon-asterisk"></span>
 								<input type="text" class="form-control" name="pseudo" required="true" />
 							</div>
 							<div class="form-group">
-								<label for="password">Mot de passe :</label>
+								<label for="password">{$lang.password} :</label>
 								<span style="color: red;" class="glyphicon glyphicon-asterisk"></span>
 								<input type="password" class="form-control" name="password" required="true" />
 							</div>
 							<div class="form-group">
-								<label for="verifpass">Retapez le mot de passe :</label>
+								<label for="verifpass">{$lang.retypePassword} :</label>
 								<span style="color: red;" class="glyphicon glyphicon-asterisk"></span>
 								<input type="password" class="form-control" name="verifpass" required="true" />
 							</div>
 							{if isset($siteconfig) && $siteconfig.recaptcha eq "e"}
 							<div class="form-group">
-								<label for="captcha">Captcha :</label>
+								<label for="captcha">{$lang.captcha} :</label>
 								<span style="color: red;" class="glyphicon glyphicon-asterisk"></span>
 								<script type="text/javascript" src="http://www.google.com/recaptcha/api/challenge?k={$siteconfig.recaptcha_key}"></script>
 					        	<noscript>
@@ -43,30 +43,30 @@
 					        	</noscript>
 							</div>
 							{/if}
-							<input type="submit" class="btn btn-lg btn-block btn-primary" value="S'inscrire" />
+							<input type="submit" class="btn btn-lg btn-block btn-primary" value="{$lang.signup}" />
 						</form>
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="well" id="groupconnex">
-						<h2><u>Connexion :</u></h2>
+						<h2><u>{$lang.signin} :</u></h2>
 						<form method="post" id="connexion">
 							<div class="form-group">
-								<label for="pseudo">Nom, Pseudo ou adresse mail :</label>
+								<label for="pseudo">{$lang.namePseudoOrMail} :</label>
 								<span style="color: red;" class="glyphicon glyphicon-asterisk"></span>
 								<input type="text" class="form-control" name="pseudo" required="true" />
 							</div>
 							<div class="form-group">
-								<label for="password">Mot de passe :</label>
+								<label for="password">{$lang.password} :</label>
 								<span style="color: red;" class="glyphicon glyphicon-asterisk"></span>
 								<input type="password" class="form-control" name="password" required="true" />
 							</div>
 							{if isset($siteconfig) && $siteconfig.cookie eq '1'}
 							<div class="form-group">
-								<input type="checkbox" name="remember" checked="true" /> Se souvenir de moi
+								<input type="checkbox" name="remember" checked="true" /> {$lang.rememberMe}
 							</div>
 							{/if}
-							<input type="submit" class="btn btn-lg btn-block btn-info" value="Connexion" />
+							<input type="submit" class="btn btn-lg btn-block btn-info" value="{$lang.signin}" />
 						</form>
 					</div>
 				</div>

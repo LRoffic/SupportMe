@@ -121,3 +121,18 @@ along with Support Me. If not, see <http://www.gnu.org/licenses/>.
 			else
 				return false;
 		}
+
+	function replace_lang($lang){
+		global $bdd;
+
+		$getconfig = $bdd->query("SELECT * FROM config WHERE id = '1'");
+		$config = $getconfig->fetch();
+
+		$arrayprofil = array(
+			'%sitename%' => htmlspecialchars($config['sitename'])
+		);
+
+		$string = str_replace(array_keys($arrayprofil), array_values($arrayprofil), $lang);
+
+		return $string;
+	}

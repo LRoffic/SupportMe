@@ -1,4 +1,4 @@
 Options +FollowSymlinks
 RewriteEngine on
 RewriteRule ^ticket-([0-9]+).php$ ticket.php?id=$1 [L]
-output_buffering on
+php_value output_buffering on

@@ -1,6 +1,6 @@
 {include file="default/menu.html"}
 <div class="container">
-	<div class="well"><h1>Foire aux questions</h1></div>
+	<div class="well"><h1>{$lang.FAQtext}</h1></div>
 	<div class="panel-group" id="accordion">
 	{foreach from=$listfa item=fa}
 	<div class="panel panel-default">
@@ -11,15 +11,15 @@
 		</div>
 		<div id="{$fa.id}" class="panel-collapse collapse">
 			<div class="panel-body">
-				<em><u>Posé par {$fa.auteur} le {$fa.date}</u></em><br />
+				<em><u>{$lang.posedBy} {$fa.auteur} {$lang.on} {$fa.date}</u></em><br />
 				<div class="well">
 					{$fa.contenu}
 				</div><br /><br />
-				Réponses :<br />
+				{$lang.responses} :<br />
 				{foreach from=$listcom item=com}
 					{if $com.tid eq $fa.id && $com.masked neq '1'}
 					<div class="well">
-						<em><u>Réponse par {$com.auteur} le {$com.date}</u></em><br />
+						<em><u>{$ang.responseTo} {$com.auteur} {$lang.on} {$com.date}</u></em><br />
 						{$com.contenu}
 					</div>
 					{/if}

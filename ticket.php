@@ -97,7 +97,7 @@ along with Support Me. If not, see <http://www.gnu.org/licenses/>.
 									$tpl->assign('page', htmlspecialchars($info['sujet']));
 									$tpl->assign('info', $info);
 									$tpl->assign('sujet', htmlspecialchars($info['sujet']));
-									$tpl->assign('date', date('d/m/Y', $info['datepost']));
+									$tpl->assign('date', date($lang['phpDate'], $info['datepost']));
 									$tpl->assign('contenu', $purifier->purify($info['contenu']));
 									$tpl->display($template.'ticket.html');
 								}

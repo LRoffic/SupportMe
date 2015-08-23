@@ -58,7 +58,7 @@ along with Support Me. If not, see <http://www.gnu.org/licenses/>.
 								'sujet'=>$purifier->purify($fa['sujet']),
 								'auteur'=>$auteur,
 								'contenu'=>$purifier->purify($fa['contenu']),
-								'date'=>date('d/m/Y', $fa['datepost'])
+								'date'=>date($lang['phpDate'], $fa['datepost'])
 							);
 							$f++;
 						}
@@ -76,7 +76,7 @@ along with Support Me. If not, see <http://www.gnu.org/licenses/>.
 								'tid'=>$co['tid'],
 								'auteur'=>$autorcom,
 								'contenu'=>$purifier->purify($co['contenu']),
-								'date'=>date('d/m/Y', $co['datepost']),
+								'date'=>date($lang['phpDate'], $co['datepost']),
 								'masked'=>$co['masked']
 							);
 							$c++;

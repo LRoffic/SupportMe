@@ -57,7 +57,7 @@ along with Support Me. If not, see <http://www.gnu.org/licenses/>.
 											$listTick[$t] = array(
 												'id'=>$lt['id'],
 												'sujet'=>htmlspecialchars($lt['sujet']),
-												'date'=>date('d/m/Y', $lt['datepost']),
+												'date'=>date($lang['phpDate'], $lt['datepost']),
 												'etat'=>$lt['etat'],
 												'assigned'=>$lt['assigned'],
 												'assignto'=>$lt['assignto']
@@ -112,7 +112,7 @@ along with Support Me. If not, see <http://www.gnu.org/licenses/>.
 											$listTick[$t] = array(
 												'id'=>$lt['id'],
 												'sujet'=>htmlspecialchars($lt['sujet']),
-												'date'=>date('d/m/Y', $lt['datepost']),
+												'date'=>date($lang['phpDate'], $lt['datepost']),
 												'etat'=>$lt['etat'],
 												'assigned'=>$lt['assigned'],
 												'assignto'=>$lt['assignto']

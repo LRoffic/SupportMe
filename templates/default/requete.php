@@ -16,6 +16,39 @@
 	$stconfig = $bdd->query("SELECT * FROM config WHERE id = 1");
 	$siteconfig = $stconfig->fetch();
 
+	if(!empty($_COOKIE['lang'])){
+		if(file_exists('../../lang/'.$_COOKIE['lang'].'.json')){
+			$folderlang = '../../lang/';
+			$sitelang = $_COOKIE['lang'];
+		} elseif(file_exists('../../lang/'.$siteconfig['lang'].'.json')){
+			$folderlang = '../../lang/';
+			$sitelang = $sitelang['lang'];
+		} else {
+			$folderlang = 'http://supportme.dzv.me/lang/';
+			if(file_exists($folderlang.$siteconfig['lang'].'.json')){
+				$sitelang = $siteconfig['lang'];
+			} else {
+				$sitelang = 'fr_FR';
+			}
+		}
+	} else {
+		if(file_exists('../../lang/'.$siteconfig['lang'].'.json')){
+			$folderlang = '../../lang/';
+			$sitelang = $siteconfig['lang'];
+		} else {
+			$folderlang = 'http://supportme.dzv.me/lang/';
+			if(file_exists($folderlang.$siteconfig['lang'].'.json')){
+				$sitelang = $siteconfig['lang'];
+			} else {
+				$sitelang = 'fr_FR';
+			}
+		}
+	}
+
+	$getlang = file_get_contents($folderlang.$sitelang.".json");
+	$lan = json_decode($getlang ,true);
+	$lang = replace_lang($lan);
+
 	if(isset($_SESSION['id']) && isset($_SESSION['pseudo']) && isset($_SESSION['token']))
 		{
 			$verifpseudo = $bdd->prepare('SELECT * FROM users WHERE id = :id');
@@ -33,7 +66,7 @@
 					if(isset($_COOKIE['auth']))
 						setcookie('auth', '', time()-3600, null, null, false, false);
 
-					echo '<script>alert(\'Vous avez été déconnécté, le pseudo de votre session ne correspond pas à son id, veuillez vous reconnécté avec votre adresse mail !\');window.location.reload();</script>';
+					echo '<script>alert(\''.$lang['sessionError'].'\');window.location.reload();</script>';
 				}
 			else
 				{
@@ -71,7 +104,7 @@
 													}
 												else
 													{
-														echo '<div class="alert alert-danger alrt">Erreur</div>';
+														echo '<div class="alert alert-danger alrt">'.$lang['error'].'</div>';
 														$isauteur = 'false';
 													}
 											}
@@ -84,7 +117,7 @@
 													}
 												else
 													{
-														echo '<div class="alert alert-danger alrt">Erreur</div>';
+														echo '<div class="alert alert-danger alrt">'.$lang['error'].'</div>';
 														$isauteur = 'false';
 													}
 											}
@@ -119,17 +152,17 @@
 									}
 								else
 									{
-										echo '<div class="alert alert-danger alrt">Erreur</div>';
+										echo '<div class="alert alert-danger alrt">'.$lang['error'].'</div>';
 									}
 							}
 						else
 							{
-								echo '<div class="alert alert-danger alrt">Erreur</div>';
+								echo '<div class="alert alert-danger alrt">'.$lang['error'].'</div>';
 							}
 					}
 				else
 					{
-						echo '<label class="label label-danger">Erreur</label>';
+						echo '<label class="label label-danger">'.$lang['error'].'</label>';
 					}
 			break;
 
@@ -150,7 +183,7 @@
 													$isauteur = 'true';
 												else
 													{
-														echo '<label class="label label-danger">Erreur</label>';
+														echo '<label class="label label-danger">'.$lang['error'].'</label>';
 														$isauteur = 'false';
 													}
 											}
@@ -160,7 +193,7 @@
 													$isauteur = 'true';
 												else
 													{
-														echo '<label class="label label-danger">Erreur</label>';
+														echo '<label class="label label-danger">'.$lang['error'].'</label>';
 														$isauteur = 'false';
 													}
 											}
@@ -189,17 +222,17 @@
 									}
 								else
 									{
-										echo '<label class="label label-danger">Erreur</label>';
+										echo '<label class="label label-danger">'.$lang['error'].'</label>';
 									}
 							}
 						else
 							{
-								echo '<label class="label label-danger">Erreur</label>';
+								echo '<label class="label label-danger">'.$lang['error'].'</label>';
 							}
 					}
 				else
 					{
-						echo '<label class="label label-danger">Erreur</label>';
+						echo '<label class="label label-danger">'.$lang['error'].'</label>';
 					}
 			break;
 
@@ -220,7 +253,7 @@
 													$isauteur = 'true';
 												else
 													{
-														echo '<label class="label label-danger">Erreur</label>';
+														echo '<label class="label label-danger">'.$lang['error'].'</label>';
 														$isauteur = 'false';
 													}
 											}
@@ -230,7 +263,7 @@
 													$isauteur = 'true';
 												else
 													{
-														echo '<label class="label label-danger">Erreur</label>';
+														echo '<label class="label label-danger">'.$lang['error'].'</label>';
 														$isauteur = 'false';
 													}
 											}
@@ -247,17 +280,17 @@
 									}
 								else
 									{
-										echo '<label class="label label-danger">Erreur</label>';
+										echo '<label class="label label-danger">'.$lang['error'].'</label>';
 									}
 							}
 						else
 							{
-								echo '<label class="label label-danger">Erreur</label>';
+								echo '<label class="label label-danger">'.$lang['error'].'</label>';
 							}
 					}
 				else
 					{
-						echo '<label class="label label-danger">Erreur</label>';
+						echo '<label class="label label-danger">'.$lang['error'].'</label>';
 					}
 			break;
 
@@ -275,14 +308,14 @@
 										if(!empty($ver['email']) && $ver['email'] == $_SESSION['email'])
 											$ok = 'ok';
 										else
-											echo '<div class="alert alert-danger alrt"><b>Erreur :</b> Vous n\'êtes pas l\'auteur du ticket !</div>';
+											echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> Vous n\'êtes pas l\'auteur du ticket !</div>';
 									}
 								elseif($siteconfig['registration'] == 'force')
 									{
 										if(!empty($ver['auteur']) && $ver['auteur'] == $_SESSION['id'])
 											$ok = 'ok';
 										else
-											echo '<div class="alert alert-danger alrt"><b>Erreur :</b> Vous n\'êtes pas l\'auteur du ticket !</div>';
+											echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> Vous n\'êtes pas l\'auteur du ticket !</div>';
 									}
 
 								if(isset($ok) && $ok == 'ok')
@@ -295,10 +328,10 @@
 									}
 							}
 						else
-							echo '<div class="alert alert-danger alrt"><b>Erreur :</b> id du ticket manquant !</div>';
+							echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> id du ticket manquant !</div>';
 					}
 				else
-					echo '<div class="alert alert-danger alrt"><b>Erreur :</b> vous ne pouvez pas résoudre les tickets !</div>';
+					echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> vous ne pouvez pas résoudre les tickets !</div>';
 			break;
 
 			case "resolve":
@@ -322,7 +355,7 @@
 										if(!empty($ver['auteur']) && $ver['auteur'] == $_SESSION['id'])
 											$ok = 'ok';
 										else
-											echo '<div class="alert alert-danger alrt"><b>Erreur :</b> Vous n\'êtes pas l\'auteur du ticket !</div>';
+											echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> Vous n\'êtes pas l\'auteur du ticket !</div>';
 									}
 
 								if(isset($ok) && $ok == 'ok')
@@ -335,10 +368,10 @@
 									}
 							}
 						else
-							echo '<div class="alert alert-danger alrt"><b>Erreur :</b> id du ticket manquant !</div>';
+							echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> id du ticket manquant !</div>';
 					}
 				else
-					echo '<div class="alert alert-danger alrt"><b>Erreur :</b> vous ne pouvez pas résoudre les tickets !</div>';
+					echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> vous ne pouvez pas résoudre les tickets !</div>';
 			break;
 
 			case "emailauth":
@@ -391,7 +424,7 @@
 															$ok = 'ok';
 													}
 												else
-													echo '<div class="alert alert-danger alrt"><b>Erreur :</b> le champs captcha est vide !</div>';
+													echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> le champs captcha est vide !</div>';
 											}
 										else
 											$ok = 'ok';
@@ -435,18 +468,18 @@
 													}
 												else
 													{
-														echo '<div class="alert alert-danger alrt"><b>Erreur :</b> l\'email saisie est incorrect !</div>';
+														echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> l\'email saisie est incorrect !</div>';
 													}
 											}
 									}
 								else
 									{
-										echo '<div class="alert alert-danger alrt"><b>Erreur :</b> Vous n\'avez pas la permissions d\'envoyer un ticket !</div>';
+										echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> Vous n\'avez pas la permissions d\'envoyer un ticket !</div>';
 									}
 							}
 						else
 							{
-								echo '<div class="alert alert-danger alrt"><b>Erreur :</b> un des champs n\'est pas remplis !</div>';
+								echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> un des champs n\'est pas remplis !</div>';
 							}
 					}
 				elseif($siteconfig['registration'] == "force" || !empty($_SESSION['pseudo']))
@@ -469,22 +502,22 @@
 													}
 												else
 													{
-														echo '<div class="alert alert-danger alrt"><b>Erreur :</b> Vous n\'avez pas la permissions d\'envoyer un ticket !</div>';
+														echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> Vous n\'avez pas la permissions d\'envoyer un ticket !</div>';
 													}
 											}
 										else
 											{
-												echo '<div class="alert alert-danger alrt"><b>Erreur :</b> Votre compte n\'existe pas !</div>';
+												echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> Votre compte n\'existe pas !</div>';
 											}
 									}
 								else
 									{
-										echo '<div class="alert alert-danger alrt"><b>Erreur :</b> Vous n\'êtes pas connectez !</div>';
+										echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> Vous n\'êtes pas connectez !</div>';
 									}
 							}
 						else
 							{
-								echo '<div class="alert alert-danger alrt"><b>Erreur :</b> un des champs n\'est pas remplis !</div>';
+								echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> un des champs n\'est pas remplis !</div>';
 							}
 					}
 			break;
@@ -554,7 +587,7 @@
 					{
 						$con = connexion($_POST['pseudo'], $_POST['password']);
 						if($con == 'ok')
-							echo '<div class="alert alert-success alrt">Vous êtes connécté ! La page va se rafraîchir !</div><script>setTimeout(function() { window.location.reload(); }, 4000);$("#groupinsc").slideUp("slow");$("#groupconnex").slideUp("slow");</script>';
+							echo '<div class="alert alert-success alrt">'.$lang['youreConnected'].'</div><script>setTimeout(function() { window.location.reload(); }, 4000);$("#groupinsc").slideUp("slow");$("#groupconnex").slideUp("slow");</script>';
 						elseif($con == 'notFound')
 							echo '<div class="alert alert-danger alrt"><b>Erreur :</b> aucun compte n\'a été trouvé !</div>';
 						elseif($con == 'password')
