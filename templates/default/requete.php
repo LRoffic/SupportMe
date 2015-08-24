@@ -138,16 +138,16 @@
 
 																		$ins = $bdd->prepare("INSERT INTO response (tid, autor, contenu, datepost) VALUE (:id, :auteur, :contenu, :datepost)");
 																		$ins->execute(array('id'=>$v['id'], 'auteur'=>$auteur, 'contenu'=>$_POST['commentaire'], 'datepost'=>time()));
-																		echo '<div class="alert alert-success alrt">Votre commentaire a été poster !</div>';
+																		echo '<div class="alert alert-success alrt">'.$lang['commentSuccess'].'</div>';
 																	}
 																else
-																	echo '<div class="alert alert-danger alrt">Le ticket est fermé !</div>';
+																	echo '<div class="alert alert-danger alrt">'.$lang['ticketClosed'].'</div>';
 															}
 														else
-															echo '<div class="alert alert-danger alrt">Votre commentaire est vide !</div>';
+															echo '<div class="alert alert-danger alrt">'.$lang['emptyCom'].'</div>';
 													}
 												else
-													echo '<div class="alert alert-danger alrt">Erreur, vous n\'avez pas la permission de commenter !</div>';
+													echo '<div class="alert alert-danger alrt">'.$lang['permCom'].'</div>';
 											}
 									}
 								else
@@ -210,14 +210,14 @@
 																if($co['masked'] != '1')
 																	{
 																		echo '<div class="well" id="c'.$co['id'].'">
-																			<em><u>Par '.htmlspecialchars($co['autor']).' le '.date('d/m/Y', $co['datepost']).'</u></em><br />
+																			<em><u>'$lang['by'].' '.htmlspecialchars($co['autor']).' '.$lang['on'].' '.date($lang['phpDate'], $co['datepost']).'</u></em><br />
 																			<div class="well">'.$purifier->purify($co['contenu']).'</div>
 																		</div>';
 																	}
 															}
 													}
 												else
-													echo '<div class="alert alert-danger">Aucune réponse n\'est disponible pour le moment !</div>';
+													echo '<div class="alert alert-danger">'.$lang['noResponse'].'</div>';
 											}
 									}
 								else
@@ -271,11 +271,11 @@
 										if($isauteur == 'true')
 											{
 												if($v['etat'] == '0')
-													echo '<label class="label label-danger">En cours...</label>';
+													echo '<label class="label label-danger">'.$lang['inProgress'].'</label>';
 												elseif($v['etat'] == '1')
-													echo '<span class="label label-warning">En attente de votre réponse</span>';
+													echo '<span class="label label-warning">'.$lang['waitingReply'].'</span>';
 												elseif($v['etat'] == '2')
-													echo '<span class="label label-success">Résolue</span>';
+													echo '<span class="label label-success">'.$lang['resolved'].'</span>';
 											}
 									}
 								else
@@ -308,14 +308,14 @@
 										if(!empty($ver['email']) && $ver['email'] == $_SESSION['email'])
 											$ok = 'ok';
 										else
-											echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> Vous n\'êtes pas l\'auteur du ticket !</div>';
+											echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> '.$lang['yourNotAutor'].'</div>';
 									}
 								elseif($siteconfig['registration'] == 'force')
 									{
 										if(!empty($ver['auteur']) && $ver['auteur'] == $_SESSION['id'])
 											$ok = 'ok';
 										else
-											echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> Vous n\'êtes pas l\'auteur du ticket !</div>';
+											echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> '.$lang['yourNotAutor'].'</div>';
 									}
 
 								if(isset($ok) && $ok == 'ok')
@@ -324,14 +324,14 @@
 										$upd->execute(array('id'=>$_GET['id']));
 
 
-										echo '<div class="alert alert-success alrt">Ticket réouvert ! <script>$("#ticket'.$_GET['id'].'").slideUp("slow");</script></div>';
+										echo '<div class="alert alert-success alrt">'.$lang['ticketReopen'].' <script>$("#ticket'.$_GET['id'].'").slideUp("slow");</script></div>';
 									}
 							}
 						else
-							echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> id du ticket manquant !</div>';
+							echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> '.$lang['emptyTicketID'].'</div>';
 					}
 				else
-					echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> vous ne pouvez pas résoudre les tickets !</div>';
+					echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> '.$lang['youCantResolve'].'</div>';
 			break;
 
 			case "resolve":
@@ -348,14 +348,14 @@
 										if(!empty($ver['email']) && $ver['email'] == $_SESSION['email'])
 											$ok = 'ok';
 										else
-											echo '<div class="alert alert-danger alrt"><b>Erreur :</b> Vous n\'êtes pas l\'auteur du ticket !</div>';
+											echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> '.$lang['yourNotAutor'].'</div>';
 									}
 								elseif($siteconfig['registration'] == 'force')
 									{
 										if(!empty($ver['auteur']) && $ver['auteur'] == $_SESSION['id'])
 											$ok = 'ok';
 										else
-											echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> Vous n\'êtes pas l\'auteur du ticket !</div>';
+											echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> '.$lang['yourNotAutor'].'</div>';
 									}
 
 								if(isset($ok) && $ok == 'ok')
@@ -364,14 +364,14 @@
 										$upd->execute(array('id'=>$_GET['id']));
 
 
-										echo '<div class="alert alert-success alrt">Ticket résolue ! <script>$("#ticket'.$_GET['id'].'").slideUp("slow");</script></div>';
+										echo '<div class="alert alert-success alrt">'.$lang['ticketResolved'].' <script>$("#ticket'.$_GET['id'].'").slideUp("slow");</script></div>';
 									}
 							}
 						else
-							echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> id du ticket manquant !</div>';
+							echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> '.$lang['emptyTicketID'].'</div>';
 					}
 				else
-					echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> vous ne pouvez pas résoudre les tickets !</div>';
+					echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> '.$lang['youCantResolve'].'</div>';
 			break;
 
 			case "emailauth":
@@ -387,17 +387,17 @@
 									{
 										$_SESSION['email'] = $ver['email'];
 										$_SESSION['token'] = random_str(15);
-										echo '<div class="alert alert-success alrt">Authentification approuvé ! La page va se rafraîchir !</div><script>setTimeout(function() { window.location.reload(); }, 4000);$("#emailauth").slideUp("slow");</script>';
+										echo '<div class="alert alert-success alrt">'.$lang['authSuccess'].'</div><script>setTimeout(function() { window.location.reload(); }, 4000);$("#emailauth").slideUp("slow");</script>';
 									}
 								else
 									{
 										
-										echo '<div class="alert alert-danger alrt">Le code est incorrect !</div>';
+										echo '<div class="alert alert-danger alrt">'.$lang['wrongCode'].'</div>';
 									}
 							}
 						else
 							{
-								echo '<div class="alert alert-danger alrt">Aucun email n\'est ouvert avec cette adresse email !</div>';
+								echo '<div class="alert alert-danger alrt">'.$lang['MailJohnDoe'].'</div>';
 							}
 					}
 			break;
@@ -419,12 +419,12 @@
 														$resp = recaptcha_check_answer ($privatekey, $_SERVER["REMOTE_ADDR"], $_POST["recaptcha_challenge_field"], $_POST["recaptcha_response_field"]);
 
 														if (!$resp->is_valid)
-															echo '<div class="alert alert-danger alrt">Le code captcha est incorrect !</div>';
+															echo '<div class="alert alert-danger alrt">'.$lang['wrongCaptcha'].'</div>';
 														else
 															$ok = 'ok';
 													}
 												else
-													echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> le champs captcha est vide !</div>';
+													echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> '.$lang['emptyCaptcha'].'</div>';
 											}
 										else
 											$ok = 'ok';
@@ -452,8 +452,8 @@
 																->from('support '.$siteconfig['sitename'],$siteconfig['sitemail'])
 																->to($_POST['email'])
 																->replyTo($siteconfig['sitemail'])
-																->text('Bonjour et bienvenu sur le support de '.$siteconfig['sitename'].'.\n voici votre code d\'accès pour pouvoir voir la liste de vos ticket :\n '.$random.'\n Gardez le précieusement il ne vous en seras communiquez aucun autre !\n Cordialement l\'équipe de '.$siteconfig['sitename'])
-																->html('Bonjour et bienvenu sur le support de '.$siteconfig['sitename'].'.<br /> voici votre code d\'accès pour pouvoir voir la liste de vos ticket :<br /> <b style="align: center;">'.$random.'</b><br /> Gardez le précieusement il ne vous en seras communiquez aucun autre !<br /> Cordialement l\'équipe de '.$siteconfig['sitename'])
+																->text($lang['welcomeTextMail1'].$random.'\n'.$lang['welcomeTextMail2'])
+																->html($lang['welcomeHTMLMail1'].$random.$lang['welcomeHTMLMail2'])
 																->send();
 
 																$mailcorrect = "ok";
@@ -463,23 +463,23 @@
 															{
 																$ins = $bdd->prepare('INSERT INTO ticket (sujet, auteur, categorie, email, datepost, contenu) VALUES (:sujet, :auteur, :categorie, :email, :datepost, :contenu)');
 																$ins->execute(array('sujet'=>$_POST['sujet'], 'auteur'=>$_POST['email'], 'categorie'=>$_POST['categorie'], 'email'=>$_POST['email'], 'datepost'=>time(), 'contenu'=>$_POST['message']));
-																echo '<div class="alert alert-success alrt">Votre ticket à été envoyé ! Un administrateur y répondras au plus vite ! Pour consultez votre ticket, utilisez votre code d\'accès, si vous n\'en avez pas, regardez dans votre boîte mail (n\'hésitez pas à regarder si le code est dans les spams).</div><script>setTimeout(function () {$("#new").slideUp("slow");document.location.href="./index.php";}, 3000);</script>';
+																echo '<div class="alert alert-success alrt">'.$lang['sendSuccess'].'</div><script>setTimeout(function () {$("#new").slideUp("slow");document.location.href="./index.php";}, 3000);</script>';
 															}
 													}
 												else
 													{
-														echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> l\'email saisie est incorrect !</div>';
+														echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> '.$lang['wrongMail'].'</div>';
 													}
 											}
 									}
 								else
 									{
-										echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> Vous n\'avez pas la permissions d\'envoyer un ticket !</div>';
+										echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> '.$lang['permSendTicket'].'</div>';
 									}
 							}
 						else
 							{
-								echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> un des champs n\'est pas remplis !</div>';
+								echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> '.$lang['emptyField'].'</div>';
 							}
 					}
 				elseif($siteconfig['registration'] == "force" || !empty($_SESSION['pseudo']))
@@ -498,26 +498,26 @@
 													{
 														$ins = $bdd->prepare('INSERT INTO ticket (sujet, auteur, categorie, email, datepost, contenu) VALUES (:sujet, :auteur, :categorie, :email, :datepost, :contenu)');
 														$ins->execute(array('sujet'=>$_POST['sujet'], 'auteur'=>$_SESSION['id'], 'categorie'=>$_POST['categorie'], 'email'=>$compte['email'], 'datepost'=>time(), 'contenu'=>$_POST['message']));
-														echo '<div class="alert alert-success alrt">Votre ticket à été envoyé ! Un administrateur y répondras au plus vite ! Vous allez être redirigé vers la liste de vos tickets ! <script>setTimeout(function () {document.location.href="./view.php";}, 4000);</script></div>';
+														echo '<div class="alert alert-success alrt">'.$lang['sendSuccess2'].'<script>setTimeout(function () {document.location.href="./view.php";}, 4000);</script></div>';
 													}
 												else
 													{
-														echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> Vous n\'avez pas la permissions d\'envoyer un ticket !</div>';
+														echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> '.$lang['permSendTicket'].'</div>';
 													}
 											}
 										else
 											{
-												echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> Votre compte n\'existe pas !</div>';
+												echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> '.$lang['noAccount'].'</div>';
 											}
 									}
 								else
 									{
-										echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> Vous n\'êtes pas connectez !</div>';
+										echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> '.$lang['noConnected'].'</div>';
 									}
 							}
 						else
 							{
-								echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> un des champs n\'est pas remplis !</div>';
+								echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> '.$lang['emptyField'].'</div>';
 							}
 					}
 			break;
@@ -535,7 +535,7 @@
     									$resp = recaptcha_check_answer ($privatekey, $_SERVER["REMOTE_ADDR"], $_POST["recaptcha_challenge_field"], $_POST["recaptcha_response_field"]);
 
 										if (!$resp->is_valid)
-											echo '<div class="alert alert-danger alrt">Le code captcha est incorrect !</div>';
+											echo '<div class="alert alert-danger alrt">'.$lang['wrongCaptcha'].'</div>';
 										else
 											{
 												$ok = 'ok';
@@ -543,7 +543,7 @@
 									}
 								else
 									{
-										echo '<div class="alert alert-danger alrt"><b>Erreur :</b> le champs captcha est vide !</div>';
+										echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> '.$lang['emptyField'].'</div>';
 									}
 							}
 						else
@@ -556,29 +556,29 @@
 								$insc = inscription($_POST['email'], $_POST['pseudo'], $_POST['password'], $_POST['verifpass']);
 								if($insc == 'ok')
 									{
-										echo '<div class="alert alert-success alrt">Vous êtes inscrit et connécté sur '.htmlspecialchars($siteconfig['sitename']).' ! La page va se rafraîchir !</div><script>setTimeout(function() { window.location.reload(); }, 4000);$("#groupinsc").slideUp("slow");$("#groupconnex").slideUp("slow");</script>';
+										echo '<div class="alert alert-success alrt">'.$lang['singinSuccess'].'</div><script>setTimeout(function() { window.location.reload(); }, 4000);$("#groupinsc").slideUp("slow");$("#groupconnex").slideUp("slow");</script>';
 									}
 								elseif($insc == 'invalidMail')
 									{
-										echo '<div class="alert alert-danger alrt">Votre adresse mail est incorrect !</div>';
+										echo '<div class="alert alert-danger alrt">'.$lang['wrongMail'].'</div>';
 									}
 								elseif($insc == 'invalidPassword')
 									{
-										echo '<div class="alert alert-danger alrt">Vos deux mot de passe ne sont pas identique !</div>';
+										echo '<div class="alert alert-danger alrt">'.$lang['noPassIdentique'].'</div>';
 									}
 								elseif($insc == 'compteFound')
 									{
-										echo '<div class="alert alert-danger alrt">Un compte existe déjà sous se pseudo ou cet adresse mail !</div>';
+										echo '<div class="alert alert-danger alrt">'.$lang['alreadyExists'].'</div>';
 									}
 								else
 									{
-										echo '<div class="alert alert-danger alrt">Erreur !</div>';
+										echo '<div class="alert alert-danger alrt">'.$lang['error'].'</div>';
 									}
 							}
 					}
 				else
 					{
-						echo '<div class="alert alert-danger alrt"><b>Erreur :</b> un des champs est vide !</div>';
+						echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> '.$lang['emptyField'].'</div>';
 					}
 			break;
 
@@ -589,13 +589,13 @@
 						if($con == 'ok')
 							echo '<div class="alert alert-success alrt">'.$lang['youreConnected'].'</div><script>setTimeout(function() { window.location.reload(); }, 4000);$("#groupinsc").slideUp("slow");$("#groupconnex").slideUp("slow");</script>';
 						elseif($con == 'notFound')
-							echo '<div class="alert alert-danger alrt"><b>Erreur :</b> aucun compte n\'a été trouvé !</div>';
+							echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> '.$lang['accountNotFound'].'</div>';
 						elseif($con == 'password')
-							echo '<div class="alert alert-danger alrt"><b>Erreur :</b> mot de passe incorrect !</div>';
+							echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> '.$lang['wrongPassword'].'</div>';
 					}
 				else
 					{
-						echo '<div class="alert alert-danger alrt"><b>Erreur :</b> un des champs n\'est pas remplis !</div>';
+						echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> '.$lang['emptyField'].'</div>';
 					}
 			break;
 
@@ -609,20 +609,20 @@
 								if(isset($_COOKIE['auth']))
 									setcookie('auth', '', time()-3600, null, null, false, false);
 
-								echo '<div class="alert alert-success alrt">Vous êtes déconnectez ! La page va se rafraîchir !</div><script>setTimeout(function() { window.location.reload(); }, 4000);</script>';
+								echo '<div class="alert alert-success alrt">'.$lang['disconnectSuccess'].'</div><script>setTimeout(function() { window.location.reload(); }, 4000);</script>';
 							}
 						else
 							{
-								echo '<div class="alert alert-danger alrt"><b>Erreur :</b> Token invalide ou innexistant !</div>';
+								echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> '.$lang['invalidToken'].'</div>';
 							}
 					}
 				else
 					{
-						echo '<div class="alert alert-danger alrt"><b>Erreur :</b> Vous n\'êtes pas connectez !</div>';
+						echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> '.$lang['noConnected'].'</div>';
 					}
 			break;
 
 			default:
-				echo '<div class="alert alert-danger alrt"><b>Erreur :</b> Aucune action choisis !</div>';
+				echo '<div class="alert alert-danger alrt"><b>'.$lang['error'].' :</b> '.$lang['emptyAction'].'</div>';
 			break;
 		}

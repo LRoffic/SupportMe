@@ -171,7 +171,7 @@ along with Support Me. If not, see <http://www.gnu.org/licenses/>.
 					if(isset($_COOKIE['auth']))
 						setcookie('auth', '', time()-3600, null, null, false, false);
 
-					echo '<script>alert(\'Vous avez été déconnécté, le pseudo de votre session ne correspond pas à son id, veuillez vous reconnécté avec votre adresse mail !\');window.location.reload();</script>';
+					echo '<script>alert(\''.$lang['sessionError'].'\');window.location.reload();</script>';
 				}
 			else
 				{

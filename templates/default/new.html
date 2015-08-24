@@ -3,24 +3,24 @@
 		<div class="container">
 			<div class="row">
 				<div class="well">
-					<h2><u>Envoyer un nouveau ticket</u></h2>
+					<h2><u>{$lang.sendNewTicket}</u></h2>
 					<form method="post" id="new">
 						<div class="form-group">
-							<label for="email">Adresse Mail :</label>
+							<label for="email">{$lang.emailAdress} :</label>
 							<span style="color: red;" class="glyphicon glyphicon-asterisk"></span>
 							<input type="email" class="form-control" name="email" required="true" {if isset($getmail)}value="{$getmail}"{/if}/>
 						</div>
 						<div class="form-group">
-							<label for="sujet">Sujet :</label>
+							<label for="sujet">{$lang.subject} :</label>
 							<span style="color: red;" class="glyphicon glyphicon-asterisk"></span>
 							<input type="text" class="form-control" name="sujet" required="true" />
 						</div>
 						<div class="form-group">
-							<label for="categorie">Catégorie :</label>
+							<label for="categorie">{$lang.category} :</label>
 							<span style="color: red;" class="glyphicon glyphicon-asterisk"></span>
 							<select name="categorie" class="form-control" required="true">
 								{if !isset($categorie)}
-								<option>-- Choisir une option --</option>
+								<option>-- {$lang.choiceOption} --</option>
 								{else}
 									<option value="{$categorie.id}">{$categorie.nom}</option>
 								{/if}
@@ -31,13 +31,13 @@
 							</select>
 						</div>
 						<div class="form-group">
-							<label for="message">Message :</label>
+							<label for="message">{$lang.message} :</label>
 							<span style="color: red;" class="glyphicon glyphicon-asterisk"></span>
 							<textarea class="tiny" name="message"></textarea>
 						</div>
 						{if $siteconfig.recaptcha eq "e"}
 						<div class="form-group">
-							<label for="captcha">Captcha :</label>
+							<label for="captcha">{$lang.captcha} :</label>
 							<span style="color: red;" class="glyphicon glyphicon-asterisk"></span>
 							<script type="text/javascript" src="http://www.google.com/recaptcha/api/challenge?k={$siteconfig.recaptcha_key}"></script>
 				        	<noscript>
@@ -47,7 +47,7 @@
 				        	</noscript>
 						</div>
 						{/if}
-						<input type="submit" class="btn btn-lg btn-block btn-primary" value="Envoyer" />
+						<input type="submit" class="btn btn-lg btn-block btn-primary" value="{$lang.send}" />
 					</form>
 				</div>
 			</div>
@@ -56,19 +56,19 @@
 	<div class="container">
 		<div class="row">
 			<div class="well">
-				<h2><u>Envoyer un nouveau ticket</u></h2>
+				<h2><u>{$lang.sendNewTicket}</u></h2>
 				<form method="post" id="new">
 					<div class="form-group">
-						<label for="sujet">Sujet :</label>
+						<label for="sujet">{$lang.subject} :</label>
 						<span style="color: red;" class="glyphicon glyphicon-asterisk"></span>
 						<input type="text" class="form-control" name="sujet" required="true" />
 					</div>
 					<div class="form-group">
-						<label for="categorie">Catégorie :</label>
+						<label for="categorie">{$lang.categorie} :</label>
 						<span style="color: red;" class="glyphicon glyphicon-asterisk"></span>
 						<select name="categorie" class="form-control" required="true">
 							{if !isset($categorie)}
-								<option>-- Choisir une option --</option>
+								<option>-- {$lang.choiceOption} --</option>
 							{else}
 								<option value="{$categorie.id}">{$categorie.nom}</option>
 							{/if}
@@ -79,20 +79,20 @@
 						</select>
 					</div>
 					<div class="form-group">
-						<label for="message">Message :</label>
+						<label for="message">{$lang.message} :</label>
 						<span style="color: red;" class="glyphicon glyphicon-asterisk"></span>
 						<textarea class="tiny" name="message"></textarea>
 					</div>
-					<input type="submit" class="btn btn-lg btn-block btn-primary" value="Envoyer" />
+					<input type="submit" class="btn btn-lg btn-block btn-primary" value="{$lang.send}" />
 				</form>
 			</div>
 			{if $perm.lastresolved eq '1' || $perm.viewticket eq '1'}
 				<div class="well" style="text-align: center">
 					{if $perm.lastresolved eq '1'}
-						<a href="./resolved.php" class="btn btn-success">Voir les tickets déjà résolues</a>
+						<a href="./resolved.php" class="btn btn-success">{$lang.viewResolveTicket}</a>
 					{/if}
 					{if $perm.viewticket eq '1'}
-						<a href="./viwe.php" class="btn btn-default">Voir les tickets en cours</a>
+						<a href="./viwe.php" class="btn btn-default">{$lang.viewOpenTicket}</a>
 					{/if}
 				</div>
 			{/if}
@@ -100,7 +100,7 @@
 	</div>
 	{else}
 	<div class="alert alert-danger">
-		<b>Erreur :</b> Une erreur interne du serveur à été détéctez !
+		<b>{$lang.error} :</b> {$lang.errorJohnDoe}
 	</div>
 	{/if}
 {include file="default/footer.html"}
