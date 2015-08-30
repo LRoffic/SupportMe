@@ -136,3 +136,24 @@ along with Support Me. If not, see <http://www.gnu.org/licenses/>.
 
 		return $string;
 	}
+
+	function getlangs(){
+		$dirname = './lang/';
+		$dir = opendir($dirname);
+		$fich = array();
+		
+		while($file = readdir($dir)) {
+			if($file != '.' && $file != '..' && !is_dir($dirname.$file))
+			{
+				$get_content = file_get_contents($dirname.$file);
+				$get_name = json_decode($get_content, true);
+				$name = $get_name['name'];
+				$filename = explode(".", $file);
+				$fich[] = array("filename"=>$filename[0], "name"=>$name);
+			}
+		}
+		
+		closedir($dir);
+		
+		return $fich;
+	}

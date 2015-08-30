@@ -16,12 +16,40 @@
 	$stconfig = $bdd->query("SELECT * FROM config WHERE id = 1");
 	$siteconfig = $stconfig->fetch();
 
-	if(!empty($_COOKIE['lang'])){
-		if(file_exists('../../lang/'.$_COOKIE['lang'].'.json')){
-			$folderlang = '../../lang/';
+	if(!empty($_POST['lang'])){
+		if(file_exists('./lang/'.$_POST['lang'].'.json')){
+			if(!empty($_COOKIE['lang'])){
+				setcookie('lang', '', time()-3600, null, null, false, false);
+			}
+			setcookie('lang', $_POST['lang'], time()+365*24*3600, null, null, false, false);
+			$folderlang = './lang/';
+			$sitelang = $_POST['lang'];
+		} elseif(file_exists('http://supportme.dzv.me/lang/'.$_POST['lang'].'.json')){
+			if(!empty($_COOKIE['lang'])){
+				setcookie('lang', '', time()-3600, null, null, false, false);
+			}
+			setcookie('lang', $_POST['lang'], time()+365*24*3600, null, null, false, false);
+			$folderlang = 'http://supportme.dzv.me/lang/';
+			$sitelang = $_POST['lang'];
+		}else{
+			if(!empty($_COOKIE['lang'])){
+				setcookie('lang', '', time()-3600, null, null, false, false);
+			}
+			setcookie('lang', 'fr_FR', time()+365*24*3600, null, null, false, false);
+			if(file_exists('./lang/fr_FR.json')){
+				$folderlang = './lang/';
+				$sitelang = 'fr_FR';
+			} else {
+				$folderlang = 'http://supportme.dzv.me/lang/';
+				$sitelang = 'fr_FR';
+			}
+		}
+	} elseif(!empty($_COOKIE['lang'])){
+		if(file_exists('./lang/'.$_COOKIE['lang'].'.json')){
+			$folderlang = './lang/';
 			$sitelang = $_COOKIE['lang'];
-		} elseif(file_exists('../../lang/'.$siteconfig['lang'].'.json')){
-			$folderlang = '../../lang/';
+		} elseif(file_exists('./lang/'.$siteconfig['lang'].'.json')){
+			$folderlang = './lang/';
 			$sitelang = $sitelang['lang'];
 		} else {
 			$folderlang = 'http://supportme.dzv.me/lang/';
@@ -32,8 +60,8 @@
 			}
 		}
 	} else {
-		if(file_exists('../../lang/'.$siteconfig['lang'].'.json')){
-			$folderlang = '../../lang/';
+		if(file_exists('./lang/'.$siteconfig['lang'].'.json')){
+			$folderlang = './lang/';
 			$sitelang = $siteconfig['lang'];
 		} else {
 			$folderlang = 'http://supportme.dzv.me/lang/';
@@ -210,7 +238,7 @@
 																if($co['masked'] != '1')
 																	{
 																		echo '<div class="well" id="c'.$co['id'].'">
-																			<em><u>'$lang['by'].' '.htmlspecialchars($co['autor']).' '.$lang['on'].' '.date($lang['phpDate'], $co['datepost']).'</u></em><br />
+																			<em><u>'.$lang['by'].' '.htmlspecialchars($co['autor']).' '.$lang['on'].' '.date($lang['phpDate'], $co['datepost']).'</u></em><br />
 																			<div class="well">'.$purifier->purify($co['contenu']).'</div>
 																		</div>';
 																	}

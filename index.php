@@ -19,7 +19,7 @@ along with Support Me. If not, see <http://www.gnu.org/licenses/>.
  */
  ?>
 <?php
-	require_once 'menu.php';
+	include_once 'menu.php';
 	
 	$tpl->display($template.'index.html');
 

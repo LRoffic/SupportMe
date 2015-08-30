@@ -2,21 +2,21 @@
 <div class="container">
 	<div style="text-align: right;">
 		{if $perm.resolve eq '1' && $info.etat neq '2' && $info.isfaq neq '1'}
-		<a href="#" onclick="resolve('{$info.id}', '1')" class="btn btn-success" id="resolve">Résoudre le ticket</a>
+		<a href="#" onclick="resolve('{$info.id}', '1')" class="btn btn-success" id="resolve">{$lang.resolveTicket}</a>
 		{elseif $perm.reopen eq '1' && $info.etat eq '2' && $info.isfaq neq '1'}
-		<a href="#" onclick="reopen('{$info.id}', '1')" class="btn btn-danger" id="reopen">Réouvrir le ticket</a>
+		<a href="#" onclick="reopen('{$info.id}', '1')" class="btn btn-danger" id="reopen">{$lang.reopenTicket}</a>
 		{/if}
 	</div>
 	<div class="well">
 		<h2><b><u>{$sujet|escape:'htmlall'}</u></b></h2><br />
-		<em><u>date : {$date}</u></em><br />
-		Assigné à : 
+		<em><u>{$lang.date} : {$date}</u></em><br />
+		{$lang.assignedTo} : 
 		{if $info.assigned eq '0'}
-			Ce ticket n'est pas encore assigné
+			{$lang.ticketNotAssigned}
 		{else}
 			{$info.assignto|escape:'htmlall'}
 		{/if}<br />
-		&Eacute;tat : <span id="etat"></span><br /><br />
+		{$lang.state} : <span id="etat"></span><br /><br />
 		<div class="well">
 			{$contenu}
 		</div>
@@ -26,7 +26,7 @@
 	<div class="well" id="formcom">
 		<form method="post" id="commentaire">
 			<textarea name="commentaire" class="form-control tiny"></textarea>
-			<input type="submit" class="btn btn-lg btn-block btn-primary" value="Envoyer" />
+			<input type="submit" class="btn btn-lg btn-block btn-primary" value="{$lang.send}" />
 		</form>
 	</div>
 	{/if}

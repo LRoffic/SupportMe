@@ -44,7 +44,35 @@ along with Support Me. If not, see <http://www.gnu.org/licenses/>.
 	$stconfig = $bdd->query("SELECT * FROM config WHERE id = 1");
 	$siteconfig = $stconfig->fetch();
 
-	if(!empty($_COOKIE['lang'])){
+	if(!empty($_POST['lang'])){
+		if(file_exists('./lang/'.$_POST['lang'].'.json')){
+			if(!empty($_COOKIE['lang'])){
+				setcookie('lang', '', time()-3600, null, null, false, false);
+			}
+			setcookie('lang', $_POST['lang'], time()+365*24*3600, null, null, false, false);
+			$folderlang = './lang/';
+			$sitelang = $_POST['lang'];
+		} elseif(file_exists('http://supportme.dzv.me/lang/'.$_POST['lang'].'.json')){
+			if(!empty($_COOKIE['lang'])){
+				setcookie('lang', '', time()-3600, null, null, false, false);
+			}
+			setcookie('lang', $_POST['lang'], time()+365*24*3600, null, null, false, false);
+			$folderlang = 'http://supportme.dzv.me/lang/';
+			$sitelang = $_POST['lang'];
+		}else{
+			if(!empty($_COOKIE['lang'])){
+				setcookie('lang', '', time()-3600, null, null, false, false);
+			}
+			setcookie('lang', 'fr_FR', time()+365*24*3600, null, null, false, false);
+			if(file_exists('./lang/fr_FR.json')){
+				$folderlang = './lang/';
+				$sitelang = 'fr_FR';
+			} else {
+				$folderlang = 'http://supportme.dzv.me/lang/';
+				$sitelang = 'fr_FR';
+			}
+		}
+	} elseif(!empty($_COOKIE['lang'])){
 		if(file_exists('./lang/'.$_COOKIE['lang'].'.json')){
 			$folderlang = './lang/';
 			$sitelang = $_COOKIE['lang'];
@@ -77,6 +105,9 @@ along with Support Me. If not, see <http://www.gnu.org/licenses/>.
 	$lan = json_decode($getlang ,true);
 	$lang = replace_lang($lan);
 	$tpl->assign('lang', $lang);
+	$tpl->assign('sitelang', $sitelang);
+
+	$tpl->assign("langs", getlangs());
 
 	if(!empty($siteconfig['template']))
 		$template = $siteconfig['template'];

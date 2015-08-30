@@ -1,15 +1,15 @@
 {include file="default/menu.html"}
 <div class="container">
 	<div class="panel panel-default">
-		<div class="panel-heading">Liste de vos tickets</div>
+		<div class="panel-heading">{$lang.ticketList}</div>
 		<div class="panel-body">
 			<table class="table table-striped">
 				<thead>
-					<th>Sujet</th>
-					<th>Date</th>
-					<th>&Eacute;tat</th>
-					<th>Assignation</th>
-					<th>Options</th>
+					<th>{$lang.subject}</th>
+					<th>{$lang.date}</th>
+					<th>{$lang.state}</th>
+					<th>{$lang.assign}</th>
+					<th>{$lang.options}</th>
 				</thead>
 
 				<tbody>
@@ -19,28 +19,28 @@
 							<td>{$list.date}</td>
 							<td>
 								{if $list.etat eq '0'}
-									<span class="label label-danger">En cours...</span>
+									<span class="label label-danger">{$lang.inProgress}</span>
 								{elseif $list.etat eq '1'}
-									<span class="label label-warning">En attente...</span>
+									<span class="label label-warning">{$lang.waitingReply}</span>
 								{elseif $list.etat eq '2'}
-									<span class="label label-success">Résolue</span>
+									<span class="label label-success">{$lang.resolved}</span>
 								{/if}
 							</td>
 							<td>
 								{if $list.assigned eq '0'}
-									Ce ticket n'est pas encore assigné
+									{$lang.ticketNotAssigned}
 								{else}
 									{$list.assignto|escape:'htmlall'}
 								{/if}
 							</td>
 							<td>
 								{if $siteconfig.htaccess eq 'e'}
-									<a href="./ticket-{$list.id}.php" class="btn btn-default btn-sm">Voir le ticket</a>
+									<a href="./ticket-{$list.id}.php" class="btn btn-default btn-sm">{$lang.viewTicket}</a>
 								{else}
-									<a href="./ticket.php?id={$list.id}" class="btn btn-default btn-sm">Voir le ticket</a>
+									<a href="./ticket.php?id={$list.id}" class="btn btn-default btn-sm">{$lang.viewTicket}</a>
 								{/if} 
 								{if $perm.resolve eq '1'}
-									<a href="#" class="btn btn-success btn-sm" onclick="resolve('{$list.id}', '0')">Ticket résolue</a>
+									<a href="#" class="btn btn-success btn-sm" onclick="resolve('{$list.id}', '0')">{$lang.ticketResolved}</a>
 								{/if}
 							</td>
 						</tr>
@@ -51,7 +51,7 @@
 	</div>
 	{if $perm.lastresolved eq '1'}
 		<div class="well" style="text-align: center">
-			<a href="./resolved.php" class="btn btn-success">Voir les tickets déjà résolues</a>
+			<a href="./resolved.php" class="btn btn-success">{$lang.viewResolveTicket}</a>
 		</div>
 	{/if}
 </div>
