@@ -21,6 +21,7 @@ CREATE TABLE IF NOT EXISTS `config` (
   `recaptcha_privatekey` varchar(255) NOT NULL,
   `htaccess` enum('e','d') NOT NULL DEFAULT 'e',
   `version` varchar(5) NOT NULL,
+  `lang` varchar(50) NOT NULL DEFAULT 'fr_FR',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 

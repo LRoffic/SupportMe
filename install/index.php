@@ -45,7 +45,7 @@ along with Support Me. If not, see <http://www.gnu.org/licenses/>.
 								if(preg_match("!^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$!", $_POST['email']))
 									{
 										$conf=$bdd->prepare("INSERT INTO config (id, sitename, sitemail, registration, cookie, faq, recaptcha, htaccess, version) VALUES (:id, :sitename, :sitemail, :registration, :cookie, :faq, :recaptcha, :htaccess, :version)");
-										$conf->execute(array('id'=>'1', 'sitename'=>$_POST['sitename'], 'sitemail'=>$_POST['email'], 'registration'=>'force', 'cookie'=>'1', 'faq'=>'e', 'recaptcha'=>'d', 'htaccess'=>'d', 'version'=>'2.2'));
+										$conf->execute(array('id'=>'1', 'sitename'=>$_POST['sitename'], 'sitemail'=>$_POST['email'], 'registration'=>'force', 'cookie'=>'1', 'faq'=>'e', 'recaptcha'=>'d', 'htaccess'=>'d', 'version'=>'2.3'));
 
 										if(!empty($_POST['password']) && !empty($_POST['pass']))
 											{
