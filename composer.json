@@ -1,0 +1,7 @@
+{
+	"require": {
+		"j4mie/idiorm": "*",
+		"smarty/smarty": "*",
+		"altorouter/altorouter": "*"
+	}
+}

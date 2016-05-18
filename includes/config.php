@@ -13,5 +13,7 @@
 	
 	You should have received a copy of the GNU General Public License along
 	with this program.  If not, see <http://www.gnu.org/licenses/>. */
-
-	include_once "includes/config.php";
+	
+	include_once "../vendor/autoload.php";
+	include_once "routes.php";
+	include_once "pluggable.php";
