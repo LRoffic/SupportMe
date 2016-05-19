@@ -16,12 +16,11 @@ You should have received a copy of the GNU General Public License along
 with this program.  If not, see <http://www.gnu.org/licenses/>. 
 */
 
-	$router = new AltoRouter();
+ORM::configure('mysql:host=YOUR_HOST;dbname=YOUR_DATABASE_NAME');
+ORM::configure('username', 'YOUR_DATABASE_USERNAME');
+ORM::configure('password', 'YOUR_DATABASE_PASSWORD');
 
-	$router->setBasePath(substr($_SERVER['REQUEST_URI'], 0, -1));
-
-	$router->map("GET", "/", "index.php", "home");
-
-	$match = $router->match();
-
-	include $match['target'] ? _CTRL_.$match['target'] : _CTRL_.'404.php';
+if(DEBUG_MODE){
+	ORM::configure('error_mode', PDO::ERRMODE_WARNING);
+	ORM::configure('logging', true);
+}

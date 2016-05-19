@@ -16,12 +16,8 @@ You should have received a copy of the GNU General Public License along
 with this program.  If not, see <http://www.gnu.org/licenses/>. 
 */
 
-	$router = new AltoRouter();
+define("DEBUG_MODE", false);
 
-	$router->setBasePath(substr($_SERVER['REQUEST_URI'], 0, -1));
-
-	$router->map("GET", "/", "index.php", "home");
-
-	$match = $router->match();
-
-	include $match['target'] ? _CTRL_.$match['target'] : _CTRL_.'404.php';
+define("_ROOT_", substr($_SERVER['DOCUMENT_ROOT'], 0, -1));
+define('_PATH_', $_SERVER['REQUEST_URI']);
+define('_CTRL_', _ROOT_. _PATH_ . 'src/');

@@ -2,6 +2,7 @@
 	"require": {
 		"j4mie/idiorm": "*",
 		"smarty/smarty": "*",
-		"altorouter/altorouter": "*"
+		"altorouter/altorouter": "*",
+		"brandonwamboldt/utilphp": "*"
 	}
 }
