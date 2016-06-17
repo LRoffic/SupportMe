@@ -1,0 +1,31 @@
+{
+	"config": {
+		"langue_name":"Français",
+		"version":"1",
+		"host":"http://supportme.dv.me"
+	},
+
+	"title": {
+		"home":"Accueil"
+	},
+
+	"navbar": {
+		"login":"Connexion",
+		"email":"Adresse E-mail",
+		"password":"Mot de passe",
+		"forget":"Mot de passe oublier ?",
+		"keep":"Rester connecter ?",
+		"register":"Inscription"
+	},
+
+	"home": {
+		"newTicket":"Écrire un ticket",
+		"viewTicket":"Voir un ticket",
+		"Faq": "Foire aux questions"
+	},
+
+	"footer": {
+		"language":"Langue :",
+		"propulsedBy":"Propulser par <a href=\"http://supportme.dzv.me\" target=\"_blank\">Support Me</a>"
+	}
+}

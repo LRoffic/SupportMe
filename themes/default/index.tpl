@@ -23,6 +23,16 @@
 				</div>
 			</a>
 		</div>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<a href="" class="homeLink">
+				<div class="well">
+					<h1><u>{$lang.home.Faq}</u></h1>
+					<div class="text-center">
+						<img src="{$smarty.const._PATH_}themes/default/web/img/faq.png" alt="FAQ" height="150px">
+					</div>
+				</div>
+			</a>
+		</div>
 	</div>
 </div>
 {/block}

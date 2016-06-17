@@ -20,8 +20,6 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 	include_once "define.php";
 	include_once "database.php";
 	include_once "pluggable.php";
-	include_once "function.php";
-	include_once "lang/fr_FR.php";
 
 	if(DEBUG_MODE){
 		ini_set('display_errors', 1);
@@ -38,14 +36,17 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 	util::utf8_headers();
 
-	$theme = "default";
+	$config = ORM::for_table("config")->find_one("1");
+
+	$theme = htmlspecialchars($config->theme);
 
 	$tpl = new Smarty();
 	$tpl->setTemplateDir("themes/".$theme);
 
-	$tpl->assign("lang", $lang);
-
-	$config = ORM::for_table("config")->find_one("1");
 	$tpl->assign("config", $config);
+
+	include_once "function.php";
+
+	include_once "lang.php";
 
 	include_once "routes.php";

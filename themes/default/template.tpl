@@ -73,9 +73,12 @@
 						
 							<div class="form-group">
 								<label>{$lang.footer.language}</label>
-								<select class="form-control">
-									<option>Français</option>
-									<option>Anglais</option>
+								<select name="lang" class="form-control">
+									{foreach from=$langs item=langues}
+										{if $langues.name neq $lang.config.langue_name}
+											<option value="{$langues.filename}">{$langues.name}</option>
+										{/if}
+									{/foreach}
 								</select>
 							</div>
 						

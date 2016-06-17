@@ -1,0 +1,31 @@
+{
+	"config": {
+		"langue_name":"English",
+		"version":"1",
+		"host":"http://supportme.dv.me"
+	},
+
+	"title": {
+		"home":"Home"
+	},
+
+	"navbar": {
+		"login":"Connection",
+		"email":"E-mail Adress",
+		"password":"Password",
+		"forget":"forgot password ?",
+		"keep":"keep login ?",
+		"register":"Register"
+	},
+
+	"home": {
+		"newTicket":"Send Ticket",
+		"viewTicket":"See Ticket",
+		"Faq": "Frequently Asked Questions"
+	},
+
+	"footer": {
+		"language":"Language :",
+		"propulsedBy":"Propulsed by <a href=\"http://supportme.dzv.me\" target=\"_blank\">Support Me</a>"
+	}
+}
