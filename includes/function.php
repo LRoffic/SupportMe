@@ -16,12 +16,8 @@ You should have received a copy of the GNU General Public License along
 with this program.  If not, see <http://www.gnu.org/licenses/>. 
 */
 
-	$router = new AltoRouter();
+function routes($road){
+	global $router;
 
-	$router->setBasePath(substr($_SERVER['REQUEST_URI'], 0, -1));
-
-	$router->map("GET|POST", "/", "index.php", "home");
-
-	$match = $router->match();
-
-	include $match['target'] ? _CTRL_.$match['target'] : _CTRL_.'404.php';
+	return $router->generate($road);
+}

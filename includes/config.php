@@ -20,7 +20,13 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 	include_once "define.php";
 	include_once "database.php";
 	include_once "pluggable.php";
+	include_once "function.php";
 	include_once "lang/fr_FR.php";
+
+	if(DEBUG_MODE){
+		ini_set('display_errors', 1);
+		ini_set('error_reporting', E_ALL);
+	}
 
 	foreach( glob("plugins/*.php")  as $plugin) {
 		require_once($plugin);
@@ -38,5 +44,8 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 	$tpl->setTemplateDir("themes/".$theme);
 
 	$tpl->assign("lang", $lang);
+
+	$config = ORM::for_table("config")->find_one("1");
+	$tpl->assign("config", $config);
 
 	include_once "routes.php";
