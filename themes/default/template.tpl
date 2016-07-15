@@ -53,24 +53,7 @@
 			<footer class="footer">
 				<div class="container">
 					<div class="pull-right">
-						<form action="" method="POST" class="form-inline" role="form">
-						
-							<div class="form-group">
-								<label>{$lang.footer.language}</label>
-								<select name="lang" class="form-control">
-									<option value="">{$lang.config.langue_name}</option>
-									{foreach from=$langs item=langues}
-										{if $langues.name neq $lang.config.langue_name}
-											<option value="{$langues.filename}">{$langues.name}</option>
-										{/if}
-									{/foreach}
-								</select>
-							</div>
-						
-							
-						
-							<button type="submit" class="btn btn-default">Ok</button>
-						</form>
+						{$langs->build()}
 					</div>
 					<div class="text-center">{$lang.footer.propulsedBy}</div>
 				</div>

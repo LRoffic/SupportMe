@@ -2,30 +2,41 @@
 	"config": {
 		"langue_name":"English",
 		"version":"1",
-		"host":"http://supportme.dv.me"
+		"host":"http://supportme.dv.me/lang/3.0/en_EN.json"
 	},
 
 	"title": {
-		"home":"Home"
+		"home":"Home",
+		"404": "Not Found"
 	},
 
-	"navbar": {
-		"login":"Connection",
-		"email":"E-mail Adress",
-		"password":"Password",
-		"forget":"forgot password ?",
-		"keep":"keep login ?",
+	"navbar":{
+		"login":"Login",
 		"register":"Register"
 	},
 
+	"login": {
+		"email":"E-mail Adress",
+		"password":"Password",
+		"forget":"Forgot Password ?",
+		"keep":"Keep Login ?",
+		"login":"Connection",
+		"register":"register"
+	},
+
 	"home": {
-		"newTicket":"Send Ticket",
+		"newTicket":"Send New Ticket",
 		"viewTicket":"See Ticket",
-		"Faq": "Frequently Asked Questions"
+		"Faq": "Frequently Asked Question"
 	},
 
 	"footer": {
 		"language":"Language :",
-		"propulsedBy":"Propulsed by <a href=\"http://supportme.dzv.me\" target=\"_blank\">Support Me</a>"
+		"ok":"Ok",
+		"propulsedBy":"Propulsed By <a href=\"http://supportme.dzv.me\" target=\"_blank\">Support Me</a>"
+	},
+
+	"404": {
+		"notfound": "404 Not Found !"
 	}
 }

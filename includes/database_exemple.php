@@ -16,6 +16,8 @@ You should have received a copy of the GNU General Public License along
 with this program.  If not, see <http://www.gnu.org/licenses/>. 
 */
 
+define("default_language", "YOUR_LANGUAGE_BY_DEFAULT");
+
 ORM::configure('mysql:host=YOUR_HOST;dbname=YOUR_DATABASE_NAME');
 ORM::configure('username', 'YOUR_DATABASE_USERNAME');
 ORM::configure('password', 'YOUR_DATABASE_PASSWORD');

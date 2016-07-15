@@ -423,7 +423,7 @@ class FormBuilder {
 	 * @param  boolean $selected
 	 * @return $this
 	 */
-	public function choice($name, $selected = false, $parent = null) {
+	public function choice($name, $value, $selected = false, $parent = null) {
 
 		if($parent) {
 			foreach($this->fields as $key => $value) {
@@ -432,7 +432,7 @@ class FormBuilder {
 					($selected) AND $selected = ' selected'; // Selected ?
 
 					$this->fields[$key]['choices'][] = [
-						'value' 				=> self::rewrite($name), 
+						'value' 				=> $value, 
 						'name' 				=> $name, 
 						'selected' 			=> $selected, 
 						'optgroup' 			=> $optgroup
@@ -447,7 +447,7 @@ class FormBuilder {
 
 			$this->fields[sizeOf($this->fields) - 1]['choices'][] = [
 
-						'value' 				=> self::rewrite($name), 
+						'value' 				=> $value, 
 						'name' 				=> $name, 
 						'selected' 			=> $selected, 
 						'optgroup' 			=> $optgroup

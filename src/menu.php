@@ -18,6 +18,7 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 hook_action("menu");
 
+//Login Form
 $login = new FormBuilder();
 
 $login->add($lang["login"]["email"], "email")->name("identifiant")->inputClass("form-control")->validator("mailcheck()", "");

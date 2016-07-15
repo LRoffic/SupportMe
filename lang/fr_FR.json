@@ -2,7 +2,7 @@
 	"config": {
 		"langue_name":"Français",
 		"version":"1",
-		"host":"http://supportme.dv.me"
+		"host":"http://supportme.dv.me/lang/3.0/fr_FR.json"
 	},
 
 	"title": {
@@ -32,6 +32,7 @@
 
 	"footer": {
 		"language":"Langue :",
+		"ok":"Ok",
 		"propulsedBy":"Propulser par <a href=\"http://supportme.dzv.me\" target=\"_blank\">Support Me</a>"
 	},
 

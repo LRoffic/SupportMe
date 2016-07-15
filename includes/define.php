@@ -18,6 +18,8 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 define("DEBUG_MODE", false);
 
+define("VERSION", "3.0");
+
 define("_ROOT_", substr($_SERVER['DOCUMENT_ROOT'], 0, -1));
 define('_PATH_', dirname(__DIR__));
 define('FOLDER', dirname($_SERVER["PHP_SELF"]));

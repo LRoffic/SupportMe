@@ -55,15 +55,29 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 		return $fich;
 	}
 
+	function newlang($lang){
+		$newlang = file_get_contents("http://supportme.dzv.me/lang/".VERSION."/".$lang.".json");
+		file_put_contents("lang/".$lang.".json", $newlang);
+		return $newlang;
+	}
+
 	function lang($lang){
 		global $tpl;
 
 		if(file_exists("lang/".$lang.".json"))
 			$lang = file_get_contents("lang/".$lang.".json");
-		elseif(file_exists("http://supportme.dzv.me/lang/3.0/".$lang.".json"))
-			$lang = file_get_contents("http://supportme.dzv.me/lang/3.0/".$lang.".json");
-		else
-			$lang = file_get_contents("http://supportme.dzv.me/lang/3.0/fr_FR.json");
+		elseif(file_exists("http://supportme.dzv.me/lang/".VERSION."/".$lang.".json")){
+			$newlang = newlang($lang);
+		} else{
+			if(file_exists("lang/".default_language.".json"))
+				$lang = file_get_contents("lang/".default_language.".json");
+			else{
+				if(file_exists("http://supportme.dzv.me/lang/".VERSION."/".default_language.".json"))
+					$lang = newlang(default_language);
+				else
+					$lang = newlang("fr_FR");
+			}
+		}
 
 		$lang = json_decode($lang, true); 
 		$lang = replace_lang($lang);
@@ -71,8 +85,6 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 		$lang = hook_filter("lang", $lang);
 
 		$tpl->assign("lang", $lang);
-
-		$tpl->assign("langs", getlangs());
 
 		return $lang;
 	}
@@ -90,3 +102,23 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 	} else {
 		$lang = lang($config->lang);
 	}
+	
+	/* Language Form */
+	$langs = new FormBuilder();
+
+	$langs->add($lang['footer']['language'], "select")->name("lang")->inputClass("form-control")->style('.form-inline')
+	->choice($lang["config"]["langue_name"], '', true);
+
+	$language_files = getlangs();
+
+	foreach ($language_files as $lf) {
+		if($lf['name'] != $lang['config']['langue_name']){
+			$langs->choice($lf["name"], $lf['filename']);
+		}
+	}
+	$langs->submit($lang['footer']['ok'])->submitStyle(".btn btn-default");
+
+	$tpl->assign("langs", $langs);
+	/* end of language form */
+
+	
