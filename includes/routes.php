@@ -18,10 +18,10 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 	$router = new AltoRouter();
 
-	$router->setBasePath(substr($_SERVER['REQUEST_URI'], 0, -1));
+	$router->setBasePath(dirname($_SERVER["PHP_SELF"]));
 
 	$router->map("GET|POST", "/", "index.php", "home");
 
 	$match = $router->match();
 
-	include $match['target'] ? _CTRL_.$match['target'] : _CTRL_.'404.php';
+	include _CTRL_ .($match['target'] ?: '404.php');

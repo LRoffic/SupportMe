@@ -19,6 +19,7 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 	include_once "vendor/autoload.php";
 	include_once "define.php";
 	include_once "database.php";
+	include_once "lib/lib.php";
 	include_once "pluggable.php";
 
 	if(DEBUG_MODE){

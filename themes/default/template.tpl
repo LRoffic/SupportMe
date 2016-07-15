@@ -9,9 +9,9 @@
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="{$smarty.const._PATH_}themes/default/web/css/bootstrap-flat.min.css">
-		<link rel="stylesheet" type="text/css" href="{$smarty.const._PATH_}themes/default/web/css/bootstrap-flat-extras.min.css">
-		<link rel="stylesheet" type="text/css" href="{$smarty.const._PATH_}themes/default/web/css/style.css">
+		<link rel="stylesheet" type="text/css" href="{$smarty.const._FOLDER_}themes/default/web/css/bootstrap-flat.min.css">
+		<link rel="stylesheet" type="text/css" href="{$smarty.const._FOLDER_}themes/default/web/css/bootstrap-flat-extras.min.css">
+		<link rel="stylesheet" type="text/css" href="{$smarty.const._FOLDER_}themes/default/web/css/style.css">
 
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -19,6 +19,8 @@
 			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
 			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 		<![endif]-->
+
+		<script src='https://www.google.com/recaptcha/api.js'></script>
 	</head>
 	<body>
 		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -31,25 +33,7 @@
 						<li>
 							<div class="row">
 								<div class="col-md-12">
-								 	<form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
-										<div class="form-group">
-											<label class="sr-only" for="exampleInputEmail2">{$lang.navbar.email}</label>
-											<input type="email" class="form-control" id="exampleInputEmail2" placeholder="{$lang.navbar.email}" required>
-										</div>
-										<div class="form-group">
-											<label class="sr-only" for="exampleInputPassword2">{$lang.navbar.password}</label>
-											<input type="password" class="form-control" id="exampleInputPassword2" placeholder="{$lang.navbar.password}" required>
-											<div class="help-block text-right"><a href="">{$lang.navbar.forget}</a></div>
-										</div>
-										<div class="form-group">
-											<button type="submit" class="btn btn-primary btn-block">{$lang.navbar.login}</button>
-										</div>
-										<div class="checkbox">
-											<label>
-												<input type="checkbox" checked> {$lang.navbar.keep}
-											</label>
-										</div>
-									</form>
+									{$login->build()}
 								</div>
 								{if $config.register}
 									<div class="bottom text-center">
@@ -74,6 +58,7 @@
 							<div class="form-group">
 								<label>{$lang.footer.language}</label>
 								<select name="lang" class="form-control">
+									<option value="">{$lang.config.langue_name}</option>
 									{foreach from=$langs item=langues}
 										{if $langues.name neq $lang.config.langue_name}
 											<option value="{$langues.filename}">{$langues.name}</option>

@@ -15,7 +15,5 @@ more details.
 You should have received a copy of the GNU General Public License along
 with this program.  If not, see <http://www.gnu.org/licenses/>. 
 */
-
-hook_action("404");
-
-$tpl->display("404.tpl");
+	require_once "FormBuilder.php";
+	require_once "FastMailBuilder.php";

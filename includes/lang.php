@@ -21,13 +21,17 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 		global $bdd;
 		global $config;
 
-		$arrayprofil = array(
-			'%sitename%' => htmlspecialchars($config->site_name)
+		$array_replace_lang = array(
+			"%sitename%" => htmlspecialchars($config->site_name)
 		);
 
-		$string = str_replace(array_keys($arrayprofil), array_values($arrayprofil), $lang);
+		$array_replace_lang = hook_filter("array_replace_lang", $array_replace_lang);
 
-		return $string;
+		array_walk_recursive($lang, function(&$item, $key) use ($array_replace_lang,$lang){
+			$item = str_replace(array_keys($array_replace_lang), array_values($array_replace_lang), $item);
+		});
+
+		return $lang;
 	}
 
 	function getlangs(){
@@ -61,12 +65,16 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 		else
 			$lang = file_get_contents("http://supportme.dzv.me/lang/3.0/fr_FR.json");
 
-		$lang = json_decode($lang, true);
+		$lang = json_decode($lang, true); 
 		$lang = replace_lang($lang);
+
+		$lang = hook_filter("lang", $lang);
 
 		$tpl->assign("lang", $lang);
 
 		$tpl->assign("langs", getlangs());
+
+		return $lang;
 	}
 	/* end of function */
 
@@ -76,9 +84,9 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 		}
 		setcookie('lang', $_POST['lang'], time()+365*24*3600, null, null, false, false);
 
-		lang($_POST['lang']);
+		$lang = lang($_POST['lang']);
 	} elseif(!empty($_COOKIE['lang'])){
-		lang($_COOKIE['lang']);
+		$lang = lang($_COOKIE['lang']);
 	} else {
-		lang($config->lang.php);
+		$lang = lang($config->lang);
 	}

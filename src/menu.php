@@ -16,6 +16,22 @@ You should have received a copy of the GNU General Public License along
 with this program.  If not, see <http://www.gnu.org/licenses/>. 
 */
 
-hook_action("404");
+hook_action("menu");
 
-$tpl->display("404.tpl");
+$login = new FormBuilder();
+
+$login->add($lang["login"]["email"], "email")->name("identifiant")->inputClass("form-control")->validator("mailcheck()", "");
+$login->add($lang['login']['password'], "password")->name("password")->inputClass("form-control");
+
+hook_filter("login", $login);
+
+$login->submit($lang['login']['login'])->submitStyle('.btn btn-primary btn-block');
+$login->add($lang['login']['keep'], "checkbox", true)->name("keep")->optional();
+
+if($login->sent()){
+	if($login->isValid()){
+		//
+	}
+}
+
+$tpl->assign("login", $login);
