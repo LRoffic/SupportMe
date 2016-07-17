@@ -1,5 +1,5 @@
 {extends file="template.tpl"}
-{block name="title" append}{$lang.title.404}{/block}
+{block name="title" append} - {$lang.title.404}{/block}
 {block name="body"}
 	<div class="container">
 		<div class="row">

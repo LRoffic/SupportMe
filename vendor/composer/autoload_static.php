@@ -6,12 +6,60 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit91710c9e1b6c8789ad2c94542019b00e
 {
+    public static $prefixLengthsPsr4 = array (
+        'V' => 
+        array (
+            'VisualAppeal\\' => 13,
+        ),
+        'M' => 
+        array (
+            'Monolog\\' => 8,
+        ),
+        'D' => 
+        array (
+            'Desarrolla2\\Cache\\' => 18,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'VisualAppeal\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/visualappeal/php-auto-update/src',
+        ),
+        'Monolog\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
+        ),
+        'Desarrolla2\\Cache\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/desarrolla2/cache/src',
+        ),
+    );
+
     public static $prefixesPsr0 = array (
+        'v' => 
+        array (
+            'vierbergenlars\\SemVer\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/vierbergenlars/php-semver/src',
+            ),
+            'vierbergenlars\\LibJs\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/vierbergenlars/php-semver/src',
+            ),
+        ),
         'u' => 
         array (
             'utilphp\\' => 
             array (
                 0 => __DIR__ . '/..' . '/brandonwamboldt/utilphp/src',
+            ),
+        ),
+        'P' => 
+        array (
+            'Psr\\Log\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/psr/log',
             ),
         ),
     );
@@ -189,11 +237,18 @@ class ComposerStaticInit91710c9e1b6c8789ad2c94542019b00e
         'TPC_yyToken' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_configfileparser.php',
         'TP_yyStackEntry' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_templateparser.php',
         'TP_yyToken' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_templateparser.php',
+        'vierbergenlars\\SemVer\\Internal\\Comparator' => __DIR__ . '/..' . '/vierbergenlars/php-semver/src/vierbergenlars/SemVer/internal.php',
+        'vierbergenlars\\SemVer\\Internal\\Exports' => __DIR__ . '/..' . '/vierbergenlars/php-semver/src/vierbergenlars/SemVer/internal.php',
+        'vierbergenlars\\SemVer\\Internal\\G' => __DIR__ . '/..' . '/vierbergenlars/php-semver/src/vierbergenlars/SemVer/internal.php',
+        'vierbergenlars\\SemVer\\Internal\\Range' => __DIR__ . '/..' . '/vierbergenlars/php-semver/src/vierbergenlars/SemVer/internal.php',
+        'vierbergenlars\\SemVer\\Internal\\SemVer' => __DIR__ . '/..' . '/vierbergenlars/php-semver/src/vierbergenlars/SemVer/internal.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixLengthsPsr4 = ComposerStaticInit91710c9e1b6c8789ad2c94542019b00e::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit91710c9e1b6c8789ad2c94542019b00e::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInit91710c9e1b6c8789ad2c94542019b00e::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit91710c9e1b6c8789ad2c94542019b00e::$classMap;
 

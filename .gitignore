@@ -1,3 +1,4 @@
 /templates_c
 includes/database.php
 /plugins
+/src/admin

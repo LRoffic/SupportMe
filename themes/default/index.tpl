@@ -1,5 +1,5 @@
 {extends file="template.tpl"}
-{block name="title" append}{$lang.title.home}{/block}
+{block name="title" append} - {$lang.title.home}{/block}
 {block name="body"}
 <div class="container">
 	<div class="row">

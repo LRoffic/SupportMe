@@ -719,7 +719,7 @@ class FormBuilder {
 
 		// Checkbox
 		if($value['type'] == 'checkbox') {
-			(self::sent() AND $errors) AND $error = '<'. $this->tag . $this->errorStyle .' name="error_'. $value['name'] .'>'. $value['validator']['message'] .'</'. $this->tag .'>' . "\r\n";
+			(self::sent() AND $errors) AND $error = '<'. $this->tag . $this->errorStyle .' name="error_'. $value['name'] .'">'. $value['validator']['message'] .'</'. $this->tag .'>' . "\r\n";
 			($this->errorPosition == 'before') AND $this->form .= $error;
 			$checked = ($value['checked']) ? ' checked' : null;
 			if(self::sent() AND !$this->clearFields) { $checked = (self::item($value['name'])) ? ' checked' : null; }
@@ -736,7 +736,7 @@ class FormBuilder {
 		if($value['type'] == 'textarea') {
 			$textarea_value = (self::sent() AND self::item($value['name']) AND !$this->clearFields) ? self::item($value['name']) : $textarea_value;
 			$this->form .= $label;
-			(self::sent() AND $errors) AND $error = '<'. $this->tag . $this->errorStyle .' name="error_'. $value['name'] .'>'. $value['validator']['message'] .'</'. $this->tag .'>' . "\r\n";
+			(self::sent() AND $errors) AND $error = '<'. $this->tag . $this->errorStyle .' name="error_'. $value['name'] .'">'. $value['validator']['message'] .'</'. $this->tag .'>' . "\r\n";
 			($this->errorPosition == 'before') AND $this->form .= $error;
 			$this->form .= '<textarea name="'. $value['name'] .'" id="'. $value['id'] .'" class="'. $value['class'] . $inputError .'"' . $value['rows'] . $value['cols'] . $value['placeholder'] . $value['required'] . $value['autofocus'] .'>'. $textarea_value .'</textarea>' . "\r\n";
 			($this->errorPosition == 'after') AND $this->form .= $error;
@@ -745,7 +745,7 @@ class FormBuilder {
 		// Select inputs
 		if($value['type'] == 'select') {
 			$this->form .= $label;
-			(self::sent() AND $errors) AND $error = '<'. $this->tag . $this->errorStyle .' name="error_'. $value['name'] .'>'. $value['validator']['message'] .'</'. $this->tag .'>' . "\r\n";
+			(self::sent() AND $errors) AND $error = '<'. $this->tag . $this->errorStyle .' name="error_'. $value['name'] .'">'. $value['validator']['message'] .'</'. $this->tag .'>' . "\r\n";
 			($this->errorPosition == 'before') AND $this->form .= $error;
 			$this->form .= '<select name="'. $value['name'] .'" id="'. $value['id'] .'" class="'. $value['class'] . $inputError .'">' . "\r\n";
 
@@ -782,7 +782,7 @@ class FormBuilder {
 
 		// Radios
 		if($value['type'] == 'radio') {
-			(self::sent() AND $errors) AND $error = '<'. $this->tag . $this->errorStyle .' name="error_'. $value['name'] .'>'. $value['validator']['message'] .'</'. $this->tag .'>' . "\r\n";
+			(self::sent() AND $errors) AND $error = '<'. $this->tag . $this->errorStyle .' name="error_'. $value['name'] .'">'. $value['validator']['message'] .'</'. $this->tag .'>' . "\r\n";
 			($this->errorPosition == 'before') AND $this->form .= $error;
 			foreach($value['radios'] as $key => $entry) {
 				if(self::sent() AND !$this->clearFields)

@@ -3,6 +3,7 @@
 		"j4mie/idiorm": "*",
 		"smarty/smarty": "*",
 		"altorouter/altorouter": "*",
-		"brandonwamboldt/utilphp": "*"
+		"brandonwamboldt/utilphp": "*",
+		"visualappeal/php-auto-update": "*"
 	}
 }

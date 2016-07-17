@@ -33,9 +33,7 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 	hook_action('initialize');
 
-	use \utilphp\util as util;
-
-	util::utf8_headers();
+	\utilphp\util::utf8_headers();
 
 	$config = ORM::for_table("config")->find_one("1");
 

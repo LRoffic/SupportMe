@@ -178,4 +178,9 @@ return array(
     'TPC_yyToken' => $vendorDir . '/smarty/smarty/libs/sysplugins/smarty_internal_configfileparser.php',
     'TP_yyStackEntry' => $vendorDir . '/smarty/smarty/libs/sysplugins/smarty_internal_templateparser.php',
     'TP_yyToken' => $vendorDir . '/smarty/smarty/libs/sysplugins/smarty_internal_templateparser.php',
+    'vierbergenlars\\SemVer\\Internal\\Comparator' => $vendorDir . '/vierbergenlars/php-semver/src/vierbergenlars/SemVer/internal.php',
+    'vierbergenlars\\SemVer\\Internal\\Exports' => $vendorDir . '/vierbergenlars/php-semver/src/vierbergenlars/SemVer/internal.php',
+    'vierbergenlars\\SemVer\\Internal\\G' => $vendorDir . '/vierbergenlars/php-semver/src/vierbergenlars/SemVer/internal.php',
+    'vierbergenlars\\SemVer\\Internal\\Range' => $vendorDir . '/vierbergenlars/php-semver/src/vierbergenlars/SemVer/internal.php',
+    'vierbergenlars\\SemVer\\Internal\\SemVer' => $vendorDir . '/vierbergenlars/php-semver/src/vierbergenlars/SemVer/internal.php',
 );

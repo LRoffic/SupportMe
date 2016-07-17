@@ -21,3 +21,19 @@ function routes($road){
 
 	return $router->generate($road);
 }
+
+function Recaptcha(){
+	global $config;
+
+	if(empty($config['recaptcha_public_key']) || empty($config['recaptcha_private_key']))
+		return false;
+
+	return true;
+}
+
+function verif_category($category){
+	global $bdd;
+
+	$category = ORM::for_table('category')->where("id", $category)->count();
+	return $category;
+}

@@ -4,14 +4,14 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>{block name="title"}{$config.site_name} - {/block}</title>
+		<title>{block name="title"}{$config.site_name}{/block}</title>
 
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="{$smarty.const._FOLDER_}themes/default/web/css/bootstrap-flat.min.css">
-		<link rel="stylesheet" type="text/css" href="{$smarty.const._FOLDER_}themes/default/web/css/bootstrap-flat-extras.min.css">
-		<link rel="stylesheet" type="text/css" href="{$smarty.const._FOLDER_}themes/default/web/css/style.css">
+		<link rel="stylesheet" type="text/css" href="{$smarty.const.FOLDER}/themes/default/web/css/bootstrap-flat.min.css">
+		<link rel="stylesheet" type="text/css" href="{$smarty.const.FOLDER}/themes/default/web/css/bootstrap-flat-extras.min.css">
+		<link rel="stylesheet" type="text/css" href="{$smarty.const.FOLDER}/themes/default/web/css/style.css">
 
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

@@ -21,6 +21,8 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 	$router->setBasePath(dirname($_SERVER["PHP_SELF"]));
 
 	$router->map("GET|POST", "/", "index.php", "home");
+	$router->map("GET|POST", "/new", "new.php", "new");
+	$router->map("GET|POST", "/ticket/[i:id]", "ticket.php", "ticket");
 
 	$match = $router->match();
 

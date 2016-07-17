@@ -7,6 +7,7 @@
 
 	"title": {
 		"home":"Accueil",
+		"newTicket": "Nouveau Ticket",
 		"404": "Page introuvable"
 	},
 
@@ -30,6 +31,28 @@
 		"Faq": "Foire aux questions"
 	},
 
+	"newTicket": {
+		"newTicket": "Écrire un nouveau ticket",
+		"email": "Adresse E-mail :",
+		"subject": "Sujet :",
+		"category": "Catégorie :",
+		"choiceCategory": "-- Choisir une catégorie --",
+		"message": "Message :",
+		"submit": "Envoyer",
+		"error_email": "L'adresse E-mail n'est pas valide !",
+		"error_specialcars": "Charactère invalide détecter !",
+		"error_category": "Catégorie inconnue !"
+	},
+
+	"ticket": {
+		"createSuccess": "Votre ticket a été envoyé, quelqu'un y répondras bientôt !",
+		"status": "Status :",
+		"attribute": "Attribution :",
+		"date_receive": "Date de création :",
+		"date_last_action": "Date de la dernière mise à jour :",
+		"message": "Message :"
+	},
+
 	"footer": {
 		"language":"Langue :",
 		"ok":"Ok",
@@ -38,5 +61,10 @@
 
 	"404": {
 		"notfound": "404 Fichier introuvable !"
+	},
+
+	"email": {
+		"createPassSubject": "Bienvenue !",
+		"createPass": "Bonjour et bienvenue sur %sitename% \n Afin de pouvoir consulter vos tickets en toutes sécurité nous vous fournisson votre mot de passe. \n\n %email_password% \nn Cordialement l'équipe de %sitename%"
 	}
 }
