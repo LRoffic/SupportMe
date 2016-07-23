@@ -37,3 +37,77 @@ function verif_category($category){
 	$category = ORM::for_table('category')->where("id", $category)->count();
 	return $category;
 }
+
+function temps_ecoule($date,$type="timestamp") {
+	if($type == "timestamp") {
+		$date2 = $date; // depuis cette date
+	} elseif($type == "date") {
+		$date2 = strtotime($date); // depuis cette date
+	}
+
+	$Ecart = time()-$date2;
+	$Annees = date('Y',$Ecart)-1970;
+	$Mois = date('m',$Ecart)-1;
+	$Jours = date('d',$Ecart)-1;
+	$Heures = date('H',$Ecart)-1;
+	$Minutes = date('i',$Ecart);
+	$Secondes = date('s',$Ecart);
+
+	if($Annees > 0) {
+		return "Il y a ".$Annees." an".($Annees>1?"s":"")." et ".$Jours." jour".($Jours>1?"s":""); // on indique les jours avec les année pour être un peu plus précis
+	}
+	if($Mois > 0) {
+		return "Il y a ".$Mois." mois et ".$Jours." jour".($Jours>1?"s":""); // on indique les jours aussi
+	}
+	if($Jours > 0) {
+		return "Il y a ".$Jours." jour".($Jours>1?"s":"");
+	}
+	if($Heures > 0) {
+		return "Il y a ".$Heures." heure".($Heures>1?"s":"");
+	}
+	if($Minutes > 0) {
+		return "Il y a ".$Minutes." minute".($Minutes>1?"s":"");
+	}
+	if($Secondes > 0) {
+		return "Il y a ".$Secondes." seconde".($Secondes>1?"s":"");
+	}
+}
+
+function getTicketURL($id){
+	global $router;
+	return $router->generate("ticket", array("id"=>$id));
+}
+
+function getStatusArray(){
+	global $lang;
+
+	$status_array = array(
+		"1"=>$lang['status']['waiting'],
+		"2"=>$lang['status']['reply'],
+		"3"=>$lang['status']['closed']
+	);
+
+	$status_array = hook_filter("status_array", $status_array);
+
+	return $status_array;
+}
+
+function getStatus($id){
+	$status_array = getStatusArray();
+
+	if(array_key_exists($id, $status_array))
+		return $status_array[$id];
+
+	return $status_array['1'];
+}
+
+function getCategory($id){
+	global $lang;
+
+	$cat = ORM::for_table("category")->find_one($id);
+
+	if(empty($cat))
+		return $lang['category']['notfound'];
+
+	return htmlspecialchars($cat->name);
+}

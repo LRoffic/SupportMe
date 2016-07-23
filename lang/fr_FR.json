@@ -8,17 +8,22 @@
 	"title": {
 		"home":"Accueil",
 		"newTicket": "Nouveau Ticket",
-		"404": "Page introuvable"
+		"404": "Page introuvable",
+		"list": "Liste des tickets",
+		"connexion": "Connexion"
 	},
 
 	"navbar":{
+		"home": "Accueil",
 		"login":"Connexion",
 		"register":"Inscription"
 	},
 
 	"login": {
-		"email":"Adresse E-mail",
-		"password":"Mot de passe",
+		"pseudo":"Pseudo :",
+		"email":"Adresse E-mail :",
+		"password":"Mot de passe :",
+		"captcha": "Captcha",
 		"forget":"Mot de passe oublier ?",
 		"keep":"Rester connecter ?",
 		"login":"Connexion",
@@ -38,19 +43,53 @@
 		"category": "Catégorie :",
 		"choiceCategory": "-- Choisir une catégorie --",
 		"message": "Message :",
-		"submit": "Envoyer",
-		"error_email": "L'adresse E-mail n'est pas valide !",
-		"error_specialcars": "Charactère invalide détecter !",
-		"error_category": "Catégorie inconnue !"
+		"captcha": "Captcha",
+		"submit": "Envoyer"
 	},
 
 	"ticket": {
 		"createSuccess": "Votre ticket a été envoyé, quelqu'un y répondras bientôt !",
 		"status": "Status :",
 		"attribute": "Attribution :",
+		"category": "Catégorie :",
 		"date_receive": "Date de création :",
 		"date_last_action": "Date de la dernière mise à jour :",
-		"message": "Message :"
+		"message": "Message :",
+		"backToList": "Retour à la liste des tickets",
+		"close": "Fermer le ticket",
+		"addComment": "Ajouter un commentaire :",
+		"comment": "Commentaires :",
+		"submit": "Répondre"
+	},
+
+	"list":{
+		"noTicket": "Aucun ticket actuellement",
+		"back": "Retour à l'accueil",
+		"send": "Envoyer un nouveau Ticket",
+		"id": "ID",
+		"subject": "subject",
+		"message": "Résumé",
+		"option": "Options",
+		"status": "Status",
+		"attribute": "Atribution",
+		"category": "Catégorie",
+		"see": "Voir"
+	},
+
+	"connexion": {
+		"connexion": "Connexion :",
+		"register": "Inscription :",
+		"confirme_password": "Retapez le mot de passe"
+	},
+
+	"status":{
+		"waiting": "En attente de réponse",
+		"reply": "Répondus",
+		"closed": "Fermer"
+	},
+
+	"category":{
+		"notFound": "Catégorie introuvable"
 	},
 
 	"footer": {
@@ -63,8 +102,17 @@
 		"notfound": "404 Fichier introuvable !"
 	},
 
+	"error":{
+		"error_email": "L'adresse E-mail n'est pas valide !",
+		"error_specialcars": "Charactère invalide détecter !",
+		"error_password": "Les mots de passe ne sont pas identiques",
+		"error_category": "Catégorie inconnue !",
+		"empty_user": "Utilisateur inconnus",
+		"invalide_password": "Mot de passe incorrect !"
+	},
+
 	"email": {
 		"createPassSubject": "Bienvenue !",
-		"createPass": "Bonjour et bienvenue sur %sitename% \n Afin de pouvoir consulter vos tickets en toutes sécurité nous vous fournisson votre mot de passe. \n\n %email_password% \nn Cordialement l'équipe de %sitename%"
+		"createPass": "Bonjour et bienvenue sur %sitename% \n Afin de pouvoir consulter vos tickets en toutes sécurité nous vous fournisson votre mot de passe. \n\n %email_password% \n\n Cordialement l'équipe de %sitename%"
 	}
 }

@@ -28,21 +28,21 @@ if(!$config['connexion_mandatory'])
 	$newTicket->add($lang['newTicket']['email'], "email")
 		->name("email")
 		->inputClass("form-control")
-		->validator('mailcheck()', $lang['newTicket']['error_email'])
+		->validator('mailcheck()', $lang['error']['error_email'])
 		->autofocus();
 
 //subject input
 $newTicket->add($lang['newTicket']['subject'], "text")
 	->name("subject")
 	->inputClass("form-control")
-	->validator("specialchars()", $lang["newTicket"]['error_specialcars'])
+	->validator("specialchars()", $lang["error"]['error_specialcars'])
 	->autofocus();
 
 /* category input */
 $newTicket->add($lang['newTicket']["category"], "select")
 	->name("category")
 	->inputClass("form-control")
-	->validator("verif_categorie(self)", $lang['newTicket']['error_category']);
+	->validator("verif_categorie(self)", $lang['error']['error_category']);
 
 $newTicket->choice($lang['newTicket']['choiceCategory'], "", true);
 
@@ -57,7 +57,7 @@ $newTicket->add($lang['newTicket']['message'], "textarea")
 	->name("message")
 	->inputClass("form-control")
 	->rows(10)->cols(20)
-	->validator("specialchars()", $lang["newTicket"]['error_specialcars']);
+	->validator("specialchars()", $lang["error"]['error_specialcars']);
 
 //recaptcha input
 if(Recaptcha())

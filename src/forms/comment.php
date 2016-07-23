@@ -16,16 +16,18 @@ You should have received a copy of the GNU General Public License along
 with this program.  If not, see <http://www.gnu.org/licenses/>. 
 */
 
-	$router = new AltoRouter();
+hook_action("Form_Comment");
 
-	$router->setBasePath(dirname($_SERVER["PHP_SELF"]));
+$comment = new FormBuilder();
 
-	$router->map("GET|POST", "/", "index.php", "home");
-	$router->map("GET|POST", "/new", "new.php", "new");
-	$router->map("GET|POST", "/ticket/[i:id]", "ticket.php", "ticket");
-	$router->map("GET|POST", "/list", "list.php", "list");
-	$router->map("GET|POST", "/connexion", "connexion.php", "connexion");
+$comment->add("comment", "textarea")
+	->inputClass("form-control")
+	->rows(5)
+	->disableLabels()
+	->autofocus();
 
-	$match = $router->match();
+$comment->style("#comment");
 
-	include _CTRL_ .($match['target'] ?: '404.php');
+hook_filter("comment", $comment);
+
+$comment->submit($lang['ticket']['submit'])->submitStyle('.btn btn-info btn-block btn-lg');

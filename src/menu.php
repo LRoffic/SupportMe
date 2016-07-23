@@ -21,3 +21,4 @@ hook_action("menu");
 include_once "forms/login.php";
 
 $tpl->assign("login", $login);
+$tpl->assign("register", $register);

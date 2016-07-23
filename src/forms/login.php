@@ -18,20 +18,73 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 hook_action("Form_Login");
 
-//Login Form
+/* Login Form */
 $login = new FormBuilder();
 
-$login->add($lang["login"]["email"], "email")->name("identifiant")->inputClass("form-control")->validator("mailcheck()", "");
+$login->add($lang["login"]["email"], "email")->name("identifiant")->inputClass("form-control");
 $login->add($lang['login']['password'], "password")->name("password")->inputClass("form-control");
 
 hook_filter("login", $login);
 
-$login->submit($lang['login']['login'])->submitStyle('.btn btn-primary btn-block');
 $login->add($lang['login']['keep'], "checkbox", true)->name("keep")->optional();
+$login->submit($lang['login']['login'])->submitStyle('.btn btn-primary btn-block btn-lg');
 
-/*
 if($login->sent()){
 	if($login->isValid()){
-		//
+		if(empty($_SESSION['id']) || empty($_SESSION['token'])){
+			$getUser = ORM::for_table("users")->where_any_is([["username"=>$_POST['identifiant']], ["email"=>$_POST['identifiant']]])->find_one();
+			if(!empty($getUser)){
+				function connect($keep = false){
+					global $getUser;
+
+					$_SESSION["id"] = $getUser->id;
+					$_SESSION['token'] = \utilphp\util::random_string(16);
+
+					if($keep)
+						setcookie('auth', $getUser->id.'-----'.sha1($getUser->password.$getUser->email.$_SERVER['REMOTE_ADDR']), time() + 365*24*3600, FOLDER);
+				}
+
+				if(!empty($_POST['keep']))
+					$keep = true;
+				else
+					$keep = false;
+
+				if(empty($getUser->password) && !empty($getUser->email_password)){
+					if(sha1($_POST['password']) == $getUser->email_password){
+						connect($keep);
+					} else {
+						$tpl->assign("error", $lang['error']['invalide_password']);
+					}
+				} elseif (!empty($getUser->password) && empty($getUser->email_password)){
+					if(sha1($_POST['password']) == $getUser->password){
+						connect($keep);
+					} else {
+						$tpl->assign("error", $lang['error']['invalide_password']);
+					}
+				} else {
+					$tpl->assign("error", $lang['error']['empty_user']);
+				}
+			} else {
+				$tpl->assign("error", $lang['error']['empty_user']);
+			}
+		}
 	}
-} */
+} 
+
+/* End Login Form */
+
+/* Register Form */
+$register = new FormBuilder();
+
+$register->add($lang['login']['pseudo'], "text")->name("pseudo")->inputClass("form-control")->validator("specialchars()", $lang['error']['error_specialcars'])->autofocus();
+$register->add($lang["login"]['email'],"email")->name("email")->inputClass("form-control")->validator("mailcheck()", $lang['error']['error_email']);
+$register->add($lang["login"]["password"], "password")->name("password")->inputClass("form-control");
+$register->add($lang["connexion"]["confirme_password"], "password")->name("verif_pass")->inputClass("form-control")->validator('equalTo("password")', $lang["error"]["error_password"]);
+
+hook_filter("register", $register);
+
+if(Recaptcha())
+	$newTicket->add($lang['newTicket']['captcha'], "recaptcha")->name($config['recaptcha_public_key']);
+
+$register->submit($lang['login']['login'])->submitStyle('.btn btn-info btn-block btn-lg');
+/* End Register Form */

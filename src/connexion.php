@@ -16,16 +16,13 @@ You should have received a copy of the GNU General Public License along
 with this program.  If not, see <http://www.gnu.org/licenses/>. 
 */
 
-	$router = new AltoRouter();
+include_once "menu.php";
 
-	$router->setBasePath(dirname($_SERVER["PHP_SELF"]));
+if(!empty($_SESSION['id']) && !empty($_SESSION['token'])){
+	header("Location:". routes('home'));
+	exit();
+}
 
-	$router->map("GET|POST", "/", "index.php", "home");
-	$router->map("GET|POST", "/new", "new.php", "new");
-	$router->map("GET|POST", "/ticket/[i:id]", "ticket.php", "ticket");
-	$router->map("GET|POST", "/list", "list.php", "list");
-	$router->map("GET|POST", "/connexion", "connexion.php", "connexion");
+hook_action("connexion");
 
-	$match = $router->match();
-
-	include _CTRL_ .($match['target'] ?: '404.php');
+$tpl->display("connexion.tpl");

@@ -35,9 +35,9 @@ if($newTicket->sent()){
 		$newTicket->clearFields();
 
 		if(!$config['connexion_mandatory']){
-			if(empty($_SESSION['email']['email']) || empty($_SESSION['email']['token'])){
+			if(empty($_SESSION['id']) || empty($_SESSION['token'])){
 				$verif_email_exist = ORM::for_table('users')->where("email", $_POST['email'])->find_one();
-				if(empty($verif_exist)){
+				if(empty($verif_email_exist)){
 					$pass = \utilphp\util::random_string(8);
 
 					$email = ORM::for_table("users")->create();
@@ -50,15 +50,16 @@ if($newTicket->sent()){
 
 					$email->save();
 
-					$_SESSION['email']['email'] = $email->email;
-					$_SESSION['email']['token'] = \utilphp\util::random_string(16);
+					$_SESSION['id'] = $email->id;
+					$_SESSION['token'] = \utilphp\util::random_string(16);
 
-					register_filter("%email_password%", $pass);
+					$lang['email']['createPass'] = str_replace("%email_password%", $pass, $lang['email']["createPass"]);
 
-					$mail = new FastMailBuilder();
-					$mail->to($email->email)
+					var_dump($pass);
+
+					$mail->subject($lang['email']['createPassSubject'])
 					->from($config['site_name'], $config['site_email'])
-					->subject($lang['email']['createPassSubject'])
+					->to($email->email)
 					->text($lang['email']['createPass'])
 					->send();
 				}
@@ -67,9 +68,7 @@ if($newTicket->sent()){
 
 		$ticket = ORM::for_table("ticket")->create();
 		
-		if(!$config['connexion_mandatory'])
-			$ticket->autor = $_POST['email'];
-
+		$ticket->autor = $_SESSION['id'];
 		$ticket->autor_ip = \utilphp\util::get_client_ip();
 		$ticket->subject = $_POST['subject'];
 		$ticket->date_receive = time();
@@ -80,6 +79,8 @@ if($newTicket->sent()){
 		hook_filter("new_ticket", $ticket);
 
 		$ticket->save();
+
+		setcookie("CREATE_TICKET", $ticket->id, time() + 60*5, FOLDER);
 
 		header("Location: ".$router->generate("ticket", array("id"=>$ticket->id)));
 	}

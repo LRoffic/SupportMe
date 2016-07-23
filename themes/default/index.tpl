@@ -14,7 +14,7 @@
 			</a>
 		</div>
 		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-			<a href="#" class="homeLink">
+			<a href="{routes('list')}" class="homeLink">
 				<div class="well">
 					<h1><u>{$lang.home.viewTicket}</u></h1>
 					<div class="text-center">

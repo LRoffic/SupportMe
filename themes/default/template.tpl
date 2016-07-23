@@ -26,9 +26,12 @@
 		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 			<div class="container">
 				<a class="navbar-brand" href="{routes('home')}">{$config.site_name}</a>
+				<ul class="nav navbar-nav">
+					<li><a href="{routes('home')}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> {$lang.navbar.home}</a></li>
+				</ul>
 				<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>{$lang.navbar.login}</b> <span class="caret"></span></a>
+					<a href="{routes('connexion')}" class="dropdown-toggle" data-toggle="dropdown"><b>{$lang.navbar.login}</b> <span class="caret"></span></a>
 					<ul id="login-dp" class="dropdown-menu">
 						<li>
 							<div class="row">
@@ -47,6 +50,15 @@
 			</ul>
 			</div>
 		</nav>
+		{if !empty($error)}
+			<div class="container">
+				<div class="alert alert-danger">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+					{$error}
+				</div>
+			</div>
+		{/if}
+
 		{block name="body"}{/block}
 		
 		{block name="footer"}
