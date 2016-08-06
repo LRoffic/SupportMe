@@ -24,25 +24,25 @@ $newTicket->errorTag('div');
 $newTicket->errorStyle('.alert alert-danger');
 
 //email input
-if(!$config['connexion_mandatory'])
+if(!$config['connexion_mandatory'] && !$session->isLogged())
 	$newTicket->add($lang['newTicket']['email'], "email")
-		->name("email")
-		->inputClass("form-control")
-		->validator('mailcheck()', $lang['error']['error_email'])
-		->autofocus();
+	->name("email")
+	->inputClass("form-control")
+	->validator('mailcheck()', $lang['error']['error_email'])
+	->autofocus();
 
 //subject input
 $newTicket->add($lang['newTicket']['subject'], "text")
-	->name("subject")
-	->inputClass("form-control")
-	->validator("specialchars()", $lang["error"]['error_specialcars'])
-	->autofocus();
+->name("subject")
+->inputClass("form-control")
+->validator("specialchars()", $lang["error"]['error_specialcars'])
+->autofocus();
 
 /* category input */
 $newTicket->add($lang['newTicket']["category"], "select")
-	->name("category")
-	->inputClass("form-control")
-	->validator("verif_categorie(self)", $lang['error']['error_category']);
+->name("category")
+->inputClass("form-control")
+->validator("verif_categorie(self)", $lang['error']['error_category']);
 
 $newTicket->choice($lang['newTicket']['choiceCategory'], "", true);
 

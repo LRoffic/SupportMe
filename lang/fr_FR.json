@@ -10,13 +10,16 @@
 		"newTicket": "Nouveau Ticket",
 		"404": "Page introuvable",
 		"list": "Liste des tickets",
-		"connexion": "Connexion"
+		"connexion": "Connexion",
+		"update": "Mise à jours"
 	},
 
 	"navbar":{
 		"home": "Accueil",
 		"login":"Connexion",
-		"register":"Inscription"
+		"register":"Inscription",
+		"logout": "Déconnexion",
+		"BackToHome": "Retour au site"
 	},
 
 	"login": {
@@ -114,5 +117,18 @@
 	"email": {
 		"createPassSubject": "Bienvenue !",
 		"createPass": "Bonjour et bienvenue sur %sitename% \n Afin de pouvoir consulter vos tickets en toutes sécurité nous vous fournisson votre mot de passe. \n\n %email_password% \n\n Cordialement l'équipe de %sitename%"
+	},
+
+	"admin": {
+		"notCheckUpdate": "Impossible de vérifier la mise à jours !",
+		"NewVersionAvailable": "Une Nouvelle version de Support Me est disponible !",
+		"update": "Mettre à jour"
+	},
+
+	"update": {
+		"Success": "Votre version est maintenant à jour !",
+		"Failed": "Mise à jour échoué :",
+		"upToDate": "Vous avez la dernier version disponible",
+		"log": "Log :"
 	}
 }

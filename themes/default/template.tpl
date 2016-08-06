@@ -7,7 +7,7 @@
 		<title>{block name="title"}{$config.site_name}{/block}</title>
 
 		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="{$smarty.const.FOLDER}/themes/default/web/css/bootstrap-flat.min.css">
 		<link rel="stylesheet" type="text/css" href="{$smarty.const.FOLDER}/themes/default/web/css/bootstrap-flat-extras.min.css">
@@ -30,26 +30,47 @@
 					<li><a href="{routes('home')}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> {$lang.navbar.home}</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown">
-					<a href="{routes('connexion')}" class="dropdown-toggle" data-toggle="dropdown"><b>{$lang.navbar.login}</b> <span class="caret"></span></a>
-					<ul id="login-dp" class="dropdown-menu">
-						<li>
-							<div class="row">
-								<div class="col-md-12">
-									{$login->build()}
-								</div>
-								{if $config.register}
-									<div class="bottom text-center">
-										<a href="">{$lang.navbar.register}</a>
+					{if empty($logged)}
+						<li class="dropdown">
+							<a href="{routes('connexion')}" class="dropdown-toggle" data-toggle="dropdown"><b>{$lang.navbar.login}</b> <span class="caret"></span></a>
+							<ul id="login-dp" class="dropdown-menu">
+								<li>
+									<div class="row">
+										<div class="col-md-12">
+											{$login->build()}
+										</div>
+										{if $config.register}
+											<div class="bottom text-center">
+												<a href="">{$lang.navbar.register}</a>
+											</div>
+										{/if}
 									</div>
-								{/if}
-							</div>
+								</li>
+							</ul>
 						</li>
-					</ul>
-				</li>
-			</ul>
+					{else}
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								{if !empty($user_info.username)}
+									{$user_info.username}
+								{else}
+									{$user_info.email}
+								{/if}
+								 <span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu">
+								{if $perm.access_admin}
+									<li><a href="{routes('admin')}"><span class="glyphicon glyphicon-user"></span> Administration</a></li>
+								{/if}
+								<li><a href="{routes('logout')}"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> {$lang.navbar.logout}</a></li>
+								
+							</ul>
+						</li>
+					{/if}
+				</ul>
 			</div>
 		</nav>
+		
 		{if !empty($error)}
 			<div class="container">
 				<div class="alert alert-danger">
@@ -74,6 +95,6 @@
 		<!-- jQuery -->
 		<script src="//code.jquery.com/jquery.js"></script>
 		<!-- Bootstrap JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	</body>
 </html>

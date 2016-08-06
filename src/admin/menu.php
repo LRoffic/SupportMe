@@ -16,34 +16,20 @@ You should have received a copy of the GNU General Public License along
 with this program.  If not, see <http://www.gnu.org/licenses/>. 
 */
 
-include_once "menu.php";
+use \VisualAppeal\AutoUpdate;
 
-if(!$session->isLogged()){
-	hook_action("connexion");
-	$tpl->display("connexion.tpl");
-	exit();
+$update = new AutoUpdate(__DIR__ . '/temp', __DIR__ . '/../', 60);
+$update->setCurrentVersion(VERSION);
+$update->setUpdateUrl('http://supportme.dzv.me/update'); //Replace with your server update directory
+$update->setInstallDir(_PATH_);
+
+if ($update->checkUpdate() === false)
+	$tpl->assign("error", $lang['admin']["notCheckUpdate"]);
+
+if ($update->newVersionAvailable()) {
+	$tpl->assign("newUpdate", true);
+	$tpl->assign("LastVersion",  $update->getLatestVersion());
 }
 
-hook_action("ticket");
-
-$ticket = ORM::for_table("ticket")->find_one($match['params']['id']);
-if(empty($ticket)){
-	include_once "404.php";
-	exit();
-}
-
-hook_filter("ticket", $ticket);
-
-$tpl->assign("ticket", $ticket);
-
-if(!empty($_COOKIE['CREATE_TICKET']) && $_COOKIE['CREATE_TICKET'] == $ticket->id){
-	$tpl->assign("createTicket", true);
-	setcookie("CREATE_TICKET", "", time() - 60*5, FOLDER);
-} else {
-	$tpl->assign("createTicket", false);
-}
-
-include_once "forms/comment.php";
-$tpl->assign("comment", $comment);
-
-$tpl->display("ticket.tpl");
+$update->addLogHandler(new Monolog\Handler\StreamHandler(__DIR__ . '/update.log'));
+$update->setCache(new Desarrolla2\Cache\Adapter\File(__DIR__ . '/cache'), 3600);

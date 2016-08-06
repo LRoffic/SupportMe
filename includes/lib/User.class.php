@@ -16,17 +16,20 @@ You should have received a copy of the GNU General Public License along
 with this program.  If not, see <http://www.gnu.org/licenses/>. 
 */
 
-include_once "menu.php";
+class User extends Model implements ArrayAccess{
+	static function getByID($uid){
+		$entry = ORM::for_table("users")->find_one($uid);
 
-if(!$session->isLogged()){
-	hook_action("connexion");
-	$tpl->display("connexion.tpl");
-	exit();
+		return $entry ? new User($entry) : null;
+	}
+
+	static function getPermissions($permission_id){
+		$perm = ORM::for_table("permissions")->find_one($permission_id);
+
+		if(!$perm){
+			$perm = ORM::for_table("permissions")->find_one("1");
+		}
+
+		return $perm;
+	}
 }
-
-hook_action("list");
-
-$getTickets = ORM::for_table("ticket")->where("autor", $_SESSION['id'])->find_many();
-$tpl->assign("Tickets", $getTickets);
-
-$tpl->display("list.tpl");

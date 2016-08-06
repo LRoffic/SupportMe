@@ -26,7 +26,6 @@ $login->add($lang['login']['password'], "password")->name("password")->inputClas
 
 hook_filter("login", $login);
 
-$login->add($lang['login']['keep'], "checkbox", true)->name("keep")->optional();
 $login->submit($lang['login']['login'])->submitStyle('.btn btn-primary btn-block btn-lg');
 
 if($login->sent()){
@@ -34,14 +33,11 @@ if($login->sent()){
 		if(empty($_SESSION['id']) || empty($_SESSION['token'])){
 			$getUser = ORM::for_table("users")->where_any_is([["username"=>$_POST['identifiant']], ["email"=>$_POST['identifiant']]])->find_one();
 			if(!empty($getUser)){
-				function connect($keep = false){
+				function connect(){
 					global $getUser;
+					global $session;
 
-					$_SESSION["id"] = $getUser->id;
-					$_SESSION['token'] = \utilphp\util::random_string(16);
-
-					if($keep)
-						setcookie('auth', $getUser->id.'-----'.sha1($getUser->password.$getUser->email.$_SERVER['REMOTE_ADDR']), time() + 365*24*3600, FOLDER);
+					$session->setUser($getUser);
 				}
 
 				if(!empty($_POST['keep']))
@@ -51,13 +47,13 @@ if($login->sent()){
 
 				if(empty($getUser->password) && !empty($getUser->email_password)){
 					if(sha1($_POST['password']) == $getUser->email_password){
-						connect($keep);
+						connect();
 					} else {
 						$tpl->assign("error", $lang['error']['invalide_password']);
 					}
 				} elseif (!empty($getUser->password) && empty($getUser->email_password)){
 					if(sha1($_POST['password']) == $getUser->password){
-						connect($keep);
+						connect();
 					} else {
 						$tpl->assign("error", $lang['error']['invalide_password']);
 					}

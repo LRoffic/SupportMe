@@ -34,6 +34,8 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 	hook_action('initialize');
 
 	\utilphp\util::utf8_headers();
+	
+	$session = new Session();
 
 	$config = ORM::for_table("config")->find_one("1");
 

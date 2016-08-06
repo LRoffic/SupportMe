@@ -22,3 +22,19 @@ include_once "forms/login.php";
 
 $tpl->assign("login", $login);
 $tpl->assign("register", $register);
+
+if($session->isLogged()){
+	$tpl->assign("logged", true);
+
+	$info = $session->getUser();
+
+	if(!$info){
+		$session->destroy();
+	}
+
+	$tpl->assign("user_info", $info);
+
+	$perm = User::getPermissions($info->rank);
+
+	$tpl->assign("perm", $perm);
+}

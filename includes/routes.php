@@ -25,6 +25,17 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 	$router->map("GET|POST", "/ticket/[i:id]", "ticket.php", "ticket");
 	$router->map("GET|POST", "/list", "list.php", "list");
 	$router->map("GET|POST", "/connexion", "connexion.php", "connexion");
+	$router->map("GET", "/logout", "logout.php", "logout");
+
+	if($session->isLogged()){
+		$info = $session->getUser();
+		$permission = User::getPermissions($info->rank);
+
+		if($permission->access_admin){
+			$router->map("GET", "/admin/home", "admin/home.php", "admin");
+			$router->map("GET", "/admin/update", "admin/update.php", "update");
+		}
+	}
 
 	$match = $router->match();
 

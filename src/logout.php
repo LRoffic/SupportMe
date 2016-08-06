@@ -15,35 +15,11 @@ more details.
 You should have received a copy of the GNU General Public License along
 with this program.  If not, see <http://www.gnu.org/licenses/>. 
 */
-
 include_once "menu.php";
 
-if(!$session->isLogged()){
-	hook_action("connexion");
-	$tpl->display("connexion.tpl");
-	exit();
-}
+hook_action("logout");
 
-hook_action("ticket");
+if($session->isLogged())
+	$session->destroy();
 
-$ticket = ORM::for_table("ticket")->find_one($match['params']['id']);
-if(empty($ticket)){
-	include_once "404.php";
-	exit();
-}
-
-hook_filter("ticket", $ticket);
-
-$tpl->assign("ticket", $ticket);
-
-if(!empty($_COOKIE['CREATE_TICKET']) && $_COOKIE['CREATE_TICKET'] == $ticket->id){
-	$tpl->assign("createTicket", true);
-	setcookie("CREATE_TICKET", "", time() - 60*5, FOLDER);
-} else {
-	$tpl->assign("createTicket", false);
-}
-
-include_once "forms/comment.php";
-$tpl->assign("comment", $comment);
-
-$tpl->display("ticket.tpl");
+header("Location: ".routes("home"));

@@ -17,3 +17,6 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 	require_once "FormBuilder.php";
 	require_once "FastMailBuilder.php";
+	require_once "Model.php";
+	require_once "User.class.php";
+	require_once "Session.class.php";

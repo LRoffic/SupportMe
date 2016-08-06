@@ -18,7 +18,7 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 include_once "menu.php";
 
-if(!empty($_SESSION['id']) && !empty($_SESSION['token'])){
+if($session->isLogged()){
 	header("Location:". routes('home'));
 	exit();
 }

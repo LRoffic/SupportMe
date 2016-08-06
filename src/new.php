@@ -18,7 +18,7 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 include_once "menu.php";
 
-if($config['connexion_mandatory']){
+if($config['connexion_mandatory'] && !$session->isLogged()){
 	hook_action("connexion");
 	$tpl->display("connexion.tpl");
 	exit();
@@ -34,35 +34,32 @@ if($newTicket->sent()){
 	if($newTicket->isValid()){
 		$newTicket->clearFields();
 
-		if(!$config['connexion_mandatory']){
-			if(empty($_SESSION['id']) || empty($_SESSION['token'])){
-				$verif_email_exist = ORM::for_table('users')->where("email", $_POST['email'])->find_one();
-				if(empty($verif_email_exist)){
-					$pass = \utilphp\util::random_string(8);
+		if(!$session->isLogged()){
+			$verif_email_exist = ORM::for_table('users')->where("email", $_POST['email'])->find_one();
+			if(empty($verif_email_exist)){
+				$pass = \utilphp\util::random_string(8);
 
-					$email = ORM::for_table("users")->create();
-					$email->email = $_POST['email'];
-					$email->email_password = sha1($pass);
-					$email->ip = \utilphp\util::get_client_ip();
-					$email->last_active = time();
+				$email = ORM::for_table("users")->create();
+				$email->email = $_POST['email'];
+				$email->email_password = sha1($pass);
+				$email->ip = \utilphp\util::get_client_ip();
+				$email->last_active = time();
 
-					hook_filter("new_user_email",$email);
+				hook_filter("new_user_email",$email);
 
-					$email->save();
+				$email->save();
 
-					$_SESSION['id'] = $email->id;
-					$_SESSION['token'] = \utilphp\util::random_string(16);
+				$session->setUser($email->id);
 
-					$lang['email']['createPass'] = str_replace("%email_password%", $pass, $lang['email']["createPass"]);
+				$lang['email']['createPass'] = str_replace("%email_password%", $pass, $lang['email']["createPass"]);
 
-					var_dump($pass);
+				var_dump($pass);
 
-					$mail->subject($lang['email']['createPassSubject'])
-					->from($config['site_name'], $config['site_email'])
-					->to($email->email)
-					->text($lang['email']['createPass'])
-					->send();
-				}
+				$mail->subject($lang['email']['createPassSubject'])
+				->from($config['site_name'], $config['site_email'])
+				->to($email->email)
+				->text($lang['email']['createPass'])
+				->send();
 			}
 		}
 

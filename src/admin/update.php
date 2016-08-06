@@ -18,32 +18,28 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 include_once "menu.php";
 
-if(!$session->isLogged()){
-	hook_action("connexion");
-	$tpl->display("connexion.tpl");
-	exit();
-}
+use \VisualAppeal\AutoUpdate;
 
-hook_action("ticket");
+if ($update->newVersionAvailable()) {
+	//Install new update
+	$result = $update->update();
+	if ($result === true) {
+		$tpl->assign("update", "true");
+	} else {
+		if ($result = AutoUpdate::ERROR_SIMULATE) {
+			$tpl->assign("Simulation", $update->getSimulationResults());
+		}
 
-$ticket = ORM::for_table("ticket")->find_one($match['params']['id']);
-if(empty($ticket)){
-	include_once "404.php";
-	exit();
-}
-
-hook_filter("ticket", $ticket);
-
-$tpl->assign("ticket", $ticket);
-
-if(!empty($_COOKIE['CREATE_TICKET']) && $_COOKIE['CREATE_TICKET'] == $ticket->id){
-	$tpl->assign("createTicket", true);
-	setcookie("CREATE_TICKET", "", time() - 60*5, FOLDER);
+		$tpl->assign("update", "false");
+		$tpl->assign("result", $result);
+	}
 } else {
-	$tpl->assign("createTicket", false);
+	$tpl->assign("upToDate", true);
 }
 
-include_once "forms/comment.php";
-$tpl->assign("comment", $comment);
+$tpl->assign("log", nl2br(file_get_contents(__DIR__ . '/update.log')));
 
-$tpl->display("ticket.tpl");
+file_put_contents(__DIR__ . '/update.log', "");
+
+$tpl->display("admin/update.tpl");
+
