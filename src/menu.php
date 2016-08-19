@@ -28,9 +28,12 @@ if($session->isLogged()){
 
 	$info = $session->getUser();
 
-	if(!$info){
+	if(!$info)
 		$session->destroy();
-	}
+
+	$info["avatar"] = "https://www.gravatar.com/avatar/".md5(strtolower(trim($info['email'])));
+
+	hook_filter("user_info", $info);
 
 	$tpl->assign("user_info", $info);
 

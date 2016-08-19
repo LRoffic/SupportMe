@@ -31,3 +31,29 @@ $comment->style("#comment");
 hook_filter("comment", $comment);
 
 $comment->submit($lang['ticket']['submit'])->submitStyle('.btn btn-info btn-block btn-lg');
+
+if($comment->sent()){
+	if($comment->isValid()){
+		if($session->isLogged()){
+			if(!empty($match["params"]["id"])){
+				$ticket = ORM::for_table("ticket")->find_one($match["params"]["id"]);
+				if(!empty($ticket)){
+					$newcomment = ORM::for_table("comments")->create();
+					$newcomment->autor_id = $_SESSION['id'];
+					$newcomment->ticket_id = $ticket->id;
+					$newcomment->date_reply = time();
+					$newcomment->comment = $_POST["comment"];
+					$newcomment->save();
+
+					$ticket->date_last_action = time();
+					$ticket->status_id = 1;
+					$ticket->save();
+
+					$comment->clearFields();
+
+					$tpl->assign("retour", $lang['ticket']['SuccessComment']);
+				}
+			}
+		}
+	}
+}

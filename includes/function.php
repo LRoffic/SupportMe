@@ -111,3 +111,31 @@ function getCategory($id){
 
 	return htmlspecialchars($cat->name);
 }
+
+function text_replace($string){
+
+	$sting = htmlspecialchars($string);
+
+	$string = hook_filter("text", $string);
+
+	return Twemoji::Text($string);
+}
+
+function testCaptcha(){
+	global $config;
+
+	$privatekey = $config->recaptcha_private_key;//clé privé recaptcha
+
+	$recaptcha = new \ReCaptcha\ReCaptcha($privatekey);
+
+	$remoteIp = $_SERVER['REMOTE_ADDR'];
+
+	$gRecaptchaResponse = $_POST['g-recaptcha-response'];
+
+	$resp = $recaptcha->verify($gRecaptchaResponse, $remoteIp);
+	if (!$resp->isSuccess()) {
+		return $resp->getErrorCodes();
+	}
+
+	return true;
+}

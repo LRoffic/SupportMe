@@ -2,7 +2,8 @@
 	"config": {
 		"langue_name":"Français",
 		"version":"1",
-		"host":"http://supportme.dv.me/lang/3.0/fr_FR.json"
+		"host":"http://supportme.dv.me/lang/3.0/fr_FR.json",
+		"dateformat": "d/m/Y H:i"
 	},
 
 	"title": {
@@ -24,6 +25,7 @@
 
 	"login": {
 		"pseudo":"Pseudo :",
+		"identifiant":"Adresse E-mail / pseudo :",
 		"email":"Adresse E-mail :",
 		"password":"Mot de passe :",
 		"captcha": "Captcha",
@@ -54,6 +56,7 @@
 		"createSuccess": "Votre ticket a été envoyé, quelqu'un y répondras bientôt !",
 		"status": "Status :",
 		"attribute": "Attribution :",
+		"notAttribued": "Pas encore attribué",
 		"category": "Catégorie :",
 		"date_receive": "Date de création :",
 		"date_last_action": "Date de la dernière mise à jour :",
@@ -62,19 +65,27 @@
 		"close": "Fermer le ticket",
 		"addComment": "Ajouter un commentaire :",
 		"comment": "Commentaires :",
-		"submit": "Répondre"
+		"submit": "Répondre",
+		"noComment": "Aucun commentaire actuellement",
+		"SuccessComment": "Commentaires envoyé !",
+		"you": "Vous",
+		"sendon": "envoyé le "
 	},
 
 	"list":{
 		"noTicket": "Aucun ticket actuellement",
 		"back": "Retour à l'accueil",
 		"send": "Envoyer un nouveau Ticket",
+		"TicketList": "Liste des tickets",
 		"id": "ID",
 		"subject": "subject",
 		"message": "Résumé",
+		"date_receive": "Date de création",
+		"date_last_action": "Dernière action",
 		"option": "Options",
 		"status": "Status",
 		"attribute": "Atribution",
+		"notAttribued": "Pas encore attribué",
 		"category": "Catégorie",
 		"see": "Voir"
 	},
@@ -86,7 +97,7 @@
 	},
 
 	"status":{
-		"waiting": "En attente de réponse",
+		"waiting": "En attente",
 		"reply": "Répondus",
 		"closed": "Fermer"
 	},
@@ -111,7 +122,8 @@
 		"error_password": "Les mots de passe ne sont pas identiques",
 		"error_category": "Catégorie inconnue !",
 		"empty_user": "Utilisateur inconnus",
-		"invalide_password": "Mot de passe incorrect !"
+		"invalide_password": "Mot de passe incorrect !",
+		"registered": "Un compte avec ces identifiant(s) existe déjà !"
 	},
 
 	"email": {
@@ -130,5 +142,10 @@
 		"Failed": "Mise à jour échoué :",
 		"upToDate": "Vous avez la dernier version disponible",
 		"log": "Log :"
+	},
+
+	"js": {
+		"ago": "posté il y a",
+		"in": "posté dans"
 	}
 }

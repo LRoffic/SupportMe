@@ -6,6 +6,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>{block name="title"}{$config.site_name}{/block}</title>
 
+		<link rel="icon" href="{$smarty.const.FOLDER}/themes/default/web/img/Supportme.png" />
+
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -41,7 +43,7 @@
 										</div>
 										{if $config.register}
 											<div class="bottom text-center">
-												<a href="">{$lang.navbar.register}</a>
+												<a href="{routes('connexion')}">{$lang.navbar.register}</a>
 											</div>
 										{/if}
 									</div>
@@ -93,8 +95,9 @@
 			</footer>
 		{/block}
 		<!-- jQuery -->
-		<script src="//code.jquery.com/jquery.js"></script>
+		<script type="text/javascript" src="//code.jquery.com/jquery.js"></script>
 		<!-- Bootstrap JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="{$smarty.const.FOLDER}/themes/default/web/js/ago.js"></script>
 	</body>
 </html>

@@ -4,6 +4,7 @@
 		"smarty/smarty": "*",
 		"altorouter/altorouter": "*",
 		"brandonwamboldt/utilphp": "*",
-		"visualappeal/php-auto-update": "*"
+		"visualappeal/php-auto-update": "*",
+		"google/recaptcha": "~1.1"
 	}
 }

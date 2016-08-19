@@ -11,6 +11,10 @@ class ComposerStaticInit91710c9e1b6c8789ad2c94542019b00e
         array (
             'VisualAppeal\\' => 13,
         ),
+        'R' => 
+        array (
+            'ReCaptcha\\' => 10,
+        ),
         'M' => 
         array (
             'Monolog\\' => 8,
@@ -25,6 +29,10 @@ class ComposerStaticInit91710c9e1b6c8789ad2c94542019b00e
         'VisualAppeal\\' => 
         array (
             0 => __DIR__ . '/..' . '/visualappeal/php-auto-update/src',
+        ),
+        'ReCaptcha\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/google/recaptcha/src/ReCaptcha',
         ),
         'Monolog\\' => 
         array (
@@ -79,6 +87,7 @@ class ComposerStaticInit91710c9e1b6c8789ad2c94542019b00e
         'Smarty_CacheResource_Custom' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_cacheresource_custom.php',
         'Smarty_CacheResource_KeyValueStore' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_cacheresource_keyvaluestore.php',
         'Smarty_Data' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_data.php',
+        'Smarty_Internal_Block' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_block.php',
         'Smarty_Internal_CacheResource_File' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_cacheresource_file.php',
         'Smarty_Internal_CompileBase' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_compilebase.php',
         'Smarty_Internal_Compile_Append' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_compile_append.php',
@@ -110,6 +119,7 @@ class ComposerStaticInit91710c9e1b6c8789ad2c94542019b00e
         'Smarty_Internal_Compile_Include_Php' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_compile_include_php.php',
         'Smarty_Internal_Compile_Insert' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_compile_insert.php',
         'Smarty_Internal_Compile_Ldelim' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_compile_ldelim.php',
+        'Smarty_Internal_Compile_Make_Nocache' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_compile_make_nocache.php',
         'Smarty_Internal_Compile_Nocache' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_compile_nocache.php',
         'Smarty_Internal_Compile_Nocacheclose' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_compile_nocache.php',
         'Smarty_Internal_Compile_Private_Block_Plugin' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_compile_private_block_plugin.php',
@@ -159,6 +169,7 @@ class ComposerStaticInit91710c9e1b6c8789ad2c94542019b00e
         'Smarty_Internal_Method_GetConfigVars' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_method_getconfigvars.php',
         'Smarty_Internal_Method_GetDebugTemplate' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_method_getdebugtemplate.php',
         'Smarty_Internal_Method_GetDefaultModifiers' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_method_getdefaultmodifiers.php',
+        'Smarty_Internal_Method_GetGlobal' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_method_getglobal.php',
         'Smarty_Internal_Method_GetRegisteredObject' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_method_getregisteredobject.php',
         'Smarty_Internal_Method_GetStreamVariable' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_method_getstreamvariable.php',
         'Smarty_Internal_Method_GetTags' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_method_gettags.php',
@@ -200,18 +211,16 @@ class ComposerStaticInit91710c9e1b6c8789ad2c94542019b00e
         'Smarty_Internal_Resource_Stream' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_resource_stream.php',
         'Smarty_Internal_Resource_String' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_resource_string.php',
         'Smarty_Internal_Runtime_CacheModify' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_runtime_cachemodify.php',
+        'Smarty_Internal_Runtime_Capture' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_runtime_capture.php',
         'Smarty_Internal_Runtime_CodeFrame' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_runtime_codeframe.php',
         'Smarty_Internal_Runtime_FilterHandler' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_runtime_filterhandler.php',
         'Smarty_Internal_Runtime_Foreach' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_runtime_foreach.php',
         'Smarty_Internal_Runtime_GetIncludePath' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_runtime_getincludepath.php',
-        'Smarty_Internal_Runtime_Hhvm' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_runtime_hhvm.php',
         'Smarty_Internal_Runtime_Inheritance' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_runtime_inheritance.php',
-        'Smarty_Internal_Runtime_SubTemplate' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_runtime_subtemplate.php',
+        'Smarty_Internal_Runtime_Make_Nocache' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_runtime_make_nocache.php',
         'Smarty_Internal_Runtime_TplFunction' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_runtime_tplfunction.php',
         'Smarty_Internal_Runtime_UpdateCache' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_runtime_updatecache.php',
         'Smarty_Internal_Runtime_UpdateScope' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_runtime_updatescope.php',
-        'Smarty_Internal_Runtime_ValidateCompiled' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_runtime_validatecompiled.php',
-        'Smarty_Internal_Runtime_Var' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_runtime_var.php',
         'Smarty_Internal_Runtime_WriteFile' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_runtime_writefile.php',
         'Smarty_Internal_SmartyTemplateCompiler' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_smartytemplatecompiler.php',
         'Smarty_Internal_Template' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_template.php',

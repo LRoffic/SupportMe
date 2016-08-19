@@ -35,7 +35,6 @@ if(!$config['connexion_mandatory'] && !$session->isLogged())
 $newTicket->add($lang['newTicket']['subject'], "text")
 ->name("subject")
 ->inputClass("form-control")
-->validator("specialchars()", $lang["error"]['error_specialcars'])
 ->autofocus();
 
 /* category input */
@@ -56,8 +55,7 @@ foreach ($getCategory as $category) {
 $newTicket->add($lang['newTicket']['message'], "textarea")
 	->name("message")
 	->inputClass("form-control")
-	->rows(10)->cols(20)
-	->validator("specialchars()", $lang["error"]['error_specialcars']);
+	->rows(10)->cols(20);
 
 //recaptcha input
 if(Recaptcha())

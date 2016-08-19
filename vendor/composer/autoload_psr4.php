@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'VisualAppeal\\' => array($vendorDir . '/visualappeal/php-auto-update/src'),
+    'ReCaptcha\\' => array($vendorDir . '/google/recaptcha/src/ReCaptcha'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
     'Desarrolla2\\Cache\\' => array($vendorDir . '/desarrolla2/cache/src'),
 );

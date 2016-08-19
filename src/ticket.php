@@ -46,4 +46,7 @@ if(!empty($_COOKIE['CREATE_TICKET']) && $_COOKIE['CREATE_TICKET'] == $ticket->id
 include_once "forms/comment.php";
 $tpl->assign("comment", $comment);
 
+$getComments = ORM::for_table("comments")->where("ticket_id", $ticket->id)->order_by_desc("id")->find_many();
+$tpl->assign("getComments", $getComments);
+
 $tpl->display("ticket.tpl");
