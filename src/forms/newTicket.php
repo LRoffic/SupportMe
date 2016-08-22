@@ -59,7 +59,7 @@ $newTicket->add($lang['newTicket']['message'], "textarea")
 
 //recaptcha input
 if(Recaptcha())
-	$newTicket->add($lang['newTicket']['captcha'], "recaptcha")->name($config['recaptcha_public_key']);
+	$newTicket->add($lang['newTicket']['captcha'], "recaptcha")->name("g-recaptcha-response")->value($config['recaptcha_public_key'])->validator("testCaptcha()", "ReCaptcha");
 
 hook_filter("newTicket", $newTicket);
 

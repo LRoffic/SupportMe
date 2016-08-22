@@ -82,7 +82,7 @@ $register->add($lang["connexion"]["confirme_password"], "password")->name("verif
 hook_filter("register", $register);
 
 if(Recaptcha())
-	$newTicket->add($lang['newTicket']['captcha'], "recaptcha")->name($config['recaptcha_public_key']);
+	$register->add($lang['login']['captcha'], "recaptcha")->name("g-recaptcha-response")->value($config['recaptcha_public_key'])->validator("testCaptcha()", "ReCaptcha");
 
 $register->submit($lang['login']['login'])->submitStyle('.btn btn-info btn-block btn-lg');
 

@@ -703,7 +703,7 @@ class FormBuilder {
 
 		//Recaptcha inputs
 		if($value['type'] == 'recaptcha'){
-			$this->form.= '<div class="g-recaptcha" data-sitekey="'.$value['name'].'"></div>'."\r\n";
+			$this->form.= '<div class="g-recaptcha" data-sitekey="'.$value['value'].'"></div>'."\r\n";
 		}
 
 		// Hidden inputs
