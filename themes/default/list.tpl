@@ -27,18 +27,21 @@
 							</thead>
 							<tbody>
 								{foreach from=$Tickets item=t}
-									<tr>
-										<td>{$t.id}</td>
-										<td>{$t.subject|escape: "htmlall"}</td>
-										<td>{text_replace(\utilphp\util::safe_truncate($t.message, 50))}</td>
-										<td>{date($lang.config.dateformat, $t.date_receive)}</td>
-										<td>{date($lang.config.dateformat, $t.date_last_action)}</td>
-										<td>{getStatus($t.status_id)}</td>
-										{assign var="attribute" value=User::getByID($t.attribute)}
-										<td>{if !empty($attribute.username)}{$attribute.username|escape:'htmlall'}{else}{$lang.list.notAttribued}{/if}</td>
-										<td>{getCategory($t.category_id)}</td>
-										<td><a href="{getTicketURL($t.id)}" class="btn btn-default">{$lang.list.see}</a></td>
-									</tr>
+									{assign var="status" value=getStatus($t.status_id)}
+									{if !$status.close}
+										<tr>
+											<td>{$t.id}</td>
+											<td>{$t.subject|escape: "htmlall"}</td>
+											<td>{text_replace(\utilphp\util::safe_truncate($t.message, 50))}</td>
+											<td><span class="date" data-ago="{$t.date_receive}">{date($lang.config.dateformat, $t.date_receive)}</span></td>
+											<td><span class="date" data-ago="{$t.date_last_action}">{date($lang.config.dateformat, $t.date_last_action)}</span></td>
+											<td>{$status.name}</td>
+											{assign var="attribute" value=User::getByID($t.attribute)}
+											<td>{if !empty($attribute.username)}{$attribute.username|escape:'htmlall'}{else}{$lang.list.notAttribued}{/if}</td>
+											<td>{getCategory($t.category_id)}</td>
+											<td><a href="{getTicketURL($t.id)}" class="btn btn-default">{$lang.list.see}</a></td>
+										</tr>
+									{/if}
 								{/foreach}
 							</tbody>
 						</table>

@@ -1,10 +1,10 @@
 {
 	"require": {
-		"j4mie/idiorm": "*",
-		"smarty/smarty": "*",
-		"altorouter/altorouter": "*",
-		"brandonwamboldt/utilphp": "*",
-		"visualappeal/php-auto-update": "*",
+		"j4mie/idiorm": "1.5.1",
+		"smarty/smarty": "3.1.30",
+		"altorouter/altorouter": "1.2.0",
+		"brandonwamboldt/utilphp": "1.1.0",
+		"visualappeal/php-auto-update": "0.9.2",
 		"google/recaptcha": "~1.1"
 	}
 }

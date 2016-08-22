@@ -54,7 +54,7 @@
 
 	"ticket": {
 		"createSuccess": "Votre ticket a été envoyé, quelqu'un y répondras bientôt !",
-		"status": "Status :",
+		"status": "Statut :",
 		"attribute": "Attribution :",
 		"notAttribued": "Pas encore attribué",
 		"category": "Catégorie :",
@@ -69,7 +69,9 @@
 		"noComment": "Aucun commentaire actuellement",
 		"SuccessComment": "Commentaires envoyé !",
 		"you": "Vous",
-		"sendon": "envoyé le "
+		"sendon": "envoyé le ",
+		"updateStatus": "Modifier le statut :",
+		"Send": "Ok"
 	},
 
 	"list":{
@@ -83,7 +85,7 @@
 		"date_receive": "Date de création",
 		"date_last_action": "Dernière action",
 		"option": "Options",
-		"status": "Status",
+		"status": "Statut",
 		"attribute": "Atribution",
 		"notAttribued": "Pas encore attribué",
 		"category": "Catégorie",
@@ -98,7 +100,7 @@
 
 	"status":{
 		"waiting": "En attente",
-		"reply": "Répondus",
+		"reply": "Répondu",
 		"closed": "Fermer"
 	},
 
@@ -145,7 +147,18 @@
 	},
 
 	"js": {
-		"ago": "posté il y a",
-		"in": "posté dans"
+		"ago": "il y a ",
+		"in": "dans ",
+		"agoOneMinute": "moins d'une minute",
+		"aboutAMinute": "environ une minute",
+		"minute": "minutes",
+		"aboutAnHour": "environ une heure",
+		"hour": "heures",
+		"aboutADay":"environ un jour",
+		"day": "jours",
+		"aboutAMonth": "environ un mois",
+		"month": "mois",
+		"aboutAYear": "environ un an",
+		"year": "ans"
 	}
 }

@@ -13,26 +13,41 @@
 				<div class="well">
 					<h2>{$ticket.subject|escape:'htmlall'}</h2>
 					<p>
-						<b>{$lang.ticket.status}</b> <span id="ticketStatus">{getStatus($ticket.status_id)}</span><br />
+						{assign var="status" value=getStatus($ticket.status_id)}
+						<b>{$lang.ticket.status}</b> <span id="ticketStatus">{$status.name}</span><br />
 						{assign var="attribute" value=User::getByID($ticket.attribute)}
 						<b>{$lang.ticket.attribute}</b> {if !empty($attribute.username)}{$attribute.username|escape:'htmlall'}{else}{$lang.ticket.notAttribued}{/if}<br />
 						<b>{$lang.ticket.category}</b> {getCategory($ticket.category_id)}<br />
-						<b>{$lang.ticket.date_receive}</b> {date($lang.config.dateformat, $ticket.date_receive)}<br />
-						<b>{$lang.ticket.date_last_action}</b> <span id="ticketLastAction">{date('d/m/Y H:i', $ticket.date_last_action)}</span><br />
+						<b>{$lang.ticket.date_receive}</b> <span class="date" data-ago="{$ticket.date_receive}">{date($lang.config.dateformat, $ticket.date_receive)}</span><br />
+						<b>{$lang.ticket.date_last_action}</b> <span class="date LastAction" data-ago="{$ticket.date_last_action}">{date($lang.config.dateformat, $ticket.date_last_action)}</span><br />
 						{hook_action('ticket_info')}
 						<b>{$lang.ticket.message}</b>
 					</p>
 					<div class="well">
 						<p>{text_replace($ticket.message)}</p>
 					</div>
-					<div class="text-right">
+					<div class="pull-right">
 						<a href="{routes('list')}" class="btn btn-default">
 							<span class="glyphicon glyphicon-list" aria-hidden="true"></span> {$lang.ticket.backToList}
 						</a>
-						{if $ticket.status_id neq "3"}
-							<a href="#" class="btn btn-info">
-								<span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span> {$lang.ticket.close}
-							</a>
+					</div>
+					<div class="text-left">
+						{if !$status.close}
+							{assign var="AllStatus" value=getStatusArray()}
+							<form action="" method="POST" class="form-inline">
+								<label>{$lang.ticket.updateStatus}</label>
+								<select name="newstatus" class="form-control">
+									<option value="{$ticket.status_id}">{$status.name}</option>
+									{assign var="i" value=0}
+									{foreach from=$AllStatus item=OptionStatus}
+										{if $i neq $ticket.status_id}
+											<option value="{$i}">{$OptionStatus.name}</option>
+										{/if}
+										{$i++}
+									{/foreach}
+								</select>
+								<input type="submit" class="btn btn-info" value="{$lang.ticket.Send}">
+							</form>
 						{/if}
 					</div>
 				</div>
@@ -42,10 +57,12 @@
 						{$retour}
 					</div>
 				{/if}
-				<div class="well">
-					<h3>{$lang.ticket.addComment}</h3>
-					{$comment->build()}
-				</div>
+				{if !$status.close}
+					<div class="well">
+						<h3>{$lang.ticket.addComment}</h3>
+						{$comment->build()}
+					</div>
+				{/if}
 				<h3>{$lang.ticket.comment}</h3>
 				<div class="comments">
 					{if empty($getComments)}

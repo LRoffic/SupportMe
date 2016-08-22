@@ -8,47 +8,47 @@ $(function (){
   let terms = [{
     time: 45,
     divide: 60,
-    text: 'moins d\'une minute'
+    text: lang.js.agoOneMinute
   }, {
     time: 90,
     divide: 60,
-    text: 'environ une minute'
+    text: lang.js.aboutAMinute
   }, {
     time: 45 * 60,
     divide: 60,
-    text: '%d minutes'
+    text: '%d ' + lang.js.minute
   }, {
     time: 90 * 60,
     divide: 60 * 60,
-    text: 'environ une heure'
+    text: lang.js.aboutAnHour
   }, {
     time: 24 * 60 * 60,
     divide: 60 * 60,
-    text: '%d heures'
+    text: '%d ' + lang.js.hour
   }, {
     time: 42 * 60 * 60,
     divide: 24 * 60 * 60,
-    text: 'environ un jour'
+    text: lang.js.aboutADay
   }, {
     time: 30 * 24 * 60 * 60,
     divide: 24 * 60 * 60,
-    text: '%d jours'
+    text: '%d ' + lang.js.day
   }, {
     time: 45 * 24 * 60 * 60,
     divide: 24 * 60 * 60 * 30,
-    text: 'environ un mois'
+    text: lang.js.aboutAMonth
   }, {
     time: 365 * 24 * 60 * 60,
     divide: 24 * 60 * 60 * 30,
-    text: '%d mois'
+    text: '%d ' + lang.js.month
   }, {
     time: 365 * 1.5 * 24 * 60 * 60,
     divide: 24 * 60 * 60 * 365,
-    text: 'environ un an'
+    text: lang.js.aboutAYear
   }, {
     time: Infinity,
     divide: 24 * 60 * 60 * 365,
-    text: '%d ans'
+    text: '%d ' + lang.js.year
   }]
 
   document.querySelectorAll('[data-ago]').forEach(function (node) {
@@ -57,7 +57,7 @@ $(function (){
 
     function setText () {
       let secondes = Math.floor((new Date()).getTime() / 1000 - date)
-      let prefix = secondes > 0 ? 'Il y a ' : 'Dans '
+      let prefix = secondes > 0 ? lang.js.ago : lang.js.in
       let term = null
       secondes = Math.abs(secondes)
       for (term of terms) {

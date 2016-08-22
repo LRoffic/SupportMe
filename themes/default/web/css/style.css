@@ -68,3 +68,32 @@ input{
 	margin-top: 0px;
 	margin-bottom: 0px;
 }
+
+$progress-width: 400px;
+$markee-width: 20%;
+
+.progress {
+  width: $progress-width;
+  height: 7px;
+  background-color: #DDD;
+  position: relative;
+  
+  .markee {
+    position: absolute;
+    background-color: limegreen;
+    width: $markee-width;
+    height: 100%;
+    border-radius: inherit;
+    animation: markee-progress 3s linear infinite alternate;
+  }
+ }
+ 
+ @keyframes markee-progress {
+  from {
+    left: 0%;
+  }
+
+  to {
+    left: 100% - $markee-width;
+  }
+}

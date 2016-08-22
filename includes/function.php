@@ -81,11 +81,11 @@ function getTicketURL($id){
 function getStatusArray(){
 	global $lang;
 
-	$status_array = array(
-		"1"=>$lang['status']['waiting'],
-		"2"=>$lang['status']['reply'],
-		"3"=>$lang['status']['closed']
-	);
+	$status_array = [
+		array("name"=>$lang['status']['waiting'], "close"=> false),
+		array("name"=>$lang['status']['reply'], "close"=> false),
+		array("name"=>$lang['status']['closed'], "close"=> true)
+	];
 
 	$status_array = hook_filter("status_array", $status_array);
 
@@ -98,7 +98,7 @@ function getStatus($id){
 	if(array_key_exists($id, $status_array))
 		return $status_array[$id];
 
-	return $status_array['1'];
+	return $status_array[0];
 }
 
 function getCategory($id){

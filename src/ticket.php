@@ -32,6 +32,11 @@ if(empty($ticket)){
 	exit();
 }
 
+if(isset($_POST["newstatus"])){
+	$ticket->status_id = intval($_POST['newstatus']);
+	$ticket->save();
+}
+
 hook_filter("ticket", $ticket);
 
 $tpl->assign("ticket", $ticket);
