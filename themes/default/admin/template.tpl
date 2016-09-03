@@ -59,5 +59,12 @@
 		<script src="//code.jquery.com/jquery.js"></script>
 		<!-- Bootstrap JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		
+		<script type="text/javascript" src="{$smarty.const.FOLDER}/themes/default/web/js/jquery.tablesorter.min.js"></script>
+
+		<script type="text/json" id="lang">{json_encode($lang)}</script>
+		<script type="text/javascript" src="{$smarty.const.FOLDER}/themes/default/web/js/js.js"></script>
+		<script type="text/javascript" src="{$smarty.const.FOLDER}/themes/default/web/js/ago.js"></script>
+		{hook_action('javascript')}
 	</body>
 </html>

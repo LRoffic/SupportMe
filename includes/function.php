@@ -123,6 +123,8 @@ function text_replace($string){
 
 function testCaptcha(){
 	global $config;
+	global $tpl;
+	global $lang;
 
 	$privatekey = $config->recaptcha_private_key;//clé privé recaptcha
 
@@ -134,6 +136,7 @@ function testCaptcha(){
 
 	$resp = $recaptcha->verify($gRecaptchaResponse, $remoteIp);
 	if (!$resp->isSuccess()) {
+		$tpl->assign("error", $lang['error']["Recaptcha"]);
 		return $resp->getErrorCodes();
 	}
 

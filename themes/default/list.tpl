@@ -29,6 +29,7 @@
 								{foreach from=$Tickets item=t}
 									{assign var="status" value=getStatus($t.status_id)}
 									{if !$status.close}
+										{assign var="attribute" value=User::getByID($t.attribute)}
 										<tr>
 											<td>{$t.id}</td>
 											<td>{$t.subject|escape: "htmlall"}</td>
@@ -36,7 +37,6 @@
 											<td><span class="date" data-ago="{$t.date_receive}">{date($lang.config.dateformat, $t.date_receive)}</span></td>
 											<td><span class="date" data-ago="{$t.date_last_action}">{date($lang.config.dateformat, $t.date_last_action)}</span></td>
 											<td>{$status.name}</td>
-											{assign var="attribute" value=User::getByID($t.attribute)}
 											<td>{if !empty($attribute.username)}{$attribute.username|escape:'htmlall'}{else}{$lang.list.notAttribued}{/if}</td>
 											<td>{getCategory($t.category_id)}</td>
 											<td><a href="{getTicketURL($t.id)}" class="btn btn-default">{$lang.list.see}</a></td>

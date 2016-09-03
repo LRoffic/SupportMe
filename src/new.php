@@ -49,7 +49,7 @@ if($newTicket->sent()){
 
 				$email->save();
 
-				$session->setUser($email->id);
+				$session->setUser(new User($email));
 
 				$lang['email']['createPass'] = str_replace("%email_password%", $pass, $lang['email']["createPass"]);
 

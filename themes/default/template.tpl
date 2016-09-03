@@ -10,7 +10,7 @@
 
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="{$smarty.const.FOLDER}/themes/default/web/css/bootstrap-flat.min.css">
 		<link rel="stylesheet" type="text/css" href="{$smarty.const.FOLDER}/themes/default/web/css/bootstrap-flat-extras.min.css">
 		<link rel="stylesheet" type="text/css" href="{$smarty.const.FOLDER}/themes/default/web/css/style.css">
@@ -91,8 +91,12 @@
 		<script type="text/javascript" src="//code.jquery.com/jquery.min.js"></script>
 		<!-- Bootstrap JavaScript -->
 		<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		
+		<script type="text/javascript" src="{$smarty.const.FOLDER}/themes/default/web/js/jquery.tablesorter.min.js"></script>
+
 		<script type="text/json" id="lang">{json_encode($lang)}</script>
 		<script type="text/javascript" src="{$smarty.const.FOLDER}/themes/default/web/js/js.js"></script>
 		<script type="text/javascript" src="{$smarty.const.FOLDER}/themes/default/web/js/ago.js"></script>
+		{hook_action('javascript')}
 	</body>
 </html>

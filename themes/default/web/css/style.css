@@ -97,3 +97,22 @@ $markee-width: 20%;
     left: 100% - $markee-width;
   }
 }
+
+th {
+	cursor: pointer;
+}
+
+th.headerSortUp:before {
+	content: '\f0dd';
+	font-family: FontAwesome;
+}
+
+th.headerSortDown:before {
+	content: '\f0de';
+	font-family: FontAwesome;
+}
+
+th.header:not(.headerSortDown):not(.headerSortUp):before{
+	content: '\f0dc';
+	font-family: FontAwesome;
+}

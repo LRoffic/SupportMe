@@ -39,7 +39,7 @@ if($login->sent()){
 					global $router;
 
 					$session->setUser($getUser);
-					$router->map("GET", "/admin/home", "admin/home.php", "admin");
+					$router->map("GET", "/admin/", "admin/home.php", "admin");
 				}
 
 				if(!empty($_POST['keep']))

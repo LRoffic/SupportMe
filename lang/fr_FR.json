@@ -125,7 +125,8 @@
 		"error_category": "Catégorie inconnue !",
 		"empty_user": "Utilisateur inconnus",
 		"invalide_password": "Mot de passe incorrect !",
-		"registered": "Un compte avec ces identifiant(s) existe déjà !"
+		"registered": "Un compte avec ces identifiant(s) existe déjà !",
+		"Recaptcha": "Captcha invalide !"
 	},
 
 	"email": {
@@ -136,7 +137,27 @@
 	"admin": {
 		"notCheckUpdate": "Impossible de vérifier la mise à jours !",
 		"NewVersionAvailable": "Une Nouvelle version de Support Me est disponible !",
-		"update": "Mettre à jour"
+		"update": "Mettre à jour",
+		"home": "Accueil",
+		"closed_ticket": "Ticket fermés",
+		"aside_update": "Mise à jours",
+		"plugins": "Plugins",
+		"theme": "Thèmes",
+		"language": "Langues",
+		"config":"Configuration",
+		"LastRefresh": "Dernière actualisation :",
+		"TicketList": "Liste des tickets",
+		"id": "#",
+		"author": "Auteur",
+		"subject": "Sujet",
+		"resume": "Résumé",
+		"category": "Catégorie",
+		"status": "Statut",
+		"date_receive": "Date de récéption",
+		"date_last_action": "Dernière action",
+		"attribute": "Atribution",
+		"option": "Options",
+		"noTicket": "Aucun ticket pour le moment"
 	},
 
 	"update": {

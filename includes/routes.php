@@ -32,8 +32,9 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 		$permission = User::getPermissions($info->rank);
 
 		if($permission->access_admin){
-			$router->map("GET", "/admin/home", "admin/home.php", "admin");
+			$router->map("GET", "/admin/", "admin/home.php", "admin");
 			$router->map("GET", "/admin/update", "admin/update.php", "update");
+			$router->map("GET", "/admin/closed/", "admin/closed.php", "admin_close_ticket");
 		}
 	}
 

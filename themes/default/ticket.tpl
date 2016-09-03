@@ -32,7 +32,7 @@
 						</a>
 					</div>
 					<div class="text-left">
-						{if !$status.close}
+						{if !$status.close || $perm.reopen_ticket}
 							{assign var="AllStatus" value=getStatusArray()}
 							<form action="" method="POST" class="form-inline">
 								<label>{$lang.ticket.updateStatus}</label>
@@ -57,7 +57,7 @@
 						{$retour}
 					</div>
 				{/if}
-				{if !$status.close}
+				{if !$status.close || $perm.comment_closed_ticket}
 					<div class="well">
 						<h3>{$lang.ticket.addComment}</h3>
 						{$comment->build()}

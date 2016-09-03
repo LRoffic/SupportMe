@@ -32,9 +32,17 @@ if(empty($ticket)){
 	exit();
 }
 
+if($_SESSION['id'] != $ticket->autor && !$permission->view_all_ticket && $_SESSION['id'] != $ticket['attribute']){
+	include_once "404.php";
+	exit();
+}
+
 if(isset($_POST["newstatus"])){
-	$ticket->status_id = intval($_POST['newstatus']);
-	$ticket->save();
+	$actual_status = getStatus($ticket->status_id);
+	if(!$actual_status['close'] || $permission->reopen_ticket){
+		$ticket->status_id = intval($_POST['newstatus']);
+		$ticket->save();
+	}
 }
 
 hook_filter("ticket", $ticket);

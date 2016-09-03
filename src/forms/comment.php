@@ -38,20 +38,24 @@ if($comment->sent()){
 			if(!empty($match["params"]["id"])){
 				$ticket = ORM::for_table("ticket")->find_one($match["params"]["id"]);
 				if(!empty($ticket)){
-					$newcomment = ORM::for_table("comments")->create();
-					$newcomment->autor_id = $_SESSION['id'];
-					$newcomment->ticket_id = $ticket->id;
-					$newcomment->date_reply = time();
-					$newcomment->comment = $_POST["comment"];
-					$newcomment->save();
+					$status = getStatus($ticket->status_id);
 
-					$ticket->date_last_action = time();
-					$ticket->status_id = 1;
-					$ticket->save();
+					if(!$status['close'] || $permission->comment_closed_ticket){
+						$newcomment = ORM::for_table("comments")->create();
+						$newcomment->autor_id = $_SESSION['id'];
+						$newcomment->ticket_id = $ticket->id;
+						$newcomment->date_reply = time();
+						$newcomment->comment = $_POST["comment"];
+						$newcomment->save();
 
-					$comment->clearFields();
+						$ticket->date_last_action = time();
+						$ticket->status_id = 1;
+						$ticket->save();
 
-					$tpl->assign("retour", $lang['ticket']['SuccessComment']);
+						$comment->clearFields();
+
+						$tpl->assign("retour", $lang['ticket']['SuccessComment']);
+					}
 				}
 			}
 		}
