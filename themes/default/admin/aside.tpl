@@ -5,7 +5,7 @@
 		<a href="{routes('update')}" class="list-group-item">{$lang.admin.aside_update}</a>
 		<a href="" class="list-group-item">{$lang.admin.plugins}</a>
 		<a href="" class="list-group-item">{$lang.admin.theme}</a>
-		<a href="" class="list-group-item">{$lang.admin.language}</a>
+		<a href="{routes('admin_langs')}" class="list-group-item">{$lang.admin.language}</a>
 		<a href="" class="list-group-item">{$lang.admin.config}</a>
 	</div>
 </div>

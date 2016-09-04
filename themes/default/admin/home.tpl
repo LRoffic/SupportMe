@@ -6,7 +6,7 @@
 			<div class="pull-right">
 				<a href="">
 					<span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
-				</a> {$lang.admin.LastRefresh} <span class="date" data-ago="{time()}">{date('H:m:s', time())}</span>
+				</a> {$lang.admin.LastRefresh} <span class="date update" data-ago="{time()}">{date('H:m:s', time())}</span>
 			</div>
 			<div class="text-left"><h3>{$lang.admin.TicketList}</h3></div>
 			<table class="table table-hover table-striped table-responive table-condensed sorter">
@@ -30,7 +30,7 @@
 							{assign var="status" value=getStatus($ticket.status_id)}
 							{assign var="attribute" value=User::getByID($ticket.attribute)}
 							{assign var="author" value=User::getByID($ticket.autor)}
-							{if !$status.close}
+							{if $match eq "admin" && !$status.close || $match eq "admin_close_ticket" && $status.close}
 								<tr class="ticket" id="{$ticket.id}">
 									<td>{$ticket.id}</td>
 									<td>{if !empty($author.username)}{$author.username|escape:"htmlall"}{else}{$author.email|escape:"htmlall"}{/if}</td>

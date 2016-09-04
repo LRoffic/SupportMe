@@ -26,6 +26,7 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 	$router->map("GET|POST", "/list", "list.php", "list");
 	$router->map("GET|POST", "/connexion", "connexion.php", "connexion");
 	$router->map("GET", "/logout", "logout.php", "logout");
+	$router->map("GET", "/404", "404.php", "404");
 
 	if($session->isLogged()){
 		$info = $session->getUser();
@@ -34,7 +35,8 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 		if($permission->access_admin){
 			$router->map("GET", "/admin/", "admin/home.php", "admin");
 			$router->map("GET", "/admin/update", "admin/update.php", "update");
-			$router->map("GET", "/admin/closed/", "admin/closed.php", "admin_close_ticket");
+			$router->map("GET", "/admin/closed", "admin/home.php", "admin_close_ticket");
+			$router->map("GET", "/admin/langs", "admin/langs.php", "admin_langs");
 		}
 	}
 

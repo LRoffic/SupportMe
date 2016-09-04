@@ -157,7 +157,10 @@
 		"date_last_action": "Dernière action",
 		"attribute": "Atribution",
 		"option": "Options",
-		"noTicket": "Aucun ticket pour le moment"
+		"noTicket": "Aucun ticket pour le moment",
+		"lang_name": "Nom",
+		"lang_local": "Nom locale",
+		"lang_version": "Version"
 	},
 
 	"update": {

@@ -43,10 +43,12 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 			if($file != '.' && $file != '..' && !is_dir($dirname.$file))
 			{
 				$get_content = file_get_contents($dirname.$file);
-				$get_name = json_decode($get_content, true);
-				$name = $get_name['config']['langue_name'];
+				$get_config = json_decode($get_content, true);
+				$name = $get_config['config']['langue_name'];
 				$filename = explode(".", $file);
-				$fich[] = array("filename"=>$filename[0], "name"=>$name);
+				$version = $get_config['config']['version'];
+				$host = $get_config['config']['host'];
+				$fich[] = array("filename"=>$filename[0], "name"=>$name, "version"=>$version, "host"=>$host);
 			}
 		}
 		

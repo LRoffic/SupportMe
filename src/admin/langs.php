@@ -17,15 +17,30 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 include_once "menu.php";
 
-$info = $session->getUser();
+$langages = getlangs();
+$tpl->assign("langages", $langages);
 
-if(!$permission->view_all_ticket)
-	$ticket = ORM::for_table("ticket")->where_any_is(array(array("attribute"=>"0"), array("attribute"=>$info->id)))->order_by_desc("id")->find_many();
-else
-	$ticket = ORM::for_table("ticket")->order_by_desc("id")->find_many();
+if(!empty($_GET['use'])){
+	verif_token();
 
-$tpl->assign("tickets", $ticket);
+	if(file_exists("lang/".$_GET['use'].".json")){
+		$config->lang = $_GET['use'];
+		$config->save();
 
-$tpl->assign("match", $match['name']);
+		header("Location: ". routes("admin_langs"));
+	}
+}
 
-$tpl->display("admin/home.tpl");
+if(!empty($_GET['remove'])){
+	verif_token();
+
+	if(file_exists("lang/".$_GET['remove'].".json")){
+		if($_GET['remove'] != "fr_FR"){
+			unlink("lang/". $_GET['remove'].".json");
+		}
+
+		header("Location: ". routes("admin_langs"));
+	}
+}
+
+$tpl->display("admin/langs.tpl");
