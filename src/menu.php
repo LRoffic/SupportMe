@@ -40,4 +40,5 @@ if($session->isLogged()){
 	$perm = User::getPermissions($info->rank);
 
 	$tpl->assign("perm", $perm);
+	$tpl->assign('token', $_SESSION['token']);
 }

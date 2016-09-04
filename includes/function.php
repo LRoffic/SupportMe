@@ -142,3 +142,10 @@ function testCaptcha(){
 
 	return true;
 }
+
+function verif_token(){
+	if(empty($_GET['token']) || $_GET['token'] != $_SESSION['token']){
+		header("Location: ". routes("404"));
+		exit();
+	}
+}

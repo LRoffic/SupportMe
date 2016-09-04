@@ -17,9 +17,11 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 include_once "menu.php";
 
-hook_action("logout");
+verif_token();
 
-if($session->isLogged())
+
+if($session->isLogged()){
+	hook_action("logout");
 	$session->destroy();
-
-header("Location: ".routes("home"));
+	header("Location: ".routes("home"));
+}

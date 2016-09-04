@@ -57,7 +57,7 @@
 								{if $perm.access_admin}
 									<li><a href="{routes('admin')}"><span class="glyphicon glyphicon-user"></span> Administration</a></li>
 								{/if}
-								<li><a href="{routes('logout')}"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> {$lang.navbar.logout}</a></li>
+								<li><a href="{routes('logout')}?token={$token}"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> {$lang.navbar.logout}</a></li>
 								
 							</ul>
 						</li>
