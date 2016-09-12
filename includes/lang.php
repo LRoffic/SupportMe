@@ -57,10 +57,24 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 		return $fich;
 	}
 
-	function newlang($lang){
+	function newlang($lang = array()){
 		$newlang = file_get_contents("http://supportme.dzv.me/lang/".VERSION."/".$lang.".json");
 		file_put_contents("lang/".$lang.".json", $newlang);
 		return $newlang;
+	}
+
+	function complete_lang($lang, $deft){
+		foreach ($deft as $key=>$val) {
+			if(is_array($deft[$key])) {
+				
+				$lang[$key] = complete_lang($lang[$key], $deft[$key]);
+			}
+			else if(!array_key_exists($key, $lang)) {
+				$lang[$key] = $deft[$key];
+			}
+	 
+		}
+		return $lang;
 	}
 
 	function lang($lang){
@@ -81,7 +95,10 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 			}
 		}
 
-		$lang = json_decode($lang, true); 
+		$lang = json_decode($lang, true);
+
+		$lang = @complete_lang($lang, json_decode(file_get_contents("lang/".default_language.".json"), true));
+
 		$lang = replace_lang($lang);
 
 		$lang = hook_filter("lang", $lang);

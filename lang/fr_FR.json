@@ -2,7 +2,7 @@
 	"config": {
 		"langue_name":"Français",
 		"version":"1",
-		"host":"http://supportme.dv.me/lang/3.0/fr_FR.json",
+		"host":"http://supportme.dzv.me/lang/3.0/fr_FR.json",
 		"dateformat": "d/m/Y H:i"
 	},
 
@@ -158,9 +158,31 @@
 		"attribute": "Atribution",
 		"option": "Options",
 		"noTicket": "Aucun ticket pour le moment",
+		"noplugin": "Aucun plugin pour le moment",
+		"lang_list": "Liste des langues",
 		"lang_name": "Nom",
 		"lang_local": "Nom locale",
-		"lang_version": "Version"
+		"lang_version": "Version",
+		"lang_use": "Utiliser",
+		"lang_remove": "Supprimer",
+		"lang_update": "Mettre à jour",
+		"plugin_list": "Liste des plugins",
+		"plugin_add": "Ajouter des plugins",
+		"plugin_name": "Nom:",
+		"plugin_author": "Auteur:",
+		"plugin_description": "Description:",
+		"plugin_version": "Version:",
+		"plugin_option": "Options :",
+		"plugin_info": "Infos",
+		"plugin_config": "Configuration",
+		"plugin_update": "Mettre à jours",
+		"plugin_remove": "Supprimer",
+		"plugin_update_setting": "Modifier les paramètres",
+		"plugin_update_success": "Paramètre modifié avec succès !",
+		"plugin_setting_of": "Paramètre de",
+		"plugin_back_to_plugin": "Retour aux plugins",
+		"yes": "Oui",
+		"no": "Non"
 	},
 
 	"update": {

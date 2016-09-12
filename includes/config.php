@@ -27,8 +27,9 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 		ini_set('error_reporting', E_ALL);
 	}
 
-	foreach( glob("plugins/*.php")  as $plugin) {
-		require_once($plugin);
+	foreach( glob("plugins/*.php")  as $plugin){
+		$name = str_replace(".php", "", str_replace("plugins/", "", $plugin));
+		$plugins[$name] = include $plugin;
 	}
 
 	hook_action('initialize');

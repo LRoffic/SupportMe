@@ -17,8 +17,23 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 include_once "menu.php";
 
-$langages = getlangs();
-$tpl->assign("langages", $langages);
+$languages = getlangs();
+$tpl->assign("languages", $languages);
+
+$needUpdate = array();
+
+foreach ($languages as $language) {
+	$file_headers = @get_headers($language['host']);
+	if(!empty($file_headers[0]) && $file_headers[0] != 'HTTP/1.1 404 Not Found') {
+		$newVersion = file_get_contents($language['host']);
+		$newVersion = json_decode($newVersion, true);
+		if($newVersion['config']['version'] > $language['version']){
+			$needUpdate[] = $language['filename'];
+		}
+	}
+}
+
+$tpl->assign('needUpdate', $needUpdate);
 
 if(!empty($_GET['use'])){
 	verif_token();
@@ -35,8 +50,31 @@ if(!empty($_GET['remove'])){
 	verif_token();
 
 	if(file_exists("lang/".$_GET['remove'].".json")){
-		if($_GET['remove'] != "fr_FR"){
+		if($_GET['remove'] != default_language){
 			unlink("lang/". $_GET['remove'].".json");
+		}
+
+
+		$config->lang = default_language;
+		$config->save();
+
+		header("Location: ". routes("admin_langs"));
+	}
+}
+
+if(!empty($_GET['update'])){
+	verif_token();
+
+	if(file_exists("lang/".$_GET['update'].".json")){
+		$get_host = file_get_contents("lang/".$_GET['update'].".json");
+		$get_host = json_decode($get_host, true);
+		$host = $get_host['config']['host'];
+
+		$file_headers = @get_headers($host);
+
+		if(!empty($file_headers[0]) && $file_headers[0] != 'HTTP/1.1 404 Not Found') {
+			$get_update = file_get_contents($host);
+			$update = file_put_contents("lang/".$_GET['update'].".json", $get_update);
 		}
 
 		header("Location: ". routes("admin_langs"));

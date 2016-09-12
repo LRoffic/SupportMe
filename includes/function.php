@@ -22,6 +22,12 @@ function routes($road){
 	return $router->generate($road);
 }
 
+function plugin($plugin){
+	global $router;
+
+	return $router->generate("admin_plugin_settings", array("name"=>$plugin));
+}
+
 function Recaptcha(){
 	global $config;
 

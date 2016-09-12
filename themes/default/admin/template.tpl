@@ -6,6 +6,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>{block name="title"}Administration{/block}</title>
 
+		<link rel="icon" href="{$smarty.const.FOLDER}/themes/default/web/img/Supportme.png" />
+
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -25,7 +27,7 @@
 			<div class="container">
 				<a class="navbar-brand" href="{routes('admin')}">{$config.site_name}</a>
 				<ul class="nav navbar-nav">
-					<li><a href="{routes('admin')}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> {$lang.navbar.home}</a></li>
+					<li {if  $match eq 'admin'}class="active"{/if}><a href="{routes('admin')}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> {$lang.navbar.home}</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="{routes('home')}"><span class="glyphicon glyphicon-road" aria-hidden="true"></span> {$lang.navbar.BackToHome}</a></li>
@@ -65,6 +67,7 @@
 		<script type="text/json" id="lang">{json_encode($lang)}</script>
 		<script type="text/javascript" src="{$smarty.const.FOLDER}/themes/default/web/js/js.js"></script>
 		<script type="text/javascript" src="{$smarty.const.FOLDER}/themes/default/web/js/ago.js"></script>
+		<script type="text/javascript" src="{$smarty.const.FOLDER}/themes/default/web/js/admin.js"></script>
 		{hook_action('javascript')}
 	</body>
 </html>

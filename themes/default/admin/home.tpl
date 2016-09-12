@@ -9,7 +9,7 @@
 				</a> {$lang.admin.LastRefresh} <span class="date update" data-ago="{time()}">{date('H:m:s', time())}</span>
 			</div>
 			<div class="text-left"><h3>{$lang.admin.TicketList}</h3></div>
-			<table class="table table-hover table-striped table-responive table-condensed sorter">
+			<table class="table table-bordered table-hover">
 				<thead>
 					<tr>
 						<th>{$lang.admin.id}</th>

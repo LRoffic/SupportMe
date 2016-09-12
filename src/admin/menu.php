@@ -34,4 +34,11 @@ if ($update->newVersionAvailable()) {
 $update->addLogHandler(new Monolog\Handler\StreamHandler(__DIR__ . '/update.log'));
 $update->setCache(new Desarrolla2\Cache\Adapter\File(__DIR__ . '/cache'), 3600);
 
+$info = $session->getUser();
+
+$perm = User::getPermissions($info->rank);
+
+$tpl->assign("perm", $perm);
 $tpl->assign("token", $_SESSION['token']);
+
+$tpl->assign("match", $match['name']);

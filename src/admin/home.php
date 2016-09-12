@@ -26,6 +26,4 @@ else
 
 $tpl->assign("tickets", $ticket);
 
-$tpl->assign("match", $match['name']);
-
 $tpl->display("admin/home.tpl");

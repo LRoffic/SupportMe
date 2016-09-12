@@ -24,3 +24,5 @@ define("_ROOT_", substr($_SERVER['DOCUMENT_ROOT'], 0, -1));
 define('_PATH_', dirname(__DIR__));
 define('FOLDER', dirname($_SERVER["PHP_SELF"]));
 define('_CTRL_', _PATH_. '/src/');
+
+define("default_language", "fr_FR");

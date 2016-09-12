@@ -36,7 +36,14 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 			$router->map("GET", "/admin/", "admin/home.php", "admin");
 			$router->map("GET", "/admin/update", "admin/update.php", "update");
 			$router->map("GET", "/admin/closed", "admin/home.php", "admin_close_ticket");
-			$router->map("GET", "/admin/langs", "admin/langs.php", "admin_langs");
+
+			if($permission->lang_gestion)
+				$router->map("GET", "/admin/langs", "admin/langs.php", "admin_langs");
+
+			if($permission->plugin_gestion){
+				$router->map("GET", "/admin/plugins", "admin/plugins.php", "admin_plugins");
+				$router->map("GET|POST", "/admin/plugins/settings/[*:name]", "admin/plugin_settings.php", "admin_plugin_settings");
+			}
 		}
 	}
 
