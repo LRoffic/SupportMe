@@ -41,11 +41,7 @@
 										{if !empty($plugin.website)}
 											<a href="{$plugin.website}" class="btn btn-info" target="_blank">{$lang.admin.plugin_info}</a>
 										{/if}
-										{if verif_installed_plugin($plugin.downloadURL)}
-											<a href="?install={$key}&token={$token}" class="btn btn-primary">{$lang.admin.plugin_install}</a>
-										{else}
-											<button class="btn btn-primary disabled">{$lang.admin.plugin_install}</button>
-										{/if}
+										<a href="?install={$key}&token={$token}" class="btn btn-primary">{$lang.admin.plugin_install}</a>
 									</td>
 								</tr>
 							{/foreach}

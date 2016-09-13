@@ -17,6 +17,19 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 include_once "menu.php";
 
+function isupToDate($url, $version){
+	if(!file_get_contents($url))
+		return false;
+
+	$verif = file_get_contents($url);
+	$verif = json_decode($verif, true);
+
+	if($verif['version'] > $version)
+		return true;
+
+	return false;
+}
+
 if(!empty($_GET['remove'])){
 	verif_token();
 
