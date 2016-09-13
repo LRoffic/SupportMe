@@ -28,7 +28,7 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 	}
 
 	foreach( glob("plugins/*.php")  as $plugin){
-		$name = basename("plugins/".$plugin, ".php");
+		$name = basename($plugin, ".php");
 		$plugins[$name] = include $plugin;
 	}
 
