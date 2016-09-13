@@ -38,7 +38,7 @@ foreach ($plugin['settings'] as $key => $value) {
 	if($value["type"] == "yesornot"){
 		$setting_form->add($value['description'], "select")->name($key)->inputClass("form-control");
 		if(!empty($setting)){
-			if($setting->value){
+			if($setting->value == "true"){
 				$setting_form->choice($lang['admin']['yes'], "true", true);
 				$setting_form->choice($lang['admin']['no'], "false");
 			} else {

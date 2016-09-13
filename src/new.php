@@ -53,8 +53,6 @@ if($newTicket->sent()){
 
 				$lang['email']['createPass'] = str_replace("%email_password%", $pass, $lang['email']["createPass"]);
 
-				var_dump($pass);
-
 				$mail->subject($lang['email']['createPassSubject'])
 				->from($config['site_name'], $config['site_email'])
 				->to($email->email)

@@ -3,11 +3,11 @@
 	<div class="container">
 		{include file="admin/aside.tpl"}
 		<div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+			<h3>{$lang.admin.plugin_list}</h3>
+			<ul class="nav nav-pills">
+				<li><a href="{routes('admin_plugin_market')}"><i class="fa fa-plus"></i> {$lang.admin.plugin_add}</a></li>
+			</ul>
 			{if !empty($plugins)}
-				<h3>{$lang.admin.plugin_list}</h3>
-				<ul class="nav nav-pills">
-					<li><a href="#"><i class="fa fa-plus"></i> {$lang.admin.plugin_add}</a></li>
-				</ul>
 				<table class="table table-bordered table-hover">
 					<thead>
 						<tr>

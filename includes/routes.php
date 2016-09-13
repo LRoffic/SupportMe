@@ -43,6 +43,7 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 			if($permission->plugin_gestion){
 				$router->map("GET", "/admin/plugins", "admin/plugins.php", "admin_plugins");
 				$router->map("GET|POST", "/admin/plugins/settings/[*:name]", "admin/plugin_settings.php", "admin_plugin_settings");
+				$router->map("GET", "/admin/plugins/market", "admin/plugin_market.php", "admin_plugin_market");
 			}
 		}
 	}

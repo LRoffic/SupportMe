@@ -35,6 +35,9 @@ if(!empty($_GET['remove'])){
 
 	if(file_exists("plugins/".$_GET['remove'].".php")){
 		if(array_key_exists($_GET['remove'], $plugins)){
+
+			$plugins[$_GET['remove']]['remove']();
+
 			unlink("plugins/".$_GET['remove'].".php");
 			header("Location: ".routes('admin_plugins'));
 		}
@@ -52,6 +55,7 @@ if(!empty($_GET['update'])){
 				$update_link = json_decode($update_info, true);
 				if(file_get_contents($update_link['newVersion'])){
 					file_put_contents("plugins/".$_GET['update'].".php", file_get_contents($update_link['newVersion']));
+					$plugins[$_GET['update']]['update']();
 					header("Location: ".routes('admin_plugins'));
 				}
 			}
@@ -59,6 +63,7 @@ if(!empty($_GET['update'])){
 	}
 }
 
-$tpl->assign("plugins", $plugins);
+if(!empty($plugins))
+	$tpl->assign("plugins", $plugins);
 
 $tpl->display("admin/plugins.tpl");

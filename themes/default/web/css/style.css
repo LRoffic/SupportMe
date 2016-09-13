@@ -116,3 +116,7 @@ th.header:not(.headerSortDown):not(.headerSortUp):before{
 	content: '\f0dc';
 	font-family: FontAwesome;
 }
+
+.nodisplay {
+	display: none;
+}
