@@ -155,3 +155,36 @@ function verif_token(){
 		exit();
 	}
 }
+
+function get_plugin_filename($file){
+	$info_filename = pathinfo($file);
+
+	if(!empty($info_filename['extension']))
+		return basename($file, ".".$info_filename['extension']);
+	else
+		return basename($file);
+}
+
+function verif_installed_plugin($file){
+	global $plugins;
+
+	$filename = get_plugin_filename($file);
+
+	if(empty($plugins) || !array_key_exists($filename, $plugins))
+		return true;
+
+	return false; 
+}
+
+function isUpToDate_plugin($url, $version){
+	if(!file_get_contents($url))
+		return false;
+
+	$verif = file_get_contents($url);
+	$verif = json_decode($verif, true);
+
+	if($verif['version'] > $version)
+		return true;
+
+	return false;
+}
