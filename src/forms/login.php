@@ -31,7 +31,11 @@ $login->submit($lang['login']['login'])->submitStyle('.btn btn-primary btn-block
 if($login->sent()){
 	if($login->isValid()){
 		if(!$session->isLogged()){
-			$getUser = ORM::for_table("users")->where_any_is([["username"=>$_POST['identifiant']], ["email"=>$_POST['identifiant']]])->find_one();
+			if(!$config->connexion_mandatory)
+				$getUser = ORM::for_table("users")->where_any_is([["username"=>$_POST['identifiant']], ["email"=>$_POST['identifiant']]])->find_one();
+			else
+				$getUser = ORM::for_table("users")->where("username", $_POST['identifiant'])->find_one();
+
 			if(!empty($getUser)){
 				function connect(){
 					global $getUser;

@@ -45,6 +45,9 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 				$router->map("GET|POST", "/admin/plugins/settings/[*:name]", "admin/plugin_settings.php", "admin_plugin_settings");
 				$router->map("GET", "/admin/plugins/market", "admin/plugin_market.php", "admin_plugin_market");
 			}
+
+			if($permission->theme_gestion)
+				$router->map("GET", "/admin/themes", "admin/themes.php", "admin_themes");
 		}
 	}
 

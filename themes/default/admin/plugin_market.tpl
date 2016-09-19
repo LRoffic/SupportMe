@@ -33,7 +33,7 @@
 						</thead>
 						<tbody>
 							{foreach from=$market_plugins item=plugin key=key}
-								<tr class="plugins" data-name="{$plugin.name|escape:'htmlall'}" data-desc="{$plugin.description|escape:"htmlall"}">
+								<tr class="plugins" data-name="{$plugin.name|escape:'htmlall'}">
 									<td>{$plugin.name|escape:"htmlall"}</td>
 									<td>{$plugin.description|escape:"htmlall"}</td>
 									<td><a href="{$plugin.website_author}" target="_blank">{$plugin.author|escape:"htmlall"}</a></td>
@@ -41,7 +41,11 @@
 										{if !empty($plugin.website)}
 											<a href="{$plugin.website}" class="btn btn-info" target="_blank">{$lang.admin.plugin_info}</a>
 										{/if}
-										<a href="?install={$key}&token={$token}" class="btn btn-primary">{$lang.admin.plugin_install}</a>
+										{if verif_installed_plugin($plugin.downloadURL)}
+											<a href="?install={$key}&token={$token}" class="btn btn-primary">{$lang.admin.plugin_install}</a>
+										{else}
+											<button class="btn btn-primary disabled">{$lang.admin.plugin_install}</button>
+										{/if}
 									</td>
 								</tr>
 							{/foreach}

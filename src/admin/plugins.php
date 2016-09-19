@@ -17,19 +17,6 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 include_once "menu.php";
 
-function isupToDate($url, $version){
-	if(!file_get_contents($url))
-		return false;
-
-	$verif = file_get_contents($url);
-	$verif = json_decode($verif, true);
-
-	if($verif['version'] > $version)
-		return true;
-
-	return false;
-}
-
 if(!empty($_GET['remove'])){
 	verif_token();
 
@@ -50,11 +37,11 @@ if(!empty($_GET['update'])){
 	if(file_exists("plugins/".$_GET['update'].".php")){
 		if(array_key_exists($_GET['update'], $plugins)){
 			$plugin_update = $plugins[$_GET['update']];
-			if(file_get_contents($plugin_update['updateURL'])){
+			if(checkFileExist($plugin_update['updateURL'])){
 				$update_info = file_get_contents($plugin_update['updateURL']);
 				$update_link = json_decode($update_info, true);
-				if(file_get_contents($update_link['newVersion'])){
-					file_put_contents("plugins/".$_GET['update'].".php", file_get_contents($update_link['newVersion']));
+				if($newVersion = file_get_contents($update_link['newVersion'])){
+					file_put_contents("plugins/".$_GET['update'].".php", $newVersion);
 					$plugins[$_GET['update']]['update']();
 					header("Location: ".routes('admin_plugins'));
 				}

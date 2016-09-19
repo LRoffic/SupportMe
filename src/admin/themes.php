@@ -17,8 +17,33 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 include_once "menu.php";
 
-header("HTTP/1.0 404 Not Found");
+$dirname = 'themes/';
+$dir = opendir($dirname);
 
-hook_action("404");
+while($file = readdir($dir)){
+	if($file != '.' && $file != '..'){
+		if(file_exists($dirname.$file.'/version.json')){
+			$content=file_get_contents($dirname.$file.'/version.json');
+			$content = json_decode($content, true);
 
-$tpl->display("404.tpl");
+			if(!empty($content['update_file'])){
+				if(checkFileExist($content['update_file'])){
+					$update_theme = file_get_contents($content['update_file']);
+					$update_theme = json_decode($update, true);
+					array_push($content, $update_theme);
+				}
+			}
+
+			$listfiles[] = $content;
+
+		}
+	}
+}
+
+var_dump($listfiles);
+
+closedir($dir);
+
+$tpl->assign("listfiles", $listfiles);
+
+$tpl->display("admin/themes.tpl");

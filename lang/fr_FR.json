@@ -20,7 +20,8 @@
 		"login":"Connexion",
 		"register":"Inscription",
 		"logout": "Déconnexion",
-		"BackToHome": "Retour au site"
+		"BackToHome": "Retour au site",
+		"admin": "Administration"
 	},
 
 	"login": {
@@ -71,7 +72,10 @@
 		"you": "Vous",
 		"sendon": "envoyé le ",
 		"updateStatus": "Modifier le statut :",
-		"Send": "Ok"
+		"Send": "Ok",
+		"assign_to_me": "Me l'assigner",
+		"assign": "Assigner",
+		"backToAdmin": "Retour à l'administration"
 	},
 
 	"list":{
@@ -126,7 +130,8 @@
 		"empty_user": "Utilisateur inconnus",
 		"invalide_password": "Mot de passe incorrect !",
 		"registered": "Un compte avec ces identifiant(s) existe déjà !",
-		"Recaptcha": "Captcha invalide !"
+		"Recaptcha": "Captcha invalide !",
+		"error_account_notvalidate": "Veuillez vous connecter avec le mot de passe que vous avez reçus par mail pour renvoyer un ticket !"
 	},
 
 	"email": {
@@ -144,6 +149,8 @@
 		"plugins": "Plugins",
 		"theme": "Thèmes",
 		"language": "Langues",
+		"users": "Utilisateurs",
+		"faq": "Foire aux questions",
 		"config":"Configuration",
 		"LastRefresh": "Dernière actualisation :",
 		"TicketList": "Liste des tickets",
@@ -185,7 +192,12 @@
 		"plugin_setting_of": "Paramètre de",
 		"plugin_back_to_plugin": "Retour aux plugins",
 		"yes": "Oui",
-		"no": "Non"
+		"no": "Non",
+		"theme_name": "Nom:",
+		"theme_author": "Auteur:",
+		"theme_version": "Version:",
+		"theme_option": "Options:",
+		"theme_info": "Infos"
 	},
 
 	"update": {

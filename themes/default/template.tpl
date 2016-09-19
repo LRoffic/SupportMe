@@ -14,6 +14,7 @@
 		<link rel="stylesheet" type="text/css" href="{$smarty.const.FOLDER}/themes/default/web/css/bootstrap-flat.min.css">
 		<link rel="stylesheet" type="text/css" href="{$smarty.const.FOLDER}/themes/default/web/css/bootstrap-flat-extras.min.css">
 		<link rel="stylesheet" type="text/css" href="{$smarty.const.FOLDER}/themes/default/web/css/style.css">
+		{hook_action('css')}
 
 		<script src='https://www.google.com/recaptcha/api.js'></script>
 	</head>
@@ -55,7 +56,7 @@
 							</a>
 							<ul class="dropdown-menu">
 								{if $perm.access_admin}
-									<li><a href="{routes('admin')}"><span class="glyphicon glyphicon-user"></span> Administration</a></li>
+									<li><a href="{routes('admin')}"><span class="glyphicon glyphicon-user"></span> {$lang.navbar.admin}</a></li>
 								{/if}
 								<li><a href="{routes('logout')}?token={$token}"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> {$lang.navbar.logout}</a></li>
 								

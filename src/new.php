@@ -32,8 +32,6 @@ $tpl->assign("newTicket", $newTicket);
 
 if($newTicket->sent()){
 	if($newTicket->isValid()){
-		$newTicket->clearFields();
-
 		if(!$session->isLogged()){
 			$verif_email_exist = ORM::for_table('users')->where("email", $_POST['email'])->find_one();
 			if(empty($verif_email_exist)){
@@ -58,6 +56,10 @@ if($newTicket->sent()){
 				->to($email->email)
 				->text($lang['email']['createPass'])
 				->send();
+			} else {
+				$tpl->assign("error", $lang['error']["error_account_notvalidate"]);
+				$tpl->display("new.tpl");
+				exit();
 			}
 		}
 
@@ -74,6 +76,8 @@ if($newTicket->sent()){
 		hook_filter("new_ticket", $ticket);
 
 		$ticket->save();
+
+		$newTicket->clearFields();
 
 		setcookie("CREATE_TICKET", $ticket->id, time() + 60*5, FOLDER);
 

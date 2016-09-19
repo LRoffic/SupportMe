@@ -32,7 +32,7 @@
 									{if !empty($plugin.settings)}
 										<a href="{plugin({$info})}" class="btn btn-primary">{$lang.admin.plugin_config}</a>
 									{/if}
-									{if isupToDate({$plugin.updateURL}, {$plugin.version})}
+									{if isUpToDate_plugin({$plugin.updateURL}, {$plugin.version})}
 										<a href="?update={$info}&token={$token}" class="btn btn-info">{$lang.admin.plugin_update}</a>
 									{/if}
 									<a href="?remove={$info}&token={$token}" class="btn btn-danger">{$lang.admin.plugin_remove}</a>

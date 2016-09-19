@@ -20,8 +20,8 @@ include "menu.php";
 
 $market_url = "http://supportme.dzv.me/plugins/market.json";
 
-if(file_get_contents($market_url)){
-	$get_plugins = file_get_contents($market_url);
+if(checkFileExist($market_url)){
+	$get_plugins = file_get_contents($market_url)
 	$market_plugins = json_decode($get_plugins, true);
 
 	$tpl->assign("market_plugins", $market_plugins);
@@ -32,13 +32,10 @@ if(file_get_contents($market_url)){
 		if(array_key_exists($_GET['install'], $market_plugins)){
 			$install_plugin_url = $market_plugins[$_GET['install']]['downloadURL'];
 
-			if(file_get_contents($install_plugin_url)){
+			if(checkFileExist($install_plugin_url)){
 				$content = file_get_contents($install_plugin_url);
-				$info_filename = pathinfo($install_plugin_url);
-
-				$filename = basename($install_plugin_url, ".".$info_filename['extension']);
-
-				if(empty($plugins) || !array_key_exists($filename, $plugins)){
+				if(verif_installed_plugin($install_plugin_url)){
+					$filename = get_plugin_filename($install_plugin_url);
 					file_put_contents("plugins/".$filename.".php", $content);
 					$new_plugin = include "plugins/".$filename.".php";
 					$new_plugin['install']();

@@ -32,7 +32,7 @@ if(empty($ticket)){
 	exit();
 }
 
-if($_SESSION['id'] != $ticket->autor && !$permission->view_all_ticket && $_SESSION['id'] != $ticket['attribute']){
+if($_SESSION['id'] != $ticket->autor && !$permission->view_all_ticket && $_SESSION['id'] != $ticket['attribute'] && !empty($ticket['attribute'])){
 	include_once "404.php";
 	exit();
 }
@@ -40,8 +40,32 @@ if($_SESSION['id'] != $ticket->autor && !$permission->view_all_ticket && $_SESSI
 if(isset($_POST["newstatus"])){
 	$actual_status = getStatus($ticket->status_id);
 	if(!$actual_status['close'] || $permission->reopen_ticket){
+		$ticket->date_last_action = time();
 		$ticket->status_id = intval($_POST['newstatus']);
 		$ticket->save();
+	}
+}
+
+if($permission->assign_to_me){
+	if(isset($_GET['assign_to_me'])){
+		if(empty(User::getByID($ticket->attribute)['username']) || $perm->change_assign){
+			$ticket->date_last_action = time();
+			$ticket->attribute = $_SESSION['id'];
+			$ticket->save();
+		}
+	}
+}
+
+if($permission->assign_to_other){
+	$get_users = ORM::for_table('users')->find_array();
+	$tpl->assign("users_to_assign", $get_users);
+	if(!empty($_POST['assignto'])){
+		$verif_user = ORM::for_table('users')->find_one($_POST['assignto']);
+		if(!empty($verif_user) && !empty($verif_user->username)){
+			$ticket->date_last_action = time();
+			$ticket->attribute = $_POST['assignto'];
+			$ticket->save();
+		}
 	}
 }
 
