@@ -48,6 +48,9 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 			if($permission->theme_gestion)
 				$router->map("GET", "/admin/themes", "admin/themes.php", "admin_themes");
+
+			if($permission->config_gestion)
+				$router->map("GET|POST", "/admin/config", "admin/config.php", "admin_config");
 		}
 	}
 

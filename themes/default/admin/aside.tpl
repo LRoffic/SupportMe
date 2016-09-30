@@ -16,6 +16,8 @@
 		{if $perm.lang_gestion}
 			<a href="{routes('admin_langs')}" class="list-group-item {if  $match eq 'admin_langs'}active{/if}"><i class="fa fa-flag"></i> {$lang.admin.language}</a>
 		{/if}
-		<a href="" class="list-group-item"><i class="fa fa-cog"></i> {$lang.admin.config}</a>
+		{if $perm.config_gestion}
+			<a href="{routes('admin_config')}" class="list-group-item {if  $match eq 'admin_config'}active{/if}"><i class="fa fa-cog"></i> {$lang.admin.config}</a>
+		{/if}
 	</div>
 </div>

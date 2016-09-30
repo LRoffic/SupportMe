@@ -17,6 +17,8 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 include "menu.php";
 
+hook_action("admin_plugin_settings");
+
 $plugin = $plugins[$match['params']['name']];
 
 if(!isset($plugin)){

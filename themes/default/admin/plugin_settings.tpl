@@ -14,6 +14,7 @@
 				</div>
 			{/if}
 			{$setting_form->build()}
+			{hook_action($plugin.name)}
 		</div>
 	</div>
 {/block}

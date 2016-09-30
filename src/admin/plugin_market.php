@@ -18,10 +18,12 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 include "menu.php";
 
+hook_action("admin_plugin_market");
+
 $market_url = "http://supportme.dzv.me/plugins/market.json";
 
 if(checkFileExist($market_url)){
-	$get_plugins = file_get_contents($market_url)
+	$get_plugins = file_get_contents($market_url);
 	$market_plugins = json_decode($get_plugins, true);
 
 	$tpl->assign("market_plugins", $market_plugins);

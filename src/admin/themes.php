@@ -17,6 +17,8 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 include_once "menu.php";
 
+hook_action("admin_themes");
+
 $dirname = 'themes/';
 $dir = opendir($dirname);
 
@@ -28,11 +30,14 @@ while($file = readdir($dir)){
 
 			if(!empty($content['update_file'])){
 				if(checkFileExist($content['update_file'])){
+					var_dump("update_file");
 					$update_theme = file_get_contents($content['update_file']);
 					$update_theme = json_decode($update, true);
 					array_push($content, $update_theme);
 				}
 			}
+
+			$content['folder'] = $file;
 
 			$listfiles[] = $content;
 
@@ -40,7 +45,16 @@ while($file = readdir($dir)){
 	}
 }
 
-var_dump($listfiles);
+if(!empty($_GET['use'])){
+	verif_token();
+
+	if(file_exists($dirname.$_GET['use']."/version.json")){
+		$config->theme = $_GET['use'];
+		$config->save();
+
+		header("Location: ".routes('admin_themes'));
+	}
+}
 
 closedir($dir);
 

@@ -465,16 +465,17 @@ class FormBuilder {
 	 * Add radio button
 	 * @param  string  $name
 	 * @param  boolean $selected
+	 * @param  string  $value
 	 * @return $this
 	 */
-	public function radio($name, $selected = false, $parent) {
+	public function radio($name, $selected = false, $val, $parent) {
 		($selected) AND $selected = ' checked'; // Checked radio ?
 
 		if($parent) {
 			foreach($this->fields as $key => $value) {
 				if($value['name'] == $parent) {
 					$this->fields[$key]['radios'][] = [
-						'value' => self::rewrite($name), 
+						'value' => $val, 
 						'name' => $name, 
 						'selected' => $selected
 					];
@@ -784,6 +785,7 @@ class FormBuilder {
 		if($value['type'] == 'radio') {
 			(self::sent() AND $errors) AND $error = '<'. $this->tag . $this->errorStyle .' name="error_'. $value['name'] .'">'. $value['validator']['message'] .'</'. $this->tag .'>' . "\r\n";
 			($this->errorPosition == 'before') AND $this->form .= $error;
+			$this->form .= '<label for="'.$value['name'].'">'.$value['call'].'</label><br />';
 			foreach($value['radios'] as $key => $entry) {
 				if(self::sent() AND !$this->clearFields)
 					$selected = (self::item($value['name']) == $entry['value']) ? 'checked' : null;
@@ -793,6 +795,7 @@ class FormBuilder {
 				$this->form .= '<input type="radio" name="'. $value['name'] .'" class="'. $value['class'] . $inputError .'" value="'. $entry['value'] .'" id="'. self::rewrite($entry['name']) .'"'. $value['required'] .' '. $selected .'><label for="'. $entry['value'] .'">'. $entry['name'] .'</label>' . "\r\n";
 			}
 			($this->errorPosition == 'after') AND $this->form .= $error;
+			$this->form .= "<br />";
 		}
 	}
 

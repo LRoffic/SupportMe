@@ -16,6 +16,8 @@ You should have received a copy of the GNU General Public License along
 with this program.  If not, see <http://www.gnu.org/licenses/>. 
 */
 
+hook_action("admin");
+
 use \VisualAppeal\AutoUpdate;
 
 $update = new AutoUpdate(__DIR__ . '/temp', __DIR__ . '/../', 60);
@@ -32,7 +34,7 @@ if ($update->newVersionAvailable()) {
 }
 
 $update->addLogHandler(new Monolog\Handler\StreamHandler(__DIR__ . '/update.log'));
-$update->setCache(new Desarrolla2\Cache\Adapter\File(__DIR__ . '/cache'), 3600);
+$update->setCache(new Desarrolla2\Cache\Adapter\File(__DIR__ . '/cache'), 3600); 
 
 $info = $session->getUser();
 

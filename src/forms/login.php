@@ -95,15 +95,19 @@ if($register->sent()){
 		if(!$session->isLogged()){
 			$verif = ORM::for_table('users')->where_any_is([["username"=>$_POST['pseudo']], ["email"=>$_POST['email']]])->find_one();
 			if(empty($verif)){
-				$new_user = ORM::for_table("users")->create();
-				$new_user->username = $_POST['pseudo'];
-				$new_user->email = $_POST['email'];
-				$new_user->password = sha1($_POST['password']);
-				$new_user->ip = $_SERVER['REMOTE_ADDR'];
-				$new_user->last_active = time();
-				$new_user->save();
+				if($config->register){
+					$new_user = ORM::for_table("users")->create();
+					$new_user->username = $_POST['pseudo'];
+					$new_user->email = $_POST['email'];
+					$new_user->password = sha1($_POST['password']);
+					$new_user->ip = $_SERVER['REMOTE_ADDR'];
+					$new_user->last_active = time();
+					$new_user->save();
 
-				$session->setUser($new_user);
+					$session->setUser($new_user);
+				} else {
+					$tpl->assign("error", $lang['error']['register_no_actif']);
+				}
 			} else {
 				$tpl->assign("error", $lang['error']['registered']);
 			}

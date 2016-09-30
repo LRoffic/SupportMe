@@ -43,7 +43,7 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 	$theme = htmlspecialchars($config->theme);
 
 	$tpl = new Smarty();
-	$tpl->setTemplateDir("themes/".$theme);
+	$tpl->setTemplateDir("themes/".$theme."/");
 
 	$mail = new FastMailBuilder();
 

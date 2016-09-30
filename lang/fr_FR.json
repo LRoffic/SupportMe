@@ -131,7 +131,8 @@
 		"invalide_password": "Mot de passe incorrect !",
 		"registered": "Un compte avec ces identifiant(s) existe déjà !",
 		"Recaptcha": "Captcha invalide !",
-		"error_account_notvalidate": "Veuillez vous connecter avec le mot de passe que vous avez reçus par mail pour renvoyer un ticket !"
+		"error_account_notvalidate": "Veuillez vous connecter avec le mot de passe que vous avez reçus par mail pour renvoyer un ticket !",
+		"register_no_actif": "L'inscription n'est pas activer !"
 	},
 
 	"email": {
@@ -193,11 +194,22 @@
 		"plugin_back_to_plugin": "Retour aux plugins",
 		"yes": "Oui",
 		"no": "Non",
+		"theme_list": "Liste des thèmes",
+		"theme_add": "Ajouter des thèmes",
 		"theme_name": "Nom:",
 		"theme_author": "Auteur:",
 		"theme_version": "Version:",
 		"theme_option": "Options:",
-		"theme_info": "Infos"
+		"theme_info": "Infos",
+		"theme_use": "Utiliser",
+		"config": "Configuration du site",
+		"config_sitename": "Nom du site",
+		"config_sitemail": "Email du support",
+		"config_register": "Authoriser les gens à s'inscrire ?",
+		"config_connexion": "Forcer les gens à se connecter pour envoyer des tickets ?",
+		"recaptcha_public_key": "Clé Public Recaptcha",
+		"recaptcha_private_key": "Clé Privé Recaptcha",
+		"config_valid": "Valider"
 	},
 
 	"update": {
