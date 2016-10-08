@@ -196,3 +196,12 @@ function checkFileExist($file){
 
 	return false;
 }
+
+function getRangName($id){
+	$rang = ORM::for_table("permissions")->find_one($id);
+
+	if(!empty($rang))
+		return $rang->name;
+	else
+		return "default";
+}

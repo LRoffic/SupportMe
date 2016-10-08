@@ -3,7 +3,9 @@
 		<a href="{routes('admin')}" class="list-group-item {if  $match eq 'admin'}active{/if}"><i class="fa fa-home"></i> {$lang.admin.home}</a>
 		<a href="{routes('admin_close_ticket')}" class="list-group-item {if  $match eq 'admin_close_ticket'}active{/if}"><i class="fa fa-eye-slash"></i> {$lang.admin.closed_ticket}</a>
 		<a href="" class="list-group-item"><i class="fa fa-question"></i> {$lang.admin.faq}</a>
-		<a href="" class="list-group-item"><i class="fa fa-users"></i> {$lang.admin.users}</a>
+		{if $perm.users_gestion}
+			<a href="{routes('admin_users')}" class="list-group-item {if  $match eq 'admin_users'}active{/if}"><i class="fa fa-users"></i> {$lang.admin.users}</a>
+		{/if}
 	</div>
 	<div class="list-group">
 		<a href="{routes('update')}" class="list-group-item {if  $match eq 'update'}active{/if}"><i class="fa fa-refresh"></i> {$lang.admin.aside_update}</a>

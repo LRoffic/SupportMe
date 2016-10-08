@@ -209,7 +209,21 @@
 		"config_connexion": "Forcer les gens à se connecter pour envoyer des tickets ?",
 		"recaptcha_public_key": "Clé Public Recaptcha",
 		"recaptcha_private_key": "Clé Privé Recaptcha",
-		"config_valid": "Valider"
+		"config_valid": "Valider",
+		"users_list": "Liste des utilisateurs",
+		"register_users": "Utilisateurs enregistrés",
+		"unregistered_users": "Utilisateurs non enregistrés",
+		"users_username": "Pseudo",
+		"users_email": "Adresse E-mail",
+		"users_rank": "Rang",
+		"users_ip": "Adresse IP",
+		"users_last_active": "Dernière connexion",
+		"users_options": "Options",
+		"users_delete": "Supprimer",
+		"users_update_rank": "Modifier le rang",
+		"never": "Jamais",
+		"update_permissions": "Modifier les permissions",
+		"rank_valid": "Valider"
 	},
 
 	"update": {

@@ -51,6 +51,10 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 			if($permission->config_gestion)
 				$router->map("GET|POST", "/admin/config", "admin/config.php", "admin_config");
+
+			if($permission->users_gestion){
+				$router->map("GET|POST", "/admin/users", "admin/users.php", "admin_users");
+			}
 		}
 	}
 
