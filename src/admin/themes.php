@@ -30,7 +30,6 @@ while($file = readdir($dir)){
 
 			if(!empty($content['update_file'])){
 				if(checkFileExist($content['update_file'])){
-					var_dump("update_file");
 					$update_theme = file_get_contents($content['update_file']);
 					$update_theme = json_decode($update, true);
 					array_push($content, $update_theme);

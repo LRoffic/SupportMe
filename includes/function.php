@@ -177,7 +177,7 @@ function verif_installed_plugin($file){
 }
 
 function isUpToDate_plugin($url, $version){
-	if(checkFileExist($url))
+	if(!checkFileExist($url))
 		return false;
 
 	$verif = file_get_contents($url);
