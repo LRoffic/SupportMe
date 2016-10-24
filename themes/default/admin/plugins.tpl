@@ -15,7 +15,7 @@
 							<th>{$lang.admin.plugin_description}</th>
 							<th>{$lang.admin.plugin_version}</th>
 							<th>{$lang.admin.plugin_author}</th>
-							<th>{$lang.admin.plugin_option}</th>
+							<th>{$lang.admin.option}</th>
 						</tr>
 					</thead>
 					<tbody>

@@ -13,7 +13,7 @@
 						<th>{$lang.admin.theme_name}</th>
 						<th>{$lang.admin.theme_author}</th>
 						<th>{$lang.admin.theme_version}</th>
-						<th>{$lang.admin.theme_option}</th>
+						<th>{$lang.admin.option}</th>
 					</tr>
 				</thead>
 				<tbody>

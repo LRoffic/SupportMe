@@ -4,9 +4,6 @@
 		{include file="admin/aside.tpl"}
 		<div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
 			<h1>{$lang.admin.users_list}</h1>
-			<ul class="nav nav-pills">
-				<li><a href="#"><i class="fa fa-cog"></i> {$lang.admin.update_permissions}</a></li>
-			</ul>
 			<h3>{$lang.admin.register_users}</h3>
 			<table class="table table-bordered table-hover">
 				<thead>
@@ -17,7 +14,7 @@
 						<th>{$lang.admin.users_rank}</th>
 						<th>{$lang.admin.users_ip}</th>
 						<th>{$lang.admin.users_last_active}</th>
-						<th>{$lang.admin.users_options}</th>
+						<th>{$lang.admin.option}</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -74,7 +71,7 @@
 						<th>{$lang.admin.users_rank}</th>
 						<th>{$lang.admin.users_ip}</th>
 						<th>{$lang.admin.users_last_active}</th>
-						<th>{$lang.admin.users_options}</th>
+						<th>{$lang.admin.option}</th>
 					</tr>
 				</thead>
 				<tbody>

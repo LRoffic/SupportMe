@@ -132,7 +132,9 @@
 		"registered": "Un compte avec ces identifiant(s) existe déjà !",
 		"Recaptcha": "Captcha invalide !",
 		"error_account_notvalidate": "Veuillez vous connecter avec le mot de passe que vous avez reçus par mail pour renvoyer un ticket !",
-		"register_no_actif": "L'inscription n'est pas activer !"
+		"register_no_actif": "L'inscription n'est pas activer !",
+		"permission_update": "Echec lors de la modification de permission !",
+		"invalide_field": "Champs invalide !"
 	},
 
 	"email": {
@@ -146,6 +148,7 @@
 		"update": "Mettre à jour",
 		"home": "Accueil",
 		"closed_ticket": "Ticket fermés",
+		"aside_category": "Catégories",
 		"aside_update": "Mise à jours",
 		"plugins": "Plugins",
 		"theme": "Thèmes",
@@ -181,7 +184,6 @@
 		"plugin_author": "Auteur:",
 		"plugin_description": "Description:",
 		"plugin_version": "Version:",
-		"plugin_option": "Options :",
 		"plugin_info": "Infos",
 		"plugin_config": "Configuration",
 		"plugin_update": "Mettre à jours",
@@ -199,7 +201,6 @@
 		"theme_name": "Nom:",
 		"theme_author": "Auteur:",
 		"theme_version": "Version:",
-		"theme_option": "Options:",
 		"theme_info": "Infos",
 		"theme_use": "Utiliser",
 		"config": "Configuration du site",
@@ -218,12 +219,30 @@
 		"users_rank": "Rang",
 		"users_ip": "Adresse IP",
 		"users_last_active": "Dernière connexion",
-		"users_options": "Options",
 		"users_delete": "Supprimer",
 		"users_update_rank": "Modifier le rang",
 		"never": "Jamais",
-		"update_permissions": "Modifier les permissions",
-		"rank_valid": "Valider"
+		"permissions": "Permissions",
+		"rank_valid": "Valider",
+		"permissions_gestion": "Gestion des permissions",
+		"add_permission": "Ajouter un rang",
+		"permission_name": "Nom",
+		"admin_access": "Accès à l'administration ?",
+		"more_info": "Plus d'infos",
+		"perm_update": "Modifier",
+		"perm_delete": "Supprimer",
+		"view_all_ticket": "Peut voir tous les tickets ?",
+		"reopen_ticket": "Peut réouvrir les tickets ?",
+		"comment_closed_ticket": "Peut commenter les tickets fermés ?",
+		"assign_to_me": "Peut s'assigner un ticket ?",
+		"assign_to_other": "Peut assigner un ticket à un autre utilisateur ?",
+		"change_assign": "Peut modifier l'assignation d'un ticket assigné ?",
+		"lang_gestion": "Peut gérer les langues ?",
+		"plugin_gestion": "Peut gérer les plugins ?",
+		"theme_gestion": "Peut gérer les thèmes ?",
+		"config_gestion": "Peut configurer le site ?",
+		"users_gestion": "Peut gérer les utilisateurs ?",
+		"perm_gestion": "Peut gérer les permissions ?"
 	},
 
 	"update": {

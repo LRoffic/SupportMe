@@ -16,7 +16,16 @@
 						{assign var="status" value=getStatus($ticket.status_id)}
 						<b>{$lang.ticket.status}</b> <span id="ticketStatus">{$status.name}</span><br />
 						{assign var="attribute" value=User::getByID($ticket.attribute)}
-						<b>{$lang.ticket.attribute}</b> {if !empty($attribute.username)}{$attribute.username|escape:'htmlall'}{else}{$lang.ticket.notAttribued}{/if}<br />
+						<b>{$lang.ticket.attribute}</b>
+						{if !empty($ticket.attribute)}
+							{if !empty($attribute.username)}
+								{$attribute.username|escape:'htmlall'}
+							{else}
+								{$lang.ticket.notAttribued}
+							{/if}
+						{else}
+							{$lang.ticket.notAttribued}
+						{/if}<br />
 						<b>{$lang.ticket.category}</b> {getCategory($ticket.category_id)}<br />
 						<b>{$lang.ticket.date_receive}</b> <span class="date" data-ago="{$ticket.date_receive}">{date($lang.config.dateformat, $ticket.date_receive)}</span><br />
 						<b>{$lang.ticket.date_last_action}</b> <span class="date LastAction" data-ago="{$ticket.date_last_action}">{date($lang.config.dateformat, $ticket.date_last_action)}</span><br />
@@ -43,7 +52,7 @@
 							<input type="submit" class="btn btn-info" value="{$lang.ticket.Send}">
 						</form>
 					{/if}
-					{if $perm.assign_to_other}
+					{if $perm.assign_to_other && !empty($user_info.username)}
 						{if empty($attribute.username) || $perm.change_assign}
 							<div style="margin-top: 5px"></div>
 							<form action="" method="post" class="form-inline">
@@ -58,7 +67,7 @@
 							</form>
 						{/if}
 					{/if}
-					{if $perm.assign_to_me}
+					{if $perm.assign_to_me && !empty($user_info.username)}
 						{if empty($attribute.username) || $perm.change_assign}
 							<div style="margin-top: 5px"></div>
 							<a href="?assign_to_me=true" class="btn btn-primary">{$lang.ticket.assign_to_me}</a>
