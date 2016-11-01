@@ -468,7 +468,7 @@ class FormBuilder {
 	 * @param  string  $value
 	 * @return $this
 	 */
-	public function radio($name, $selected = false, $val, $parent) {
+	public function radio($name, $selected = false, $val, $parent = false) {
 		($selected) AND $selected = ' checked'; // Checked radio ?
 
 		if($parent) {

@@ -2,8 +2,12 @@
 	<div class="list-group">
 		<a href="{routes('admin')}" class="list-group-item {if  $match eq 'admin'}active{/if}"><i class="fa fa-home"></i> {$lang.admin.home}</a>
 		<a href="{routes('admin_close_ticket')}" class="list-group-item {if  $match eq 'admin_close_ticket'}active{/if}"><i class="fa fa-eye-slash"></i> {$lang.admin.closed_ticket}</a>
-		<a href="" class="list-group-item"><i class="fa fa-list"></i> {$lang.admin.aside_category}</a>
-		<a href="" class="list-group-item"><i class="fa fa-question"></i> {$lang.admin.faq}</a>
+		{if $perm.category_gestion}
+			<a href="{routes('admin_category')}" class="list-group-item {if  $match eq 'admin_category'}active{/if}"><i class="fa fa-list"></i> {$lang.admin.aside_category}</a>
+		{/if}
+		{if $perm.faq_gestion}
+			<a href="" class="list-group-item"><i class="fa fa-question"></i> {$lang.admin.faq}</a>
+		{/if}
 		{if $perm.users_gestion}
 			<a href="{routes('admin_users')}" class="list-group-item {if  $match eq 'admin_users'}active{/if}"><i class="fa fa-users"></i> {$lang.admin.users}</a>
 		{/if}

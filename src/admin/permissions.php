@@ -91,6 +91,22 @@ $new->add($lang['admin']['change_assign'], "select")
 $new->choice($lang["admin"]["yes"], "1");
 $new->choice($lang["admin"]["no"], "0");
 
+$new->add($lang['admin']['category_gestion'], "select")
+->inputClass("form-control")
+->name("category_gestion")
+->validator('yesorno(self)', $lang['error']['invalide_field'])
+->optional();
+$new->choice($lang["admin"]["yes"], "1");
+$new->choice($lang["admin"]["no"], "0");
+
+$new->add($lang['admin']['faq_gestion'], "select")
+->inputClass("form-control")
+->name("faq_gestion")
+->validator('yesorno(self)', $lang['error']['invalide_field'])
+->optional();
+$new->choice($lang["admin"]["yes"], "1");
+$new->choice($lang["admin"]["no"], "0");
+
 $new->add($lang['admin']['lang_gestion'], "select")
 ->inputClass("form-control")
 ->name("lang_gestion")
@@ -147,6 +163,8 @@ if($new->sent()){
 		$create->assign_to_me          = $_POST['assign_to_me'];
 		$create->assign_to_other       = $_POST['assign_to_other'];
 		$create->change_assign         = $_POST['change_assign'];
+		$create->category_gestion      = $_POST['category_gestion'];
+		$create->faq_gestion           = $_POST['faq_gestion'];
 		$create->lang_gestion          = $_POST['lang_gestion'];
 		$create->theme_gestion         = $_POST['theme_gestion'];
 		$create->users_gestion         = $_POST['users_gestion'];
@@ -176,6 +194,8 @@ if(!empty($_GET['update'])){
 			$updateperm->assign_to_me          = $_POST['assign_to_me'];
 			$updateperm->assign_to_other       = $_POST['assign_to_other'];
 			$updateperm->change_assign         = $_POST['change_assign'];
+			$updateperm->category_gestion      = $_POST['category_gestion'];
+			$updateperm->faq_gestion           = $_POST['faq_gestion'];
 			$updateperm->lang_gestion          = $_POST['lang_gestion'];
 			$updateperm->theme_gestion         = $_POST['theme_gestion'];
 			$updateperm->users_gestion         = $_POST['users_gestion'];

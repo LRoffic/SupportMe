@@ -237,12 +237,22 @@
 		"assign_to_me": "Peut s'assigner un ticket ?",
 		"assign_to_other": "Peut assigner un ticket à un autre utilisateur ?",
 		"change_assign": "Peut modifier l'assignation d'un ticket assigné ?",
+		"category_gestion": "Peut Gérer les catégories ?",
+		"faq_gestion": "Peut Gérer la faq ?",
 		"lang_gestion": "Peut gérer les langues ?",
 		"plugin_gestion": "Peut gérer les plugins ?",
 		"theme_gestion": "Peut gérer les thèmes ?",
 		"config_gestion": "Peut configurer le site ?",
 		"users_gestion": "Peut gérer les utilisateurs ?",
-		"perm_gestion": "Peut gérer les permissions ?"
+		"perm_gestion": "Peut gérer les permissions ?",
+		"category_gestion": "Gestion des catégories",
+		"category_add": "Ajouter une catégorie",
+		"category_name": "Nom",
+		"category_published": "Active ?",
+		"category_update": "Modifier",
+		"category_delete": "Supprimer",
+		"category_valid": "Ajouter",
+		"category_modal_update": "Modifier la category"
 	},
 
 	"update": {

@@ -101,6 +101,18 @@
 												{else}
 													<span class="label label-danger">{$lang.admin.no}</span>
 												{/if}<br />
+												<b>{$lang.admin.category_gestion}</b>
+												{if $rang.category_gestion eq "1"}
+													<span class="label label-success">{$lang.admin.yes}</span>
+												{else}
+													<span class="label label-danger">{$lang.admin.no}</span>
+												{/if}<br />
+												<b>{$lang.admin.faq_gestion}</b>
+												{if $rang.faq_gestion eq "1"}
+													<span class="label label-success">{$lang.admin.yes}</span>
+												{else}
+													<span class="label label-danger">{$lang.admin.no}</span>
+												{/if}<br />
 												<b>{$lang.admin.lang_gestion}</b>
 												{if $rang.lang_gestion eq "1"}
 													<span class="label label-success">{$lang.admin.yes}</span>
@@ -231,6 +243,30 @@
 														<label>{$lang.admin.change_assign}</label>
 														<select name="change_assign" class="form-control">
 															{if $rang.change_assign eq "1"}
+																<option value="1">{$lang.admin.yes}</option>
+																<option value="0">{$lang.admin.no}</option>
+															{else}
+																<option value="0">{$lang.admin.no}</option>
+																<option value="1">{$lang.admin.yes}</option>
+															{/if}
+														</select>
+													</div>
+													<div class="form-group">
+														<label>{$lang.admin.category_gestion}</label>
+														<select name="category_gestion" class="form-control">
+															{if $rang.category_gestion eq "1"}
+																<option value="1">{$lang.admin.yes}</option>
+																<option value="0">{$lang.admin.no}</option>
+															{else}
+																<option value="0">{$lang.admin.no}</option>
+																<option value="1">{$lang.admin.yes}</option>
+															{/if}
+														</select>
+													</div>
+													<div class="form-group">
+														<label>{$lang.admin.faq_gestion}</label>
+														<select name="faq_gestion" class="form-control">
+															{if $rang.faq_gestion eq "1"}
 																<option value="1">{$lang.admin.yes}</option>
 																<option value="0">{$lang.admin.no}</option>
 															{else}
