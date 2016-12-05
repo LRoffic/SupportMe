@@ -12,7 +12,8 @@
 		"404": "Page introuvable",
 		"list": "Liste des tickets",
 		"connexion": "Connexion",
-		"update": "Mise à jours"
+		"update": "Mise à jours",
+		"faq": "Foire aux questions"
 	},
 
 	"navbar":{
@@ -65,7 +66,9 @@
 		"backToList": "Retour à la liste des tickets",
 		"close": "Fermer le ticket",
 		"addComment": "Ajouter un commentaire :",
-		"comment": "Commentaires :",
+		"comments": "Commentaires :",
+		"comment": "Commentaire",
+		"email": "Envoyer une notification par mail ?",
 		"submit": "Répondre",
 		"noComment": "Aucun commentaire actuellement",
 		"SuccessComment": "Commentaires envoyé !",
@@ -139,7 +142,20 @@
 
 	"email": {
 		"createPassSubject": "Bienvenue !",
-		"createPass": "Bonjour et bienvenue sur %sitename% \n Afin de pouvoir consulter vos tickets en toutes sécurité nous vous fournisson votre mot de passe. \n\n %email_password% \n\n Cordialement l'équipe de %sitename%"
+		"createPass": "Bonjour et bienvenue sur %sitename% \n Afin de pouvoir consulter vos tickets en toutes sécurité nous vous fournisson votre mot de passe. \n\n %email_password% \n\n Cordialement l'équipe de %sitename%",
+		"newResponse": "Nouvelle réponse à votre ticket: "
+	},
+
+	"faq": {
+		"FAQ": "Foire aux questions",
+		"nofaq": "Aucune FAQ pour le moment"
+	},
+
+	"answer": {
+		"backToFAQ": "Retour aux FAQ",
+		"By": "&Eacute;cris par",
+		"On": "le",
+		"anonymous": "Anonyme"
 	},
 
 	"admin": {
@@ -252,7 +268,16 @@
 		"category_update": "Modifier",
 		"category_delete": "Supprimer",
 		"category_valid": "Ajouter",
-		"category_modal_update": "Modifier la category"
+		"category_modal_update": "Modifier la category",
+		"faq": "FAQ",
+		"faq_add": "Ajouter une faq",
+		"faq_category_link": "Catégories",
+		"faq_title": "Question",
+		"faq_content": "Réponse",
+		"faq_category": "Catégorie",
+		"faq_update": "Modifier",
+		"faq_see": "Voir",
+		"faq_delete": "Supprimer"
 	},
 
 	"update": {

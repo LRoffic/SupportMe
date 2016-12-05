@@ -20,13 +20,15 @@ hook_action("Form_Comment");
 
 $comment = new FormBuilder();
 
-$comment->add("comment", "textarea")
+$comment->add($lang['ticket']['comment'], "textarea")
+	->name("comment")
 	->inputClass("form-control")
 	->rows(5)
-	->disableLabels()
 	->autofocus();
 
 $comment->style("#comment");
+
+$comment->add($lang['ticket']['email'], "checkbox", true)->name('email')->optional();
 
 hook_filter("comment", $comment);
 
@@ -51,6 +53,18 @@ if($comment->sent()){
 						$ticket->date_last_action = time();
 						$ticket->status_id = 1;
 						$ticket->save();
+
+						if(!empty($_POST['email'])){
+							$email = User::getByID($ticket->autor);
+
+							if(!empty($email)){
+								$mail->subject($lang['email']['newResponse'])
+								->from($config['site_name'], $config['site_email'])
+								->to($email->email)
+								->text($lang['email']['createPass'])
+								->send();
+							}
+						}
 
 						$comment->clearFields();
 
