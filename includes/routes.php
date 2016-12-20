@@ -18,6 +18,8 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 	$router = new AltoRouter();
 
+	$router->addMatchTypes(array('ai' => '[0-9A-Za-z--]++'));
+
 	$router->setBasePath(dirname($_SERVER["PHP_SELF"]));
 
 	$router->map("GET|POST", "/", "index.php", "home");
@@ -27,6 +29,10 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 	$router->map("GET|POST", "/connexion", "connexion.php", "connexion");
 	$router->map("GET", "/logout", "logout.php", "logout");
 	$router->map("GET", "/404", "404.php", "404");
+
+	//faq
+	$router->map("GET", "/faq", "faq.php", "FAQ");
+	$router->map("GET", "/answer/[i:id]/[ai:name]", "answer.php", "answer");
 
 	if($session->isLogged()){
 		$info = $session->getUser();
@@ -60,6 +66,11 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 			if($permission->category_gestion)
 				$router->map("GET|POST", "/admin/category", "admin/category.php", "admin_category");
+
+			if($permission->faq_gestion){
+				$router->map("GET|POST", "/admin/faq", "admin/faq.php", "admin_faq");
+				$router->map("GET|POST", "/admin/faq/category", "admin/faq_category.php", "admin_faq_category");
+			}
 		}
 	}
 

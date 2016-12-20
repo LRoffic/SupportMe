@@ -268,7 +268,9 @@
 		"category_update": "Modifier",
 		"category_delete": "Supprimer",
 		"category_valid": "Ajouter",
-		"category_modal_update": "Modifier la category",
+		"category_modal_update": "Modifier la categorie",
+		"category_modal_delete": "Supprimer la categorie",
+		"category_modal_delete_text": "Attention ! Supprimer la catégorie supprimera tous les articles associés !",
 		"faq": "FAQ",
 		"faq_add": "Ajouter une faq",
 		"faq_category_link": "Catégories",
@@ -277,7 +279,8 @@
 		"faq_category": "Catégorie",
 		"faq_update": "Modifier",
 		"faq_see": "Voir",
-		"faq_delete": "Supprimer"
+		"faq_delete": "Supprimer",
+		"backToFaq": "Retour aux Faq"
 	},
 
 	"update": {

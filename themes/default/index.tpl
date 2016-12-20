@@ -24,7 +24,7 @@
 			</a>
 		</div>
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-			<a href="" class="homeLink">
+			<a href="{routes('FAQ')}" class="homeLink">
 				<div class="well">
 					<h1><u>{$lang.home.Faq}</u></h1>
 					<div class="text-center">

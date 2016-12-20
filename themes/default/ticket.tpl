@@ -94,7 +94,7 @@
 						{$comment->build()}
 					</div>
 				{/if}
-				<h3>{$lang.ticket.comment}</h3>
+				<h3>{$lang.ticket.comments}</h3>
 				<div class="comments">
 					{if empty($getComments)}
 						<p class="text-center">{$lang.ticket.noComment}</p>

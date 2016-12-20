@@ -6,7 +6,7 @@
 			<a href="{routes('admin_category')}" class="list-group-item {if  $match eq 'admin_category'}active{/if}"><i class="fa fa-list"></i> {$lang.admin.aside_category}</a>
 		{/if}
 		{if $perm.faq_gestion}
-			<a href="" class="list-group-item"><i class="fa fa-question"></i> {$lang.admin.faq}</a>
+			<a href="{routes('admin_faq')}" class="list-group-item {if  $match eq 'admin_faq' || $match eq 'admin_faq_category'}active{/if}"><i class="fa fa-question"></i> {$lang.admin.faq}</a>
 		{/if}
 		{if $perm.users_gestion}
 			<a href="{routes('admin_users')}" class="list-group-item {if  $match eq 'admin_users'}active{/if}"><i class="fa fa-users"></i> {$lang.admin.users}</a>
