@@ -1,0 +1,101 @@
+body {
+  background-color: #514B4B;
+}
+.btn:not(.btn-default) {
+  text-decoration: none;
+
+  color: #FFFFFF;
+  background-color: #B0232A;
+}
+.prev,
+.next {
+  margin: 10px;
+  padding: 10px;
+
+  text-decoration: none;
+
+  color: #FFFFFF;
+  background-color: #B0232A;
+}
+.btn:hover,
+.prev:hover,
+.next:hover {
+  text-decoration: none;
+
+  color: #FFFFFF;
+  background-color: #C0383F;
+}
+.prev {
+  float: left;
+}
+.next {
+  float: right;
+}
+#steps {
+  overflow: hidden;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+#steps li {
+  float: left;
+  width: 150px;
+  padding: 10px;
+
+  font-size: 24px;
+
+  color: #B0B1B3;
+}
+#steps li span {
+  display: block;
+
+  font-size: 11px;
+}
+#steps li.current {
+  color: #000000;
+}
+#makeWizard {
+  padding: 5px 10px;
+
+  font-size: 18px;
+  text-decoration: none;
+
+  color: #FFFFFF;
+  background-color: #B0232A;
+}
+#makeWizard:hover {
+  background-color: #000000;
+}
+#logo {
+  margin: 6px 0 14px 0;
+
+  text-align: center;
+
+  border-bottom: none;
+}
+#logo a {
+  display: block;
+  overflow: hidden;
+  width: 80px;
+  height: 80px;
+  margin: -130px auto 25px;
+  padding: 0;
+
+  font-size: 20px;
+  font-weight: normal;
+  line-height: 1.3em;
+  text-decoration: none;
+  text-indent: -9999px;
+
+  color: #999999;
+  outline: none;
+  background-image: url(./Supportme.png);
+  background-image: none, url(./Supportme.png);
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: 80px 80px;
+
+  -webkit-background-size: 80px 80px;
+}

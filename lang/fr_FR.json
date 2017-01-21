@@ -222,7 +222,7 @@
 		"config": "Configuration du site",
 		"config_sitename": "Nom du site",
 		"config_sitemail": "Email du support",
-		"config_register": "Authoriser les gens à s'inscrire ?",
+		"config_register": "Autoriser les gens à s'inscrire ?",
 		"config_connexion": "Forcer les gens à se connecter pour envoyer des tickets ?",
 		"recaptcha_public_key": "Clé Public Recaptcha",
 		"recaptcha_private_key": "Clé Privé Recaptcha",
@@ -268,8 +268,8 @@
 		"category_update": "Modifier",
 		"category_delete": "Supprimer",
 		"category_valid": "Ajouter",
-		"category_modal_update": "Modifier la categorie",
-		"category_modal_delete": "Supprimer la categorie",
+		"category_modal_update": "Modifier la catégorie",
+		"category_modal_delete": "Supprimer la catégorie",
 		"category_modal_delete_text": "Attention ! Supprimer la catégorie supprimera tous les articles associés !",
 		"faq": "FAQ",
 		"faq_add": "Ajouter une faq",
@@ -286,7 +286,7 @@
 	"update": {
 		"Success": "Votre version est maintenant à jour !",
 		"Failed": "Mise à jour échoué :",
-		"upToDate": "Vous avez la dernier version disponible",
+		"upToDate": "Vous avez la dernière version disponible",
 		"log": "Log :"
 	},
 

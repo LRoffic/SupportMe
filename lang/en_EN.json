@@ -1,42 +1,308 @@
 {
 	"config": {
-		"langue_name":"English",
+		"langue_name":"Français",
 		"version":"1",
-		"host":"http://supportme.dzv.me/lang/3.0/en_EN.json"
+		"host":"http://supportme.dzv.me/lang/3.0/en_EN.json",
+		"dateformat": "m/d/Y H:i"
 	},
 
 	"title": {
 		"home":"Home",
-		"404": "Not Found"
+		"newTicket": "New Ticket",
+		"404": "Page not found",
+		"list": "List of tickets",
+		"connexion": "Connexion",
+		"update": "Updates",
+		"faq": "Frequently asked questions"
 	},
 
 	"navbar":{
-		"login":"Login",
-		"register":"Register"
+		"home": "Home",
+		"login":"Connexion",
+		"register":"Register",
+		"logout": "Logout",
+		"BackToHome": "Back to home",
+		"admin": "Administration"
 	},
 
 	"login": {
-		"email":"E-mail Adress",
-		"password":"Password",
-		"forget":"Forgot Password ?",
-		"keep":"Keep Login ?",
-		"login":"Connection",
-		"register":"register"
+		"pseudo":"Username :",
+		"identifiant":"E-mail Adress / username :",
+		"email":"E-mail adress :",
+		"password":"Password :",
+		"captcha": "Captcha",
+		"forget":"Forgot ?",
+		"keep":"Keep connexion ?",
+		"login":"Connexion",
+		"register":"Register"
 	},
 
 	"home": {
-		"newTicket":"Send New Ticket",
-		"viewTicket":"See Ticket",
-		"Faq": "Frequently Asked Question"
+		"newTicket":"Write new ticket",
+		"viewTicket":"See ticket",
+		"Faq": "Frequently asked questions"
+	},
+
+	"newTicket": {
+		"newTicket": "Write new ticket",
+		"email": "E-mail Adress :",
+		"subject": "Subject :",
+		"category": "Category :",
+		"choiceCategory": "-- Choice category --",
+		"message": "Message :",
+		"captcha": "Captcha",
+		"submit": "Submit"
+	},
+
+	"ticket": {
+		"createSuccess": "Your ticket has been sent, someone will reply soon!",
+		"status": "Status :",
+		"attribute": "Attribution :",
+		"notAttribued": "Not yet assigned",
+		"category": "Category :",
+		"date_receive": "Creation date :",
+		"date_last_action": "Date of last update :",
+		"message": "Message :",
+		"backToList": "Back to ticket list",
+		"close": "Close ticket",
+		"addComment": "add a comment :",
+		"comments": "Comments :",
+		"comment": "Comment",
+		"email": "Send a notification by e-mail?",
+		"submit": "Submit",
+		"noComment": "No comments yet",
+		"SuccessComment": "Comments sent!",
+		"you": "You",
+		"sendon": "send on ",
+		"updateStatus": "Change status :",
+		"Send": "Ok",
+		"assign_to_me": "Assign to me",
+		"assign": "Assign",
+		"backToAdmin": "Back to admin"
+	},
+
+	"list":{
+		"noTicket": "No ticket currently",
+		"back": "Back to home",
+		"send": "Send new tickket",
+		"TicketList": "List of tickets",
+		"id": "ID",
+		"subject": "subject",
+		"message": "message",
+		"date_receive": "Creation date",
+		"date_last_action": "Last action",
+		"option": "Options",
+		"status": "Status",
+		"attribute": "Atribution",
+		"notAttribued": "Not yet assigned",
+		"category": "Category",
+		"see": "See"
+	},
+
+	"connexion": {
+		"connexion": "Connexion :",
+		"register": "Register :",
+		"confirme_password": "Retype password"
+	},
+
+	"status":{
+		"waiting": "Waiting",
+		"reply": "Answered",
+		"closed": "Closed"
+	},
+
+	"category":{
+		"notFound": "Category not found"
 	},
 
 	"footer": {
-		"language":"Language :",
+		"language":"language :",
 		"ok":"Ok",
-		"propulsedBy":"Propulsed By <a href=\"http://supportme.dzv.me\" target=\"_blank\">Support Me</a>"
+		"propulsedBy":"Propulsed by <a href=\"http://supportme.dzv.me\" target=\"_blank\">Support Me</a>"
 	},
 
 	"404": {
-		"notfound": "404 Not Found !"
+		"notfound": "404 not Found !"
+	},
+
+	"error":{
+		"error_email": "The e-mail address is invalid!",
+		"error_specialcars": "Invalid character detected!",
+		"error_password": "Passwords are not the same",
+		"error_category": "Unknown category!",
+		"empty_user": "Unknown user",
+		"invalide_password": "Invalid password!",
+		"registered": "An account with this identifier already exists!",
+		"Recaptcha": "Invalid captcha!",
+		"error_account_notvalidate": "Please log in with the password you received by mail to return a ticket!",
+		"register_no_actif": "Registration is not activated!",
+		"permission_update": "Failed to change permissions!",
+		"invalide_field": "Invalid field!"
+	},
+
+	"email": {
+		"createPassSubject": "Welcome !",
+		"createPass": "Welcome on %sitename% \n In order to be able to consult your tickets safely we will provide you with your password. \n\n %email_password% \n\n Sincerely the team of %sitename%",
+		"newResponse": "New answer to your ticket: "
+	},
+
+	"faq": {
+		"FAQ": "Frequently asked questions",
+		"nofaq": "No FAQ for the moment"
+	},
+
+	"answer": {
+		"backToFAQ": "Back to FAQ",
+		"By": "Write by",
+		"On": "on",
+		"anonymous": "Anonymous"
+	},
+
+	"admin": {
+		"notCheckUpdate": "Unable to check update!",
+		"NewVersionAvailable": "A new version of Support Me is available!",
+		"update": "Update",
+		"home": "Home",
+		"closed_ticket": "Ticket closed",
+		"aside_category": "Categories",
+		"aside_update": "Updates",
+		"plugins": "Plugins",
+		"theme": "Themes",
+		"language": "Languages",
+		"users": "users",
+		"faq": "Frequently asked questions",
+		"config":"Configuration",
+		"LastRefresh": "Last update :",
+		"TicketList": "Liste of tickets",
+		"id": "#",
+		"author": "Author",
+		"subject": "Subject",
+		"resume": "Resume",
+		"category": "Catégory",
+		"status": "Status",
+		"date_receive": "Date of receipt",
+		"date_last_action": "Last action",
+		"attribute": "Atribution",
+		"option": "Options",
+		"noTicket": "No ticket for the moment",
+		"noplugin": "No plugin for the moment",
+		"lang_list": "List of languages",
+		"lang_name": "Name",
+		"lang_local": "Local name",
+		"lang_version": "Version",
+		"lang_use": "Use",
+		"lang_remove": "Remove",
+		"lang_update": "Update",
+		"plugin_list": "List of plugins",
+		"plugin_market": "Plugin market",
+		"plugin_add": "Add Plugins",
+		"plugin_name": "Name:",
+		"plugin_author": "Author:",
+		"plugin_description": "Description:",
+		"plugin_version": "Version:",
+		"plugin_info": "Infos",
+		"plugin_config": "Configuration",
+		"plugin_update": "Update",
+		"plugin_remove": "Remove",
+		"plugin_install": "Install",
+		"plugin_search": "Search",
+		"plugin_update_setting": "Modify the parameters",
+		"plugin_update_success": "Parameter changed successfully!",
+		"plugin_setting_of": "Parameter of",
+		"plugin_back_to_plugin": "Back to plugins",
+		"yes": "Yes",
+		"no": "No",
+		"theme_list": "Theme List",
+		"theme_add": "Add themes",
+		"theme_name": "Name:",
+		"theme_author": "Author:",
+		"theme_version": "Version:",
+		"theme_info": "Infos",
+		"theme_use": "Use",
+		"config": "Configuring the site",
+		"config_sitename": "Name of the site",
+		"config_sitemail": "Email of the support",
+		"config_register": "Allow people to sign up?",
+		"config_connexion": "Forcing people to sign in to send tickets?",
+		"recaptcha_public_key": "Public Key Recaptcha",
+		"recaptcha_private_key": "Private Key Recaptcha",
+		"config_valid": "Valid",
+		"users_list": "users list",
+		"register_users": "Registered users",
+		"unregistered_users": "Unregistered users",
+		"users_username": "Username",
+		"users_email": "E-Mail Adress",
+		"users_rank": "Rank",
+		"users_ip": "IP Adress",
+		"users_last_active": "Last connexion",
+		"users_delete": "Remove",
+		"users_update_rank": "Update the rank",
+		"never": "never",
+		"permissions": "Permissions",
+		"rank_valid": "Valid",
+		"permissions_gestion": "Management of permissions",
+		"add_permission": "Add a rank",
+		"permission_name": "Name",
+		"admin_access": "Access to administration?",
+		"more_info": "More info",
+		"perm_update": "Modify",
+		"perm_delete": "Remove",
+		"view_all_ticket": "Can see all tickets?",
+		"reopen_ticket": "Can reopen tickets?",
+		"comment_closed_ticket": "Can comment on closed tickets?",
+		"assign_to_me": "Can you assign a ticket?",
+		"assign_to_other": "Can assign a ticket to another user?",
+		"change_assign": "Can modify the assignment of an assigned ticket?",
+		"category_gestion": "Can Manage Categories?",
+		"faq_gestion": "Can Manage FAQ?",
+		"lang_gestion": "Can manage languages?",
+		"plugin_gestion": "Can manage plugins?",
+		"theme_gestion": "Can manage themes?",
+		"config_gestion": "Can configure the site?",
+		"users_gestion": "Can manage users?",
+		"perm_gestion": "Can manage permissions?",
+		"category_gestion": "Category Management",
+		"category_add": "add a catégory",
+		"category_name": "Name",
+		"category_published": "Active ?",
+		"category_update": "Update",
+		"category_delete": "Remove",
+		"category_valid": "Add",
+		"category_modal_update": "Edit category",
+		"category_modal_delete": "Supprimer la categorie",
+		"category_modal_delete_text": "Warning ! Delete category will delete all related items!",
+		"faq": "FAQ",
+		"faq_add": "add a faq",
+		"faq_category_link": "Categories",
+		"faq_title": "Question",
+		"faq_content": "Answer",
+		"faq_category": "Categorie",
+		"faq_update": "Update",
+		"faq_see": "See",
+		"faq_delete": "Remove",
+		"backToFaq": "Back to Faq"
+	},
+
+	"update": {
+		"Success": "Your version is now up to date!",
+		"Failed": "Update failed :",
+		"upToDate": "You have the latest version available",
+		"log": "Log :"
+	},
+
+	"js": {
+		"ago": "ago ",
+		"in": "in ",
+		"agoOneMinute": "Less than a minute",
+		"aboutAMinute": "About one minute",
+		"minute": "minutes",
+		"aboutAnHour": "About an Hour",
+		"hour": "hours",
+		"aboutADay":"About a day",
+		"day": "days",
+		"aboutAMonth": "About a month",
+		"month": "month",
+		"aboutAYear": "About a year",
+		"year": "years"
 	}
 }

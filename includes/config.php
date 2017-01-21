@@ -18,7 +18,14 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 	include_once "vendor/autoload.php";
 	include_once "define.php";
+
+	if(!file_exists(_PATH_."\includes\database.php")){
+		header("Location: ".FOLDER."/install/");
+		exit();
+	}
+
 	include_once "database.php";
+
 	include_once "lib/lib.php";
 	include_once "pluggable.php";
 

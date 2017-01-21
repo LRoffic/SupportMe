@@ -1,0 +1,35 @@
+<ul id="steps" class="steps">
+	<li id="stepDesc0" class="current">&Eacute;tape 1<span>Réglage de la base de données</span></li>
+	<li id="stepDesc1">&Eacute;tape 2<span>Réglage du site</span></li>
+	<li id="stepDesc2">&Eacute;tape 3<span>Création du compte administrateur</span></li>
+	<li id="stepDesc3">&Eacute;tape 4<span>Fin !</span></li>
+</ul>
+
+<div class="progress">
+	<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%;">
+		<span class="sr-only">25% Complete</span>
+	</div>
+</div>
+
+<form action="?step=2" method="post">
+	<fieldset>
+		<legend>Réglage de la base de données</legend>
+		<div class="form-group">
+			<label>Host</label>
+			<input type="text" name="host" class="form-control" placeholder="ex: localhost" required <?php if(!empty($_POST['host'])){ echo 'value="'.htmlspecialchars($_POST["host"]).'"'; } ?>>
+		</div>
+		<div class="form-group">
+			<label>Database Name</label>
+			<input type="text" name="dbname" class="form-control" placeholder="ex: Support Me" required <?php if(!empty($_POST['dbname'])){ echo 'value="'.htmlspecialchars($_POST["dbname"]).'"'; } ?>>
+		</div>
+		<div class="form-group">
+			<label>Database User</label>
+			<input type="text" name="dbusername" class="form-control" placeholder="ex: Root" required  <?php if(!empty($_POST['dbusername'])){ echo 'value="'.htmlspecialchars($_POST["dbusername"]).'"'; } ?>>
+		</div>
+		<div class="form-group">
+			<label>Database Password</label>
+			<input type="password" name="dbpassword" class="form-control">
+		</div>
+		<input type="submit" class="btn btn-lg btn-block Next">
+	</fieldset>
+</form>

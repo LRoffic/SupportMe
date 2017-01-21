@@ -1,3 +1,4 @@
 RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !^/install/
 RewriteRule . index.php [L]
